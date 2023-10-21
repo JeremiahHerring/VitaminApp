@@ -32,7 +32,8 @@ let questions = [
             "175-179cm",
             "180-184cm",
             "185-189cm",
-            "190-194cm"
+            "190-194cm",
+            "195+ cm"
         ]
     },
     {
@@ -50,10 +51,41 @@ let questions = [
     },
     {
         numb: 5,
-        question: "",
+        question: "What Is Your Weight?",
         answer: "",
         options: [
-            
+            "Below 100 lbs",
+            "100-120 lbs",
+            "120-140 lbs",
+            "140-160 lbs",
+            "160-180 lbs",
+            "180-200 lbs",
+            "200-220 lbs",
+            "220-240 lbs",
+            "240-260 lbs",
+            "260-280 lbs",
+            "280-300 lbs",
+            "300+ lbs"
+        ]
+    },
+    {
+        numb: 6,
+        question: "What Are Your Goals?",
+        answer: "",
+        options: [
+            "Health & Fitness",
+            "Mood",
+            "Blood",
+            "Bones",
+            "Cognitive Health",
+            "Energy",
+            "Sleep",
+            "Digestion",
+            "Hair, Skin & Nails",
+            "Immunity",
+            "Kidney",
+            "Liver",
+            "Joints",
         ]
     },
 ]

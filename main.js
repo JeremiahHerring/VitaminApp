@@ -6,7 +6,6 @@ const continueBtn = document.querySelector('.continue-btn')
 const quizSection = document.querySelector('.quiz-section')
 const quizBox = document.querySelector('.quiz-box')
 
-
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
     main.classList.add('active');
@@ -48,13 +47,13 @@ const optionList = document.querySelector('.option-list');
 function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
     questionText.textContent = `${questions[index].numb}. ${questions[index].question}`;
-
-    let optionTag = 
     
-    `<div class="option"><span>${questions[index].options[0]}</span></div>
-    <div class="option"><span>${questions[index].options[1]}</span></div>
-    <div class="option"><span>${questions[index].options[2]}</span></div>`;
+    let optionTag = '';
+
+    // Loop through the options for the current question
+    for (let i = 0; i < questions[index].options.length; i++) {
+        optionTag += `<div class="option"><span>${questions[index].options[i]}</span></div>`;
+    }
 
     optionList.innerHTML = optionTag;
-    
-};
+}

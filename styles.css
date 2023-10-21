@@ -228,6 +228,8 @@ body {
     transform: scale(1);
     transition: 1s ease;
     transition-delay: 1s;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 .quiz-box h1 {
