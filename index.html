@@ -7,6 +7,74 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <main class="main">
+        <header class="header">
+            <a href="#" class="logo">VitaMatch</a>
+
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+        <div class="container">
+        <section class="quiz-section">
+            <div class="quiz-box">
+                <h1> Vitamin Questionnare</h1>
+                <div class="quiz-header">
+                    <span>Progress Bar Goes Here</span>
+                </div>
+
+                <h2 class="question-text">What's Your Age?</h2>
+
+                <div class="option-list">
+                    <!-- <div class="option">
+                        <span>0-17</span>
+                    </div>
+                    <div class="option">
+                        <span>18-55</span>
+                    </div>
+                    <div class="option">
+                        <span>55+</span>
+                    </div>
+                </div> -->
+                </div>
+                <div class="quiz-footer">
+                    <span class="question-total">1 of 20 Questions</span>
+                    <button class="next-btn">Next</button>
+                </div>
+            </div>
+        </section>
+        <section class="home">
+            <div class="home-content">
+                <h1>Get Your Vitamin Recommendations Here!</h1>
+                <p>Welcome to our free vitamin recommendation web application!
+                    Once you complete the questionnare, we will match you with
+                    the specific vitamins that can implement into your diet! 
+                    Thanks for choosing VitaMatch and feel free to contact us 
+                    if you have any questions!
+                </p>
+                <button class="start-btn">Let's Go!</button>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <div class="popup-info">
+        <h2>Questionnare Guide</h2>
+        <span class="info">1. Try to answer the questions to the best of your ability.</span>
+        <span class="info">2. This is not an official diagnosis. Consult a medical professional if your health situation is urgent.</span>
+        <span class="info">3. By taking this questionnare you consent to give away basic health information.</span>
+        <span class="info">4. Thanks for choosing VitaMatch!</span>
+
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Questionnare</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
