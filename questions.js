@@ -1,8 +1,7 @@
-let questions = [
+const initialQuestions = [
     {
         numb: 1,
         question: "What's Your Age?",
-        answer: "",
         options: [
             "0-17",
             "18-55",
@@ -12,7 +11,6 @@ let questions = [
     {
         numb: 2,
         question: "What Is Your Gender?",
-        answer: "",
         options: [
             "Male",
             "Female"
@@ -21,7 +19,6 @@ let questions = [
     {
         numb: 3,
         question: "What Is Your Height",
-        answer: "",
         options: [
             "145-149cm",
             "150-154cm",
@@ -39,7 +36,6 @@ let questions = [
     {
         numb: 4,
         question: "What Is Your Ethnicity",
-        answer: "",
         options: [
             "American Indian or Alaskan Native",
             "Asian",
@@ -52,7 +48,6 @@ let questions = [
     {
         numb: 5,
         question: "What Is Your Weight?",
-        answer: "",
         options: [
             "Below 100 lbs",
             "100-120 lbs",
@@ -71,11 +66,9 @@ let questions = [
     {
         numb: 6,
         question: "What Are Your Goals?",
-        answer: "",
         options: [
             "Health & Fitness",
             "Mood",
-            "Blood",
             "Bones",
             "Cognitive Health",
             "Energy",
@@ -83,9 +76,40 @@ let questions = [
             "Digestion",
             "Hair, Skin & Nails",
             "Immunity",
-            "Kidney",
-            "Liver",
+            "Organs",
             "Joints",
         ]
     },
 ]
+const specializedQuestionSets = {
+    healthAndFitness: [
+      {
+        numb: 1,
+        question: "Health & Fitness Question 1",
+        options: ["Option 1", "Option 2", "Option 3"],
+      },
+      // Add more questions for this category
+    ],
+    mood: [
+      {
+        numb: 1,
+        question: "Mood Question 1",
+        options: ["Option 1", "Option 2", "Option 3"],
+      },
+      // Add more questions for this category
+    ],
+    bones: [
+      {
+        numb: 1,
+        question: "Bones Question 1",
+        options: ["Option 1", "Option 2", "Option 3"],
+      },
+      // Add more questions for this category
+    ],
+    // Add more categories and their respective questions
+  };
+
+  export { initialQuestions, specializedQuestionSets };
+
+
+  
