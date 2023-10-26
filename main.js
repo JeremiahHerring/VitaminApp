@@ -81,10 +81,27 @@ let isOptionSelected = false;
 nextBtn.onclick = () => {
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
+            // Advance to the next question in the current set
             questionCount++;
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             questionCounter(questionNumb);
+        } else if (questionCount === 5) {
+            getSelectedCategory(); // Get the selected category
+
+            if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
+                currentQuestionSet = categoryToQuestionSet[selectedCategory];
+                questionCount = 0;
+                showQuestions(questionCount, currentQuestionSet);
+                questionNumb = 1;
+                questionCounter(questionNumb);
+                console.log('Selected Category:', selectedCategory);
+                console.log('Current Question Set:', currentQuestionSet);
+            } else {
+                alert('Please select a category.');
+                console.log('Selected Category:', selectedCategory);
+                console.log('Current Question Set:', currentQuestionSet);
+            }
         } else {
             showResults();
         }
@@ -110,7 +127,6 @@ function showQuestions(index, questionSet) {
         questionText.textContent = `${questionSet[index].numb}. ${questionSet[index].question}`;
 
         let optionTag = '';
-
         for (let i = 0; i < questionSet[index].options.length; i++) {
             optionTag += `<div class="option" data-index="${i}"><span>${questionSet[index].options[i]}</span></div>`;
         }
@@ -123,6 +139,7 @@ function showQuestions(index, questionSet) {
         });
     }
 }
+
 
 // Get what the option the user clicked on
 function optionSelected(answer) {
@@ -180,20 +197,29 @@ goHomeBtn.onclick = () => {
 
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
-    "Health & Fitness": "healthAndFitness",
-    Mood: "mood",
-    Bones: "bones",
+    "Health & Fitness": specializedQuestionSets.healthAndFitness,
+    "Mood": specializedQuestionSets.mood,
+    "Bones": specializedQuestionSets.bones,
     // Add mappings for other categories
-  };
+};
   
-  // Define a function to get the selected category from the 6th question
-  function getSelectedCategory() {
-    const sixthQuestionOptions = document.querySelectorAll('.option-list .option');
-    for (let i = 0; i < sixthQuestionOptions.length; i++) {
-      if (sixthQuestionOptions[i].classList.contains('active')) {
-        return sixthQuestionOptions[i].textContent.trim();
-      }
+let selectedCategory = null;
+// Add this function to get the selected category
+function getSelectedCategory() {
+    const selectedOption = document.querySelector('.option.active');
+    if (selectedOption) {
+        selectedCategory = selectedOption.textContent;
     }
-    return null; // Return a default category or handle the case when no category is selected
-  }
+}
+// Add this function to get the index of the selected option
+function getSelectedOptionIndex() {
+    const allOptions = document.querySelectorAll('.option-list .option');
+    for (let i = 0; i < allOptions.length; i++) {
+        if (allOptions[i].classList.contains('active')) {
+            return i;
+        }
+    }
+    return -1; // Return -1 if no option is selected
+}
+
 
