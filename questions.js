@@ -85,9 +85,16 @@ const specializedQuestionSets = {
     healthAndFitness: [
       {
         numb: 1,
-        question: "Health & Fitness Question 1",
-        options: ["Option 1", "Option 2", "Option 3"],
+        question: "How frequently do you exercise?",
+        options: [
+            "Never",
+            "Sometimes (once-twice a week)", 
+            "Often (3 times a week)",
+            "Very often (4-7) times a week",
+            "I live in the gym"
+            ],
       },
+      
       // Add more questions for this category
     ],
     mood: [
@@ -104,8 +111,64 @@ const specializedQuestionSets = {
         question: "Bones Question 1",
         options: ["Option 1", "Option 2", "Option 3"],
       },
-      // Add more questions for this category
     ],
+    cognitiveHealth: [
+        {
+          numb: 1,
+          question: "Cognitive Health Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    energy: [
+        {
+          numb: 1,
+          question: "Energy Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    sleep: [
+        {
+          numb: 1,
+          question: "Sleep Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    digestion: [
+        {
+          numb: 1,
+          question: "Digestion Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    hairSkinNails: [
+        {
+          numb: 1,
+          question: "Hair, Skin & Nails Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    immunity: [
+        {
+          numb: 1,
+          question: "Immunity Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    organs: [
+        {
+          numb: 1,
+          question: "Organs Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    joints: [
+        {
+          numb: 1,
+          question: "Joints Question 1",
+          options: ["Option 1", "Option 2", "Option 3"],
+        },
+    ],
+    
     // Add more categories and their respective questions
   };
 
