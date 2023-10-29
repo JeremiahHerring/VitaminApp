@@ -1,4 +1,6 @@
+console.log("waddup main.js");
 import { initialQuestions, specializedQuestionSets } from './questions.js'
+import { giveRecommendation} from "./recommendationSystem.js";
 
 // DEFINING ALL OUR VARIABLES
 const startBtn = document.querySelector('.start-btn');
@@ -14,7 +16,6 @@ const resultBox = document.querySelector('.result-box')
 const tryAgainBtn = document.querySelector('.tryAgain-btn')
 const goHomeBtn = document.querySelector('.goHome-btn')
 
-export const userAnswers = [null];
 
 // When start button is clicked initialize popupInfo and blur the background
 startBtn.onclick = () => {
@@ -62,6 +63,8 @@ let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 
+const userAnswers = []; // Initializing userAnswer array
+
 nextBtn.onclick = () => {
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
@@ -70,7 +73,7 @@ nextBtn.onclick = () => {
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             questionCounter(questionNumb);
-        } else if (questionCount === 5) {
+        } else if (questionCount === 7) {
             getSelectedCategory(); // Get the selected category
 
             if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
@@ -96,7 +99,7 @@ nextBtn.onclick = () => {
     }
 };
 
-
+;
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
@@ -152,11 +155,16 @@ function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
     questionTotal.textContent = `${index} of ${initialQuestions.length} Questions`
 }
+// This function is going to run the code found in recommendation.js
+function showRecommendations() {
+    giveRecommendation(userAnswers);
+}
 
 // Show results of questionnare
 function showResults() {
+    showRecommendations();
     quizBox.classList.remove('active');
-    resultBox.classList.add('active')
+    resultBox.classList.add('active');
 }
 
 tryAgainBtn.onclick = () => {
