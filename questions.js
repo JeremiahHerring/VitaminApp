@@ -64,7 +64,7 @@ const initialQuestions = [
         ]
     },
     {
-        numb: 6,
+        numb: 7,
         question: "What Are Your Goals?",
         options: [
             "Health & Fitness",
@@ -80,6 +80,16 @@ const initialQuestions = [
             "Joints",
         ]
     },
+    {
+      numb: 6,
+      question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?",
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    }
+    
 ]
 const specializedQuestionSets = {
     healthAndFitness: [
