@@ -64,7 +64,7 @@ const initialQuestions = [
         ]
     },
     {
-        numb: 6,
+        numb: 7,
         question: "What Are Your Goals?",
         options: [
             "Health & Fitness",
@@ -80,6 +80,16 @@ const initialQuestions = [
             "Joints",
         ]
     },
+    {
+      numb: 6,
+      question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?",
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    }
+    
 ]
 const specializedQuestionSets = {
     healthAndFitness: [
@@ -108,8 +118,9 @@ const specializedQuestionSets = {
     bones: [
       {
         numb: 1,
-        question: "Bones Question 1",
-        options: ["Option 1", "Option 2", "Option 3"],
+        question: "Are you diagnosed with depression or bipolar disorder? ",
+        options: ["Yes", 
+        "No"],  // <--- Khoi's test change
       },
     ],
     cognitiveHealth: [
