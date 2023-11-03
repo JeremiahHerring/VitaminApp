@@ -255,6 +255,7 @@ const categoryToQuestionSet = {
     "Immunity":specializedQuestionSets.immunity,
     "Organs":specializedQuestionSets.organs,
     "Joints":specializedQuestionSets.joints
+    //"Eyesight":specializedQuestionSets.eyesights
     // Add mappings for other categories
 };
   

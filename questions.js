@@ -143,10 +143,20 @@ const specializedQuestionSets = {
         numb: 2,
         question: "How long do you exercise?", 
         options: [
-            "0-15 min",
-            "15-30 min", 
-            "30min-1hr",
+            "0-15min",
+            "15-30min", 
+            "30min - 1hr",
             "1hr+",
+            ],
+      },
+      {
+        numb: 3,
+        question: "What physical activities do you participate in?", 
+        options: [
+            "Weightlifting/Strength",
+            "Cardio/Running/Swimming", 
+            "Yoga/Stretching/Pilates",
+            "Mixture",
             ],
       },
       // Add more questions for this category
@@ -196,22 +206,67 @@ const specializedQuestionSets = {
     cognitiveHealth: [
         {
           numb: 1,
-          question: "Cognitive Health Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Are you diagnosed with dementia or experiencing a hard time remembering?",
+          options: ["Yes", 
+          "No"],
+        },
+        {
+          numb: 2,
+          question: "Do you experience high levels of stress?",
+          options: ["Yes", 
+          "No"],
+        },
+        {
+          numb: 3,
+          question: "Do you socialize with other people often?",
+          options: ["Seldom", 
+          "Occasional", 
+          "Often"],
         },
     ],
     energy: [
         {
           numb: 1,
-          question: "Energy Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "How often do you experience fatigue?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
+        },
+        {
+          numb: 2,
+          question: "How many hours of sleep do you get?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
+        },
+        {
+          numb: 3,
+          question: "Do you rely on caffeine or energy drinks?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
         },
     ],
     sleep: [
         {
           numb: 1,
-          question: "Sleep Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Do you have trouble going to sleep?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
+        },
+        {
+          numb: 2,
+          question: "Are you getting a full night’s worth of sleep?",
+          options: ["Yes", 
+          "No"],
+        },
+        {
+          numb: 3,
+          question: "Are you taking naps throughout the day?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
         },
     ],
     digestion: [
@@ -224,8 +279,24 @@ const specializedQuestionSets = {
     hairSkinNails: [
         {
           numb: 1,
-          question: "Hair, Skin & Nails Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Do you experience excessive hair loss or shedding?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
+        },
+        {
+          numb: 2,
+          question: "Do you have any nail-related concerns (e.g., nail-biting, fungal infections, ingrown nails)?",
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
+        },
+        {
+          numb: 3,
+          question: "Are you currently facing any skin issues or conditions (e.g., acne, eczema, psoriasis)?",
+          options: ["No", 
+          "Occasional", 
+          "Yes, Often"],
         },
     ],
     immunity: [
@@ -245,10 +316,45 @@ const specializedQuestionSets = {
     joints: [
         {
           numb: 1,
-          question: "Joints Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Have you ever been diagnosed with or do you currently have any joint-related conditions?",
+          options: ["Yes", 
+          "No", 
+          "Unsure"],
+        },
+        {
+          numb: 2,
+          question: "Have you had any injuries or traumas to your joints in the past?",
+          options: ["Yes", 
+          "No"],
+        },
+        {
+          numb: 3,
+          question: "Do you experience any joint pain, stiffness, or swelling, particularly after physical activity or in the morning?",
+          options: ["Never", "Occasional", "Often"],
         },
     ],
+    eyesight: [   
+      {
+        numb: 1,
+        question: "Do you have any vision problems?",
+        options: ["No", 
+        "Moderate", 
+        "Extreme"],
+      },
+      {
+        numb: 2,
+        question: "Have you been diagnosed with any eye diseases, such as macular degeneration, glaucoma, or cataracts?",
+        options: ["No", 
+        "Yes", 
+        "Something Else"],
+      },
+      {
+        numb: 3,
+        question: "Do you have a family history of eye disease?",
+        options: ["Yes", 
+        "No"],
+      },
+  ],
     
     // Add more categories and their respective questions
   };
