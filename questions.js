@@ -81,15 +81,50 @@ const initialQuestions = [
         ]
     },
     {
-      numb: 6,
-      question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?",
+      numb: 8,
+      question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?", 
       options: [
         "Daily",
         "A few times a week",
         "Rarely",
       ]
-    }
-    
+    },
+    {
+      numb: 9,
+      question: "How often do you consume foods high in vitamin C (e.g., citrus fruits, berries)?", // <--- KHOI'S CHANGE
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    },
+    {
+      numb: 10,
+      question: "How often do you consume foods rich in vitamin A (e.g., carrots, sweet potatoes, spinach)?", // <--- KHOI'S CHANGE
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    },
+    {
+      numb: 11,
+      question: "How often do you consume foods rich in vitamin E (e.g., nuts, seeds, vegetable oils)?",  // <--- KHOI'S CHANGE
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    },
+    {
+      numb: 12,
+      question: "How often do you consume foods rich in vitamin B(e.g., meat, poultry, fish, fortified cereals)?", 
+      options: [
+        "Daily",
+        "A few times a week",
+        "Rarely",
+      ]
+    },
 ]
 const specializedQuestionSets = {
     healthAndFitness: [
@@ -110,17 +145,18 @@ const specializedQuestionSets = {
     mood: [
       {
         numb: 1,
-        question: "Mood Question 1",
-        options: ["Option 1", "Option 2", "Option 3"],
+        question: "Are you currently taking any form of antidepressants? ", // <--- KHOI'S CHANGE
+        options: ["Yes",
+        "No"],
       },
       // Add more questions for this category
     ],
     bones: [
       {
         numb: 1,
-        question: "Are you diagnosed with depression or bipolar disorder? ",
+        question: "Do you have osteoporosis?  ",  // <--- KHOI'S CHANGE
         options: ["Yes", 
-        "No"],  // <--- Khoi's test change
+        "No"],  
       },
     ],
     cognitiveHealth: [
