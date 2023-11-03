@@ -323,6 +323,15 @@ body {
     color: #fff;
 }
 
+.quiz-footer .particle{
+    border-radius: 50%;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+}
+
 .quiz-section .result-box {
     position: absolute;
     top: 50%;
@@ -386,3 +395,4 @@ body {
     background: #c40094;
     color: #fff;
 }
+
