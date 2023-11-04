@@ -1,6 +1,4 @@
-console.log("waddup main.js");
 import { initialQuestions, specializedQuestionSets } from './questions.js'
-import { giveRecommendation} from "./recommendationSystem.js";
 
 // DEFINING ALL OUR VARIABLES
 const startBtn = document.querySelector('.start-btn');
@@ -16,6 +14,23 @@ const resultBox = document.querySelector('.result-box')
 const tryAgainBtn = document.querySelector('.tryAgain-btn')
 const goHomeBtn = document.querySelector('.goHome-btn')
 
+// VITAMIN RECOMMENDATION SYSTEM
+// If vitamin score for a specific vitamin is past a certain threshhold,
+// the vitamin is recommended to the user
+let vitaminAScore = 0;
+let vitaminB1Score = 0;
+let vitaminB2Score = 0;
+let vitaminB3Score = 0;
+let vitaminB5Score = 0;
+let vitaminB6Score = 0;
+let vitaminB9Score = 0;
+let vitaminB12Score = 0;
+let biotinScore = 0;
+let vitaminCScore = 0;
+let cholineScore = 0;
+let vitaminDScore = 0;
+let vitaminEScore = 0;
+let vitaminKScore = 0;
 
 // When start button is clicked initialize popupInfo and blur the background
 startBtn.onclick = () => {
@@ -63,10 +78,7 @@ let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 
-const userAnswers = []; // Initializing userAnswer array
-
 nextBtn.onclick = () => {
-    
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
             // Advance to the next question in the current set
@@ -74,7 +86,7 @@ nextBtn.onclick = () => {
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             questionCounter(questionNumb);
-        } else if (questionCount === 7) {
+        } else if (questionCount === 5) {
             getSelectedCategory(); // Get the selected category
 
             if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
@@ -85,9 +97,6 @@ nextBtn.onclick = () => {
                 questionCounter(questionNumb);
                 console.log('Selected Category:', selectedCategory);
                 console.log('Current Question Set:', currentQuestionSet);
-
-                // Store the selected category in userAnswers
-                userAnswers['selectedCategory'] = selectedCategory;
             } else {
                 alert('Please select a category.');
                 console.log('Selected Category:', selectedCategory);
@@ -99,49 +108,6 @@ nextBtn.onclick = () => {
         isOptionSelected = false;
     }
 };
-
-
-
-function pop(e){
-    for (let i = 0; i < 30; i++){
-        createParticle(e.clientX, e.clientY);
-    }
-}
-
-function createParticle(x, y){
-    const particle = document.createElement('particle');
-
-    document.body.appendChild(particle);
-
-    const size = Math.floor(Math.random() * 20 + 5);
-
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-
-    particle.style.background = `hsl(${Math.random()* 90 + 180}, 70%, 60%)`;
-
-    const destinationX = x + (Math.random() - 0.5) * 2 * 75;
-    const destinationY = y + (Math.random() - 0.5) * 2 * 75;
-
-    const animation = particle.animate([
-        {
-            transform: `translate(${x - (size / 2)}px, ${y - (size / 2)}px)`,
-            opacity: 1
-        },
-        {
-            transform: `translate(${destinationX}px, ${destinationY}px)`,
-            opacity: 0
-        }
-    ], {
-        duration: 500 + Math.random() * 1000,
-        easing: 'cubic-bezier(0, .9, .57, 1)',
-        delay: Math.random() * 200
-    });
-
-    animation.onfinish =() =>{
-        particle.remove();
-    }
-}
 
 
 // Define a function to show questions from a given set
@@ -177,13 +143,6 @@ function showQuestions(index, questionSet) {
 
 // Get what the option the user clicked on
 function optionSelected(answer) {
-    const questionNumber = questionCount; // Use zero-based indexing
-    const selectedOptionText = answer.textContent; // Get the text content of the selected option
-
-    // Store the user's choice in the userAnswers array
-    userAnswers[questionNumber] = selectedOptionText;
-    console.log(userAnswers);
-
     const allOptions = document.querySelectorAll('.option-list .option');
     allOptions.forEach(option => {
         option.classList.remove('active');
@@ -192,22 +151,16 @@ function optionSelected(answer) {
     isOptionSelected = true;
     nextBtn.classList.add('active');
 }
-
 // Show what question the user is currently on
 function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
     questionTotal.textContent = `${index} of ${initialQuestions.length} Questions`
 }
-// This function is going to run the code found in recommendation.js
-function showRecommendations() {
-    giveRecommendation(userAnswers);
-}
 
 // Show results of questionnare
 function showResults() {
-    showRecommendations();
     quizBox.classList.remove('active');
-    resultBox.classList.add('active');
+    resultBox.classList.add('active')
 }
 
 tryAgainBtn.onclick = () => {
@@ -247,15 +200,6 @@ const categoryToQuestionSet = {
     "Health & Fitness": specializedQuestionSets.healthAndFitness,
     "Mood": specializedQuestionSets.mood,
     "Bones": specializedQuestionSets.bones,
-    "Cognitive Health":specializedQuestionSets.cognitiveHealth,
-    "Energy":specializedQuestionSets.energy,
-    "Sleep":specializedQuestionSets.sleep,
-    "Digestion":specializedQuestionSets.digestion,
-    "Hair, Skin & Nails":specializedQuestionSets.hairSkinNails,
-    "Immunity":specializedQuestionSets.immunity,
-    "Organs":specializedQuestionSets.organs,
-    "Joints":specializedQuestionSets.joints
-    //"Eyesight":specializedQuestionSets.eyesights <---- Added by Khoi
     // Add mappings for other categories
 };
   
@@ -263,9 +207,19 @@ let selectedCategory = null;
 // Add this function to get the selected category
 function getSelectedCategory() {
     const selectedOption = document.querySelector('.option.active');
-    return selectedOption ? selectedOption.textContent : null;
+    if (selectedOption) {
+        selectedCategory = selectedOption.textContent;
+    }
 }
-
-
+// Add this function to get the index of the selected option
+function getSelectedOptionIndex() {
+    const allOptions = document.querySelectorAll('.option-list .option');
+    for (let i = 0; i < allOptions.length; i++) {
+        if (allOptions[i].classList.contains('active')) {
+            return i;
+        }
+    }
+    return -1; // Return -1 if no option is selected
+}
 
 

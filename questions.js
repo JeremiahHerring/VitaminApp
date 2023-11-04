@@ -80,51 +80,51 @@ const initialQuestions = [
             "Joints",
         ]
     },
-    {
-      numb: 7,
-      question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?", 
-      options: [
-        "Daily",
-        "A few times a week",
-        "Rarely",
-      ]
-    },
-    {
-      numb: 8,
-      question: "How often do you consume foods high in vitamin C (e.g., citrus fruits, berries)?", // <--- KHOI'S CHANGE
-      options: [
-        "Daily",
-        "A few times a week",
-        "Rarely",
-      ]
-    },
-    {
-      numb: 9,
-      question: "How often do you consume foods rich in vitamin A (e.g., carrots, sweet potatoes, spinach)?", // <--- KHOI'S CHANGE
-      options: [
-        "Daily",
-        "A few times a week",
-        "Rarely",
-      ]
-    },
-    {
-      numb: 10,
-      question: "How often do you consume foods rich in vitamin E (e.g., nuts, seeds, vegetable oils)?",  // <--- KHOI'S CHANGE
-      options: [
-        "Daily",
-        "A few times a week",
-        "Rarely",
-      ]
-    },
-    {
-      numb: 11,
-      question: "How often do you consume foods rich in vitamin B(e.g., meat, poultry, fish, fortified cereals)?", 
-      options: [
-        "Daily",
-        "A few times a week",
-        "Rarely",
-      ]
-    },
+    // {
+    //   numb: 7,
+    //   question: "How often do you consume foods rich in vitamin D (e.g., fatty fish, fortified dairy)?", 
+    //   options: [
+    //     "Daily",
+    //     "A few times a week",
+    //     "Rarely",
+    //   ]
+    // },
+    // {
+    //   numb: 8,
+    //   question: "How often do you consume foods high in vitamin C (e.g., citrus fruits, berries)?", // <--- KHOI'S CHANGE
+    //   options: [
+    //     "Daily",
+    //     "A few times a week",
+    //     "Rarely",
+    //   ]
+    // },
+    // {
+    //   numb: 9,
+    //   question: "How often do you consume foods rich in vitamin A (e.g., carrots, sweet potatoes, spinach)?", // <--- KHOI'S CHANGE
+    //   options: [
+    //     "Daily",
+    //     "A few times a week",
+    //     "Rarely",
+    //   ]
+    // },
+    // {
+    //   numb: 10,
+    //   question: "How often do you consume foods rich in vitamin E (e.g., nuts, seeds, vegetable oils)?",  // <--- KHOI'S CHANGE
+    //   options: [
+    //     "Daily",
+    //     "A few times a week",
+    //     "Rarely",
+    //   ]
+    // },
+    // {
+    //   numb: 11,
+    //   question: "How often do you consume foods rich in vitamin B(e.g., meat, poultry, fish, fortified cereals)?", 
+    //   options: [
+    //     "Daily",
+    //     "A few times a week",
+    //     "Rarely",
+    //   ]
+    // },
 ]
 const specializedQuestionSets = {
     healthAndFitness: [
