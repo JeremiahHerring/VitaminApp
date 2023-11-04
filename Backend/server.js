@@ -1,6 +1,6 @@
 const mysql2 = require('mysql2') // This is the way to "import for node.js"
 const express = require('express') // express is a node.js framework
-
+const bodyParser = require('body-parser')
 
 const connection = mysql2.createConnection({
     host: "localhost",
@@ -10,6 +10,8 @@ const connection = mysql2.createConnection({
 })
 
 const app = express() 
+
+app.use(bodyParser.json())
 
 const PORT = 5000;
 // Declare routes in order to get from url
@@ -21,7 +23,7 @@ app.post('/Api/calculateVitamins', (req, res) => {
     function getVitaminInfo(vitamin) {
       return new Promise((resolve, reject) => {
         connection.query(
-          'SELECT * FROM vitamins WHERE name = ?',
+          'SELECT * FROM vitamins WHERE vitamin_name = ?',
           [vitamin],
           (err, results) => {
             if (err) {
