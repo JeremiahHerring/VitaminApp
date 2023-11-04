@@ -113,5 +113,22 @@ if (vitaminKScore >= threshold) {
     vitaminRec.push('K');
 }
 console.log(vitaminRec);
+const data = { vitamins: vitaminRec };
+
+fetch('/api/calculateVitamins', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then(response => response.json())
+  .then(result => {
+    // Handle the response from the server
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 return vitaminRec; 
 }
