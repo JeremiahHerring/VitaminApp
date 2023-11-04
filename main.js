@@ -200,6 +200,14 @@ const categoryToQuestionSet = {
     "Health & Fitness": specializedQuestionSets.healthAndFitness,
     "Mood": specializedQuestionSets.mood,
     "Bones": specializedQuestionSets.bones,
+    "Cognitive Health": specializedQuestionSets.cognitiveHealth,
+    "Energy": specializedQuestionSets.energy,
+    "Sleep": specializedQuestionSets.sleep,
+    "Digestion": specializedQuestionSets.digestion,
+    "Hair, Skin & Nails": specializedQuestionSets.hairSkinNails,
+    "Immunity": specializedQuestionSets.immunity,
+    "Organs": specializedQuestionSets.organs,
+    "Joints": specializedQuestionSets.joints
     // Add mappings for other categories
 };
   
