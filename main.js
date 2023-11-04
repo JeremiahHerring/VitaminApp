@@ -1,5 +1,5 @@
 import { initialQuestions, specializedQuestionSets } from './questions.js'
-
+import {giveRecommendation} from "./recommendationsystem.js";
 // DEFINING ALL OUR VARIABLES
 const startBtn = document.querySelector('.start-btn');
 const popupInfo = document.querySelector('.popup-info');
@@ -45,7 +45,7 @@ exitBtn.onclick = () => {
 }
 
 let currentQuestionSet = initialQuestions;
-
+const userAnswers = [null];
 function changeQuestionSet(newQuestionSet) {
     currentQuestionSet = newQuestionSet;
     questionCount = 0;
@@ -157,8 +157,12 @@ function questionCounter(index) {
     questionTotal.textContent = `${index} of ${initialQuestions.length} Questions`
 }
 
+function showRecommendations() {
+    giveRecommendation(userAnswers);
+}
 // Show results of questionnare
 function showResults() {
+    showRecommendations();
     quizBox.classList.remove('active');
     resultBox.classList.add('active')
 }
@@ -191,6 +195,7 @@ goHomeBtn.onclick = () => {
 
     questionCount = 0;
     questionNumb = 1;
+    
     showQuestions(questionCount);
     questionCounter(questionNumb);
 }
