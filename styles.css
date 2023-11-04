@@ -396,3 +396,115 @@ body {
     color: #fff;
 }
 
+.pill{
+    display: inline-block;
+    height: 80px;
+    width: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
+    overflow:hidden;
+}
+
+.white{
+    height: 50%;
+    width: 100%;
+    background-color:white;
+}
+
+.purple{
+    height: 50%;
+    width: 100%;
+    background-color: purple;
+    animation: fill10Percent 2s infinite;
+}
+
+@keyframes fill10Percent{
+    0% {
+        height: 0;
+    }
+    100%{
+        height: 10%;
+    }
+}
+
+@keyframes fill20Percent{
+    0% {
+        height: 10%;
+    }
+    100%{
+        height: 20%;
+    }
+}
+
+@keyframes fill30Percent{
+    0% {
+        height: 20%;
+    }
+    100%{
+        height: 30%;
+    }
+}
+
+@keyframes fill40Percent{
+    0% {
+        height: 30%;
+    }
+    100%{
+        height: 40%;
+    }
+}
+
+@keyframes fill50Percent{
+    0% {
+        height: 40%;
+    }
+    100%{
+        height: 50%;
+    }
+}
+
+@keyframes fill60Percent{
+    0% {
+        height: 50%;
+    }
+    100%{
+        height: 60%;
+    }
+}
+
+@keyframes fill70Percent{
+    0% {
+        height: 60%;
+    }
+    100%{
+        height: 70%;
+    }
+}
+
+@keyframes fill80Percent{
+    0% {
+        height: 70%;
+    }
+    100%{
+        height: 80%;
+    }
+}
+
+@keyframes fill90Percent{
+    0% {
+        height: 80%;
+    }
+    100%{
+        height: 90%;
+    }
+}
+
+@keyframes fill100Percent{
+    0% {
+        height: 90%;
+    }
+    100%{
+        height: 100%;
+    }
+}
+
