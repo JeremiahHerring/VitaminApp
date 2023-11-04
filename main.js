@@ -14,24 +14,6 @@ const resultBox = document.querySelector('.result-box')
 const tryAgainBtn = document.querySelector('.tryAgain-btn')
 const goHomeBtn = document.querySelector('.goHome-btn')
 
-// VITAMIN RECOMMENDATION SYSTEM
-// If vitamin score for a specific vitamin is past a certain threshhold,
-// the vitamin is recommended to the user
-let vitaminAScore = 0;
-let vitaminB1Score = 0;
-let vitaminB2Score = 0;
-let vitaminB3Score = 0;
-let vitaminB5Score = 0;
-let vitaminB6Score = 0;
-let vitaminB9Score = 0;
-let vitaminB12Score = 0;
-let biotinScore = 0;
-let vitaminCScore = 0;
-let cholineScore = 0;
-let vitaminDScore = 0;
-let vitaminEScore = 0;
-let vitaminKScore = 0;
-
 // When start button is clicked initialize popupInfo and blur the background
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
@@ -86,6 +68,7 @@ nextBtn.onclick = () => {
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             questionCounter(questionNumb);
+            nextBtn.classList.remove('active')
         } else if (questionCount === 5) {
             getSelectedCategory(); // Get the selected category
 
@@ -95,12 +78,7 @@ nextBtn.onclick = () => {
                 showQuestions(questionCount, currentQuestionSet);
                 questionNumb = 1;
                 questionCounter(questionNumb);
-                console.log('Selected Category:', selectedCategory);
-                console.log('Current Question Set:', currentQuestionSet);
-            } else {
-                alert('Please select a category.');
-                console.log('Selected Category:', selectedCategory);
-                console.log('Current Question Set:', currentQuestionSet);
+                nextBtn.classList.remove('active')
             }
         } else {
             showResults();
@@ -153,8 +131,16 @@ function optionSelected(answer) {
 }
 // Show what question the user is currently on
 function questionCounter(index) {
+    let totalQuestions;
+    
+    if (currentQuestionSet === initialQuestions) {
+        totalQuestions = initialQuestions.length;
+    } else if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
+        totalQuestions = categoryToQuestionSet[selectedCategory].length;
+    }
+    
     const questionTotal = document.querySelector('.question-total');
-    questionTotal.textContent = `${index} of ${initialQuestions.length} Questions`
+    questionTotal.textContent = `${index} of ${totalQuestions} Questions`;
 }
 
 // Show results of questionnare
@@ -219,6 +205,7 @@ function getSelectedCategory() {
         selectedCategory = selectedOption.textContent;
     }
 }
+
 // Add this function to get the index of the selected option
 function getSelectedOptionIndex() {
     const allOptions = document.querySelectorAll('.option-list .option');
