@@ -66,7 +66,7 @@ let isOptionSelected = false;
 const userAnswers = []; // Initializing userAnswer array
 
 nextBtn.onclick = () => {
-    pop
+    
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
             // Advance to the next question in the current set
@@ -100,7 +100,7 @@ nextBtn.onclick = () => {
     }
 };
 
-;
+
 
 function pop(e){
     for (let i = 0; i < 30; i++){
