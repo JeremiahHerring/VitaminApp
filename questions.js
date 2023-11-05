@@ -16,51 +16,56 @@ const initialQuestions = [
             "Female"
         ]
     },
+    //Modified
     {
         numb: 3,
-        question: "What Is Your Height",
+        question: "What Is Your Height?",
         options: [
-            "145-149cm",
-            "150-154cm",
-            "155-159cm",
-            "160-164cm",
-            "165-169cm",
-            "170-174cm",
-            "175-179cm",
-            "180-184cm",
-            "185-189cm",
-            "190-194cm",
-            "195+ cm"
+            "< 4'7ft  (< 1.45m)",
+            "4'7-4'8ft (1.45-1.49m)",
+            "4'9-5'0ft (1.50-1.54m)",
+            "5'0-5.2ft (1.55-1.59m)",
+            "5'2-5'3ft (1.60-1.64m)",
+            "5'4-5'5ft (1.65-1.69m)",
+            "5'5-5'7ft (1.70-1.74m)",
+            "5'7-5'8ft (1.75-1.79m)",
+            "5'9-6'0ft (1.80-1.84m)",
+            "6'0-6'2ft (1.85-1.89m)",
+            "6'2-6'3ft (1.90-1.94m)",
+            "> 6'3ft (> 1.95m)"
         ]
     },
+    //Modified
     {
         numb: 4,
-        question: "What Is Your Ethnicity",
+        question: "What Is Your Ethnicity?", 
         options: [
-            "American Indian or Alaskan Native",
+            "Cacausian",
+            "African American",
+            "Hispanic",
             "Asian",
-            "Black",
-            "Hispanic or Latino",
-            "Native Hawaiian or Other Pacific Islander",
-            "White"
+            "Middle Eastern",
+            "Native American",
+            "Native Hawaiian or Pacific Islander",
+            "Bi/Multi Racial"
         ]
     },
     {
         numb: 5,
         question: "What Is Your Weight?",
         options: [
-            "Below 100 lbs",
-            "100-120 lbs",
-            "120-140 lbs",
-            "140-160 lbs",
-            "160-180 lbs",
-            "180-200 lbs",
-            "200-220 lbs",
-            "220-240 lbs",
-            "240-260 lbs",
-            "260-280 lbs",
-            "280-300 lbs",
-            "300+ lbs"
+            "< 100 lbs (< 45.3kg)",
+            "100-120lbs (45.3-54.4kg)",
+            "120-140lbs (54.4-63.5kg)",
+            "140-160lbs (63.5-72.5kg)",
+            "160-180lbs (72.5-81.6kg)",
+            "180-200lbs (81.6-90.7kg)",
+            "200-220lbs (90.7-99.7kg)",
+            "220-240lbs (99.7-108.8kg)",
+            "240-260lbs (108.8-117.9kg)",
+            "260-280lbs (117.9-127kg)",
+            "280-300lbs (127-136kg)",
+            "> 300lbs (> 127-136kg)"
         ]
     },
     {
@@ -161,7 +166,8 @@ const specializedQuestionSets = {
       },
       // Add more questions for this category
     ],
-    mood: [
+    /*
+    mood: [   <--- Sub-Category 
       {
         numb: 1,
         question: "Do you have any form of mood or anxiety disorder? ", 
@@ -182,6 +188,7 @@ const specializedQuestionSets = {
       },
       // Add more questions for this category
     ],
+    */
     bones: [
       {
         numb: 1,
@@ -211,14 +218,14 @@ const specializedQuestionSets = {
                     "No"],
         },
         {
-          numb: 2,
-          question: "Do you experience high levels of stress?",
+          numb: 2,  //Modified 
+          question: "Are you diagnosed with any types of Depression or Anxiety-related disorders?",
           options: ["Yes", 
                     "No"],
         },
         {
           numb: 3,
-          question: "Do you socialize with other people often?",
+          question: "How often do you socialize?",
           options: ["Seldom", 
                     "Occasionally", 
                     "Often"],
@@ -272,8 +279,18 @@ const specializedQuestionSets = {
     digestion: [
         {
           numb: 1,
-          question: "Digestion Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Have you been diagnosed with any gastrointestinal conditions?",
+          options: ["Yes", "No"],
+        },
+        {
+          numb: 2,
+          question: "Do you experience frequent digestive discomfort, such as bloating, gas, indigestion, or heartburn?",
+          options: ["None", "Occasional", "Frequent"],
+        },
+        {
+          numb: 3,
+          question: "Do you take any supplements or probiotics to promote a healthy gut?",
+          options: ["None", "Occasional", "Frequent"],
         },
     ],
     hairSkinNails: [
@@ -302,15 +319,35 @@ const specializedQuestionSets = {
     immunity: [
         {
           numb: 1,
-          question: "Immunity Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Do you frequently experience colds, flu, or other infections?",
+          options: ["Yes", "No"],
+        },
+        {
+          numb: 2,
+          question: "Have you ever been diagnosed with an autoimmune disease?",
+          options: ["Yes", "No", "Unsure"],
+        },
+        {
+          numb: 3,
+          question: "Do you have any chronic conditions that may impact your immune system (e.g., diabetes, HIV, cancer)?",
+          options: ["Yes", "No"],
         },
     ],
-    organs: [
+    organs: [  
         {
           numb: 1,
-          question: "Organs Question 1",
-          options: ["Option 1", "Option 2", "Option 3"],
+          question: "Have you ever been diagnosed with any chronic medical conditions or diseases related to organ health?",
+          options: ["Yes", "No", "Unsure"],
+        },
+        {
+          numb: 2,
+          question: "Do you have a family history of organ-related conditions?",
+          options: ["Yes", "No", "Unsure"],
+        },
+        {
+          numb: 3,
+          question: "Do you have any dietary restrictions or special diets that may affect organ health?",
+          options: ["Yes", "No"],
         },
     ],
     joints: [
@@ -330,7 +367,9 @@ const specializedQuestionSets = {
         {
           numb: 3,
           question: "Do you experience any joint pain, stiffness, or swelling, particularly after physical activity or in the morning?",
-          options: ["Never", "Occasional", "Often"],
+          options: ["Never", 
+          "Occasional", 
+          "Often"],
         },
     ],
     eyesight: [   
