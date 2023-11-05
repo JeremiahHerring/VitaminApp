@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+::-webkit-scrollbar{
+    width: 12px;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(transparent, #30ff00);
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(transparent, #00c6ff);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Public Sans', sans-serif
 }
 
 body {
-    background-color: #21D4FD;
+    background: rgb(2,0,36);
     min-height: 100vh;
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,188,255,1) 100%);
     overflow: hidden;
 }
 
@@ -43,6 +54,7 @@ body {
 }
 
 .logo {
+    font-family: "Poppins", sans-serif;
     font-size: 32px;
     color: #fff;
     text-decoration: none;
@@ -61,7 +73,7 @@ body {
 
 .navbar a:hover,
 .navbar a.active {
-    color: #c40094
+    color: #66ffcc;
 }
 
 .home {
@@ -83,35 +95,39 @@ body {
 .home-content h1 {
     text-align: center;
     font-size: 50px;
-    font-weight: 700;
+    font-weight: 1000;
+    color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 .home-content p {
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    color: #cdeef7;
+    font-size: 18px;
     text-align: center;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
 .home-content .start-btn {
     width: 190px;
     height: 55px;
-    background: #c40094;
+    background: #66ffcc;
     border: 2px solid #fff;
     outline: none;
     border-radius: 6px;
-    box-shadow: 0 0 10px #c40094;
+    box-shadow: 0 0 10px #66ffcc;
     font-size: 18px;
-    color: #fff;
+    color: #09001d;
     letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     transition: .5s;
 }
 
 .home-content .start-btn:hover {
-    background: #09001d;
+    background: #329da8;
     box-shadow: none;
 }
 
@@ -136,9 +152,8 @@ body {
 }
 .popup-info h2 {
     font-size: 50px;
-    color: #c40094;
+    color: #329da8;
     text-align: center;
-    
 }
 
 .popup-info .info {
@@ -163,8 +178,8 @@ body {
     align-items: center;
     width: 130px;
     height: 45px;
-    background: #c40094;
-    border: 2px solid #c40094;
+    background: #66ffcc;
+    border: 2px solid #66ffcc;
     outline: none;
     border-radius: 6px;
     text-decoration: none;
@@ -172,22 +187,24 @@ body {
     font-weight: 600;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .popup-info .btn-group .info-btn:nth-child(1){
     background: transparent;
-    color: #c40094;
+    color: #333;
+    transition: 0.5s;
 }
 
 .popup-info .btn-group .info-btn:nth-child(1):hover{
-    background: #c40094;
+    background: #329da8;
     color: #fff;
 }
 
 
 .popup-info .btn-group .info-btn:nth-child(2):hover{
-    background: #950170;
-    border-color: #950170;
+    background: #66a4d4;
+    border-color: #66a4d4;
 }
 
 .quiz-section {
@@ -195,7 +212,7 @@ body {
     color: #fff;
     left: -50%;
     width: 100%;
-    background: #09001d;
+    background: #e3f0fa;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,8 +228,8 @@ body {
 .quiz-section .quiz-box {
     position: relative;
     width: 500px;
-    background: transparent;
-    border: 2px solid #c40094;
+    background: #66a4d4;
+    border: 2px solid #66ffcc;
     border-radius: 6px;
     flex-direction: column;
     padding: 20px 30px;
@@ -236,7 +253,7 @@ body {
 .quiz-box h1 {
     font-size: 32px;
     text-align: center;
-    background: linear-gradient(45deg, transparent, #c40094, transparent);
+    background: linear-gradient(45deg, transparent, #66ffcc, transparent);
     border-radius: 6px;
 }
 
@@ -245,7 +262,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 2px solid #c40094;
+    border-bottom: 2px solid #66ffcc;
     margin-bottom: 30px;
 
 }
@@ -268,16 +285,17 @@ body {
 .option-list .option {
     width: 100%;
     padding: 12px;
-    background: transparent;
+    background: #cdeef7;
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 4px;
     font-size: 17px;
+    color: black;
     margin: 15px 0;
     cursor: pointer;
 }
 
 .option-list .option.active {
-    background: #09001d;
+    background: #66ffcc;
     color: #00a63d;
     border-color: #00a63d;
 }
@@ -286,7 +304,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 2px solid #c40094;
+    border-top: 2px solid #66ffcc;
     padding-top: 20px;
     margin-top: 30px;
 }
@@ -311,16 +329,39 @@ body {
 
 
 .quiz-footer .next-btn.active:hover {
-    background: #950170;
-    border-color: #950170;
+    background: #329da8;
+    border-color: #329da8;
 }
 
 
 .quiz-footer .next-btn.active {
     pointer-events: auto;
-    background: #c40094;
-    border-color: #c40094;
-    color: #fff;
+    background: #66ffcc;
+    border-color: #66ffcc;
+    color: #09001d;
+
+}
+
+.quiz-footer .prev-btn {
+    width: 100px;
+    height: 45px;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .1);
+    outline: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, .3);
+    font-weight: 600;
+    cursor: pointer;
+    /* pointer-events: none; */
+    transition: .5s;
+}
+
+.quiz-footer .prev-btn.active {
+    pointer-events: auto;
+    background: #66ffcc;
+    border-color: #66ffcc;
+    color: #09001d;
+    font-weight: 600;
 }
 
 .quiz-footer .particle{
@@ -338,8 +379,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    background: transparent;
-    border: 2px solid #c40094;
+    background: #329da8;
+    border: 2px solid #66ffcc;
     border-radius: 6px;
     padding: 20px;
     display: flex;
@@ -371,8 +412,8 @@ body {
 .buttons button {
     width: 130px;
     height: 47px;
-    background: #c40094;
-    border: 2px solid #c40094;
+    background: #00c6ff;
+    border: 2px solid #00c6ff;
     outline: none;
     border-radius: 6px;
     color: #fff;
@@ -382,17 +423,17 @@ body {
 }
 
 .buttons button:nth-child(1):hover {
-    background: #950170;
-    border-color: #950170;
+    background: #66ffcc;
+    border-color: #66ffcc;
 }
 
 .buttons button:nth-child(2) {
     background: transparent;
-    color: #c40094;
+    color: #329da8;
 }
 
 .buttons button:nth-child(2):hover {
-    background: #c40094;
+    background: #66ffcc;
     color: #fff;
 }
 

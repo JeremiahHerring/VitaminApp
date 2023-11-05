@@ -13,6 +13,9 @@ const optionList = document.querySelector('.option-list');
 const resultBox = document.querySelector('.result-box')
 const tryAgainBtn = document.querySelector('.tryAgain-btn')
 const goHomeBtn = document.querySelector('.goHome-btn')
+const prevBtn = document.querySelector('.prev-btn')
+
+prevBtn.classList.remove('active');
 
 // When start button is clicked initialize popupInfo and blur the background
 startBtn.onclick = () => {
@@ -33,7 +36,6 @@ function changeQuestionSet(newQuestionSet) {
     questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount);
-    questionCounter(questionNumb);
 }
 // When continue button is clicked, initialize quizSection, remove popup and main,
 // home page, and add quizBox. 
@@ -67,18 +69,23 @@ nextBtn.onclick = () => {
             questionCount++;
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
-            questionCounter(questionNumb);
-            nextBtn.classList.remove('active')
+            nextBtn.classList.remove('active');
+            if (questionNumb >= 2) {
+                prevBtn.classList.add('active');
+            }
+            quizBox.scrollTop = 0;
         } else if (questionCount === 5) {
-            getSelectedCategory(); // Get the selected category
+            getSelectedCategory();
 
             if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
                 currentQuestionSet = categoryToQuestionSet[selectedCategory];
                 questionCount = 0;
                 showQuestions(questionCount, currentQuestionSet);
                 questionNumb = 1;
-                questionCounter(questionNumb);
-                nextBtn.classList.remove('active')
+                nextBtn.classList.remove('active');
+                prevBtn.classList.remove('active'); // Deactivate prevBtn when returning to category questions
+
+                quizBox.scrollTop = 0;
             }
         } else {
             showResults();
@@ -87,6 +94,19 @@ nextBtn.onclick = () => {
     }
 };
 
+prevBtn.onclick = () => {
+    if (questionCount > 0) {
+        // Go back to the previous question in the current set
+        questionCount--;
+        showQuestions(questionCount, currentQuestionSet);
+        questionNumb--;
+        
+        // Check if you're now on the first question to deactivate the prevBtn
+        if (questionNumb <= 1) {
+            prevBtn.classList.remove('active');
+        }
+    }
+};
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
@@ -129,19 +149,6 @@ function optionSelected(answer) {
     isOptionSelected = true;
     nextBtn.classList.add('active');
 }
-// Show what question the user is currently on
-function questionCounter(index) {
-    let totalQuestions;
-    
-    if (currentQuestionSet === initialQuestions) {
-        totalQuestions = initialQuestions.length;
-    } else if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
-        totalQuestions = categoryToQuestionSet[selectedCategory].length;
-    }
-    
-    const questionTotal = document.querySelector('.question-total');
-    questionTotal.textContent = `${index} of ${totalQuestions} Questions`;
-}
 
 function showRecommendations() {
     giveRecommendation(userAnswers);
@@ -164,9 +171,6 @@ tryAgainBtn.onclick = () => {
     // Display the first question
     showQuestions(questionCount, currentQuestionSet);
 
-    // Update the question counter
-    questionCounter(questionNumb);
-
     // Hide the result box
     resultBox.classList.remove('active');
 
@@ -183,7 +187,6 @@ goHomeBtn.onclick = () => {
     questionNumb = 1;
     
     showQuestions(questionCount);
-    questionCounter(questionNumb);
 }
 
 // Define an object that maps the user's choice to question sets
@@ -211,15 +214,6 @@ function getSelectedCategory() {
     }
 }
 
-// Add this function to get the index of the selected option
-function getSelectedOptionIndex() {
-    const allOptions = document.querySelectorAll('.option-list .option');
-    for (let i = 0; i < allOptions.length; i++) {
-        if (allOptions[i].classList.contains('active')) {
-            return i;
-        }
-    }
-    return -1; // Return -1 if no option is selected
-}
+
 
 
