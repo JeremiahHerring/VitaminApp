@@ -25,9 +25,23 @@ body {
     overflow: hidden;
 }
 
+.secton .home {
+    position: relative;
+    width: 50%;
+}
+
+section.home video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
 .main {
     transition: .3s ease;
     pointer-events: auto;
+    overflow-y: auto;
 }
 .main.active {
     filter: blur(15px);
@@ -38,6 +52,7 @@ body {
     display: flex;
     height: 100vh;
     width: 200%;
+    position: relative;
 }
 
 .header {
@@ -53,6 +68,10 @@ body {
     z-index: 100;
 }
 
+.header:hover {
+    background-color: #fff;
+}
+
 .logo {
     font-family: "Poppins", sans-serif;
     font-size: 32px;
@@ -64,7 +83,7 @@ body {
 
 .navbar a {
     font-size: 18px;
-    color: #fff;
+    color: #09001d;
     text-decoration: none;
     font-weight: 500;
     margin-left: 35px;
@@ -98,6 +117,7 @@ body {
     font-weight: 1000;
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    margin-bottom: 20px;
 }
 
 .home-content p {
@@ -129,6 +149,27 @@ body {
 .home-content .start-btn:hover {
     background: #329da8;
     box-shadow: none;
+}
+
+.information-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+}
+
+.information-section h2 {
+    font-size: 24px;
+}
+
+.information-section p {
+    font-size: 18px;
+}
+
+.information-section ol {
+    list-style-type: decimal;
+    font-size: 16px;
+    text-align: left;
 }
 
 .popup-info {
@@ -239,6 +280,76 @@ body {
     transition: .3s ease;
     transition-delay: 0s;
 }
+
+.quiz-section .quiz-box.animate {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.6s ease-in-out both;
+}
+
+.quiz-section .quiz-box.animate1 {
+    -webkit-animation: rotate-scale-down-ver 1s linear both;
+	animation: rotate-scale-down-ver 1s linear both;
+}
+
+/**
+ * ----------------------------------------
+ * animation rotate-scale-down-ver
+ * ----------------------------------------
+ */
+ @-webkit-keyframes rotate-scale-down-ver {
+    0% {
+      -webkit-transform: scale(1) rotateY(0);
+              transform: scale(1) rotateY(0);
+    }
+    50% {
+      -webkit-transform: scale(0.5) rotateY(180deg);
+              transform: scale(0.5) rotateY(180deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotateY(360deg);
+              transform: scale(1) rotateY(360deg);
+    }
+  }
+  @keyframes rotate-scale-down-ver {
+    0% {
+      -webkit-transform: scale(1) rotateY(0);
+              transform: scale(1) rotateY(0);
+    }
+    50% {
+      -webkit-transform: scale(0.5) rotateY(180deg);
+              transform: scale(0.5) rotateY(180deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotateY(360deg);
+              transform: scale(1) rotateY(360deg);
+    }
+  }
+
+/**
+ * ----------------------------------------
+ * animation rotate-center
+ * ----------------------------------------
+ */
+ @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
 
 .quiz-section .quiz-box.active {
     opacity: 1;

@@ -67,6 +67,14 @@ nextBtn.onclick = () => {
         if (questionCount < currentQuestionSet.length - 1) {
             // Advance to the next question in the current set
             questionCount++;
+
+            if (questionCount == 1) {
+            // Add the 'animate' class to trigger the animation
+            quizBox.classList.add('animate');
+            }  else if (questionCount == 2) {
+                quizBox.classList.add('animate1')
+            }
+
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             nextBtn.classList.remove('active');
@@ -74,6 +82,11 @@ nextBtn.onclick = () => {
                 prevBtn.classList.add('active');
             }
             quizBox.scrollTop = 0;
+
+            // Remove the 'animate' class after the animation completes
+            setTimeout(() => {
+                quizBox.classList.remove('animate');
+            }, 650); // Adjust the duration (0.65s) + a little buffer for timing
         } else if (questionCount === 5) {
             getSelectedCategory();
 
@@ -84,7 +97,6 @@ nextBtn.onclick = () => {
                 questionNumb = 1;
                 nextBtn.classList.remove('active');
                 prevBtn.classList.remove('active'); // Deactivate prevBtn when returning to category questions
-
                 quizBox.scrollTop = 0;
             }
         } else {
