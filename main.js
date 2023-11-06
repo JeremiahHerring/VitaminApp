@@ -30,7 +30,7 @@ exitBtn.onclick = () => {
 }
 
 let currentQuestionSet = initialQuestions;
-const userAnswers = [null];
+let userAnswers = [];
 function changeQuestionSet(newQuestionSet) {
     currentQuestionSet = newQuestionSet;
     questionCount = 0;
@@ -61,7 +61,7 @@ continueBtn.onclick = () => {
 let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
-
+let questionTotal = 1
 nextBtn.onclick = () => {
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
@@ -77,6 +77,7 @@ nextBtn.onclick = () => {
 
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
+            questionTotal++;
             nextBtn.classList.remove('active');
             if (questionNumb >= 2) {
                 prevBtn.classList.add('active');
@@ -93,6 +94,7 @@ nextBtn.onclick = () => {
             if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
                 currentQuestionSet = categoryToQuestionSet[selectedCategory];
                 questionCount = 0;
+                questionTotal++;
                 showQuestions(questionCount, currentQuestionSet);
                 questionNumb = 1;
                 nextBtn.classList.remove('active');
@@ -112,7 +114,7 @@ prevBtn.onclick = () => {
         questionCount--;
         showQuestions(questionCount, currentQuestionSet);
         questionNumb--;
-        
+        questionTotal--;
         // Check if you're now on the first question to deactivate the prevBtn
         if (questionNumb <= 1) {
             prevBtn.classList.remove('active');
@@ -153,6 +155,10 @@ function showQuestions(index, questionSet) {
 
 // Get what the option the user clicked on
 function optionSelected(answer) {
+    const selectedOptionText = answer.textContent; // Get the text content of the selected option
+    // Store the user's choice in the userAnswers array
+    userAnswers[questionTotal - 1] = selectedOptionText;
+    console.log(userAnswers);
     const allOptions = document.querySelectorAll('.option-list .option');
     allOptions.forEach(option => {
         option.classList.remove('active');
@@ -163,6 +169,7 @@ function optionSelected(answer) {
 }
 
 function showRecommendations() {
+
     giveRecommendation(userAnswers);
 }
 // Show results of questionnare
@@ -170,6 +177,8 @@ function showResults() {
     showRecommendations();
     quizBox.classList.remove('active');
     resultBox.classList.add('active')
+    questionTotal = 1; // Need to reset incase user wants to do another run
+    userAnswers = []; // ^
 }
 
 tryAgainBtn.onclick = () => {
