@@ -13,7 +13,6 @@ const optionList = document.querySelector('.option-list');
 const resultBox = document.querySelector('.result-box')
 const tryAgainBtn = document.querySelector('.tryAgain-btn')
 const goHomeBtn = document.querySelector('.goHome-btn')
-const prevBtn = document.querySelector('.prev-btn')
 
 prevBtn.classList.remove('active');
 
