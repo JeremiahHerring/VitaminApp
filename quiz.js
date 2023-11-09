@@ -189,12 +189,6 @@ function getSelectedCategory() {
     }
 }
 
-
-
-
-
-
-
 prevBtn.classList.remove('active');
 
 
