@@ -14,6 +14,10 @@ window.addEventListener('scroll', function () {
 ;
 });
 
+startBtn.onclick = () => {
+    window.location.href = 'quiz.html';
+}
+
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
     spaceBetween: 25,

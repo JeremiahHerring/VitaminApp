@@ -195,14 +195,19 @@ section.home video {
     min-height: 75vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     background-color: lightpink;
 }
 
+
 .team h1 {
-    position: absolute;
-    
+  margin-bottom: 30px; /* Adjust as needed */
+  color: #333; /* Add desired color */
+  text-align: center; /* Center the h1 text */
+  font-size: 48px; /* Adjust font size as needed */
 }
+
 
 .slide-container{
     max-width: 1120px;
