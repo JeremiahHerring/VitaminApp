@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitamin App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+
 </head>
 <body>
     <main class="main">
@@ -58,9 +62,105 @@
                 <button class="start-btn">Let's Go!</button>
             </div>
         </section>
-        </div>
+        <section class="team">
+            <h1>We do the <i>research</i> so you don't have to</h1>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-1"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/jeremiah.PNG" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Jeremiah Herring</h2>
+                                <p class="description">Full Stack Developer</p>
+    
+                                <button class="button" id="btn1">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-2"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/Q.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Quasim Hussain</h2>
+                                <p class="description">Product Manager</p>
+    
+                                <button class="button" id="btn2">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-3"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/david.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Trujillo</h2>
+                                <p class="description">Back End Engineer</p>
+    
+                                <button class="button" id="btn3">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-4"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/p2.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Chau Phan</h2>
+                                <p class="description">UI Designer</p>
+    
+                                <button class="button" id="btn4">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-5"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/p4.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Du Mars</h2>
+                                <p class="description">Research and Development</p>
+    
+                                <button class="button" id="btn5">About Me</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            </section>
+    </div>
     </main>
 
     <script type="module" src="main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="swiper-bundle.min.js"></script>
 </body>
 </html>
