@@ -44,7 +44,7 @@ let category = userAnswers[6]; // This is where we ask the goal and send them to
 switch(category) {
     case 'Health & Fitness': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
         break;
-    case 'Mood':
+    case 'Mood': //<---- Change this to Muscle :)
         break;
     case 'Bones':
         for (let qcount = 7; qcount < userAnswers.length; qcount++) {
