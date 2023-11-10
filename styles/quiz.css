@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Public Sans', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+    position: fixed; /* Fix the header at the top */
+    width: 100%; /* Make the header full-width */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.logo {
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    filter: drop-shadow(0 0 5px #09001d);
+}
+
+.main {
+    display: flex;
+    flex-direction: column; /* Change to column to stack header on top of the content */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the start (top) of the column */
+    height: 100%;
+}
+
+.beginning {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.beginning-img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.beginning-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    align-items: center; /* Center items horizontally */
+    padding: 20px; /* Add padding for better spacing */
+}
+
+.beginning-content h1 {
+    margin-top: 150px;
+    font-size: 32px;
+    font-style: italic;
+}
+
+.beginning-content p {
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+
+.continue-btn {
+    margin-top: 20px;
+    width: 190px;
+    height: 55px;
+    background: #66ffcc;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #66ffcc;
+    font-size: 18px;
+    color: #09001d;
+    letter-spacing: 1px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.continue-btn:hover {
+    background: #329da8;
+    box-shadow: none;
+}
+
+.back-link {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.backed-by-science h1 {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-weight: 500;
+}
+
+.science-content {
+    position: relative;
+}
+
+.text-block {
+    position: absolute;
+    margin-top: 30px;
+    border-top: 2px solid rgba(0, 0, 0, .3); 
+    padding-top: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, .3); 
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    text-align: center;
+}
+
+.text-block.show {
+    opacity: 1;
+}
+
+
+
+

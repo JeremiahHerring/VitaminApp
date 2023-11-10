@@ -4,41 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/quiz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <section class="quiz-section">
-            <div class="quiz-box">
-                <h1> Vitamin Questionnare</h1>
-                <div class="quiz-header">
-                    <span>Progress Bar Goes Here</span>
-                </div>
+    <div class="main">
+        <header class="header">
+            <a href="index.html" class="back-link">&#9664; Back</a>
+            <a href="index.html" class="logo">VitaMatch</a>
 
-                <h2 class="question-text">What's Your Age?</h2>
-
-                <div class="option-list">
-                </div>
-                <div class="quiz-footer">
-                    <button class="prev-btn">Prev</button>
-                    <button class="next-btn">Next</button>
-                    <div class="particle"> </div>
+        </header>
+        <section class="beginning">
+            <img src="assets/scattered-vitamins.jpg" alt="" class="beginning-img">
+            <div class="beginning-content">
+                <h1>Tell us about yourself</h1>
+                <p>We’ll get to know you and personalize an effective plan for your body, lifestyle, and goals.</p>
+                <button class="continue-btn">Let's Go</button>
+            
+            <div class="backed-by-science">
+                <h1>Backed By Science</h1>
+                <div class="science-content">
+                    <div class="text-block" id="text-block1">
+                        <h2>1000+</h2>
+                        <p>Hours spent ensuring quality, safety, and efficacy</p>
+                    </div>
+                    <div class="text-block" id="text-block2">
+                        <h2>5%</h2>
+                        <p>Of all ingredients make the cut for our products</p>
+                    </div>
+                    <div class="text-block" id="text-block3">
+                        <h2>1200+</h2>
+                        <p>Studies references when developing our products</p>
+                    </div>
                 </div>
             </div>
-            <div class="result-box">
-                <h2>Results!</h2>
-                <div class="buttons">
-                    <button class="tryAgain-btn">Take It Again!</button>
-                    <button class="goHome-btn">Go To Home</button>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
     </div>
-
-    <script type="module" src="questions.js"></script>
-    <script type="module" src="recommendationSystem.js"></script> 
+    <script type="module" src="JS/quiz.js"></script>
+    <script type="module" src="JS/questions.js"></script>
+    <script type="module" src="JS/recommendationSystem.js"></script> 
 </body>
 </html>
