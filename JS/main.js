@@ -1,6 +1,10 @@
-const startBtn = document.querySelectorAll('.start-btn');
+const startBtns = document.querySelectorAll('.start-btn');
 const header = document.querySelector(".header"); 
 const navbarLinks = document.querySelectorAll('.navbar-link');
+const homeLink = document.getElementById('home-link');
+const howItWorksLink = document.getElementById('how-it-works-link');
+const aboutUsLink = document.getElementById('about-us-link');
+const contactLink = document.getElementById('contact-link');
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -29,29 +33,18 @@ window.addEventListener('scroll', function () {
 ;
 });
 
-window.addEventListener('scroll', function () {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    // Update active states of navigation links based on scroll position
-    updateActiveStates(scrollPosition);
-});
-
-// Function to find set navbar links active depending on scroll position
-function updateActiveStates(scrollPosition) {
-    const homeLink = document.getElementById('home-link');
-    const howItWorksLink = document.getElementById('how-it-works-link');
-    const aboutUsLink = document.getElementById('about-us-link');
-    const contactLink = document.getElementById('contact-link');
-
-    if (scrollPosition >= 0 && scrollPosition <= 700) {
-        setActive(homeLink);
-    } else if (scrollPosition > 700 && scrollPosition <= 1800) {
-        setActive(howItWorksLink);
-    } else if (scrollPosition > 1800 && scrollPosition <= 2000) {
-        setActive(aboutUsLink);
-    } else if (scrollPosition > 2000) {
-        setActive(contactLink);
-    }
+homeLink.onclick = () => {
+    setActive(homeLink);
+} 
+howItWorksLink.onclick = () => {
+    setActive(howItWorksLink);
+}
+aboutUsLink.onclick = () => {
+    setActive(aboutUsLink);
+}
+contactLink.onclick = () => {
+    setActive(contactLink);
 }
 
 // Function to set active class on the correct navigation link
@@ -64,11 +57,11 @@ function setActive(link) {
 }
 
 
-
-
-startBtn.onclick = () => {
-    window.location.href = 'quiz.html';
-}
+startBtns.forEach(startBtn => {
+    startBtn.onclick = () => {
+        window.location.href = 'quiz.html';
+    }
+});
 
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
