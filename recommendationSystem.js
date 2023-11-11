@@ -42,11 +42,11 @@ for(let qcount = 6; qcount < userAnswers.length; ++qcount){
     }
     
 }
-let category = userAnswers[6]; // This is where we ask the goal and send them to the questions specifically for that goal
+let category = userAnswers[5]; // This is where we ask the goal and send them to the questions specifically for that goal
 let qcount = 7; // We are on question 7 
 switch(category) {
     case 'Health & Fitness': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
-        switch (userAnswers[7]){
+        switch (userAnswers[6]){
         case 'Very often (4-7) times a week':
             vitaminAScore +=5 // for test
             /*
@@ -144,23 +144,26 @@ if (vitaminKScore >= threshold) {
 }
 console.log(vitaminRec);
 if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
-const data = { vitamins: vitaminRec };
-
-fetch('/api/calculateVitamins', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data),
-})
-  .then(response => response.json())
-  .then(result => {
-    // Handle the response from the server
-    console.log(result);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-}
-return vitaminRec; // Handle case where vitaminRec is empty and we recommend nothing.
-}
+    let vitaminData = {}
+    fetch('http://localhost:3000/Api/calculateVitamins', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(vitaminRec),
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Handle the response from the server
+        console.log(result);
+        vitaminData = result
+        console.log(`ID: ${vitaminData[0].A.ID}`)
+        console.log(`Description: ${vitaminData[0].A.Description}`)
+       
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    }
+     return vitaminRec; // Handle case where vitaminRec is empty and we recommend nothing.
+    }
