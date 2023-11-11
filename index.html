@@ -8,34 +8,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/3651e21373.js"></script>    
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="styles/swiper-bundle.min.css">
 
 </head>
 <body>
-    <main class="main">
+    <main id="main" class="main">
         <header class="header">
             <a href="index.html" class="logo">VitaMatch</a>
             <nav class="navbar">
-                <a href="#" class="active">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
+                <a id="home-link" class="navbar-link active" href="#main">Home</a>
+                <a id="how-it-works-link" class="navbar-link" href="#information-section">How it Works</a>
+                <a id="about-us-link" class="navbar-link" href="#team">About Us</a>
+                <a id="contact-link" class="navbar-link" href="#contact">Contact</a>
             </nav>
         </header>
         <div class="container">
         <section class="home">
             <div class="home-content">
                 <h1>Personalized Vitamins Within Minutes.</h1>
-                <button class="start-btn">Let's Go!</button>
+                <button class="start-btn">Begin Quiz</button>
             </div>
             <video autoplay loop muted playsinline>
                 <source src="/assets/background-video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>    
             </section>
-        <section class="information-section">
+        <section id="information-section" class="information-section">
             <h2>How it Works</h2>
             <div class="image-container">
                 <div class="image-item">
@@ -58,10 +58,17 @@
 
             <div class="reminder">
                 <h3>Let's Get Started</h3>
-                <button class="start-btn">Let's Go!</button>
+                <button class="start-btn">Begin Quiz</button>
             </div>
         </section>
-        <section class="team">
+        <section id="team" class="team">
+            <style>
+                .team {
+                    background-image: url('assets/oranges.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            </style>
             <h1>We do the <i>research</i> so you don't have to</h1>
             <div class="slide-container swiper">
                 <div class="slide-content">
@@ -154,7 +161,49 @@
                 <div class="swiper-pagination"></div>
             </div>
             </section>
-    </div>
+            <footer id="contact">
+                <div class="row">
+                    <div class="class col">
+                        <a href="index.html" class="logo">VitaMatch</a>
+                        <p>Contact Us!</p>
+                    </div>
+                    <div class="class col">
+                        <h3>Office <div class="underline"><span></span></div></h3>
+                        <p>800 N State College Blvd</p>
+                        <p>Fullerton, California</p>
+                        <p>United States</p>
+                        <p class="email-id">vitamatch@outlook.com</p>
+                        <h4>+1 - 0123456789</h4>
+                    </div>
+                    <div class="class col">
+                        <h3>Links <div class="underline"><span></span></div></h3>
+                        <ul>
+                            <li><a href="#main">Home</a></li>
+                            <li><a href="#information-section">How it Works</a></li>
+                            <li><a href="#team">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="class col">
+                        <h3>Newsletter <div class="underline"><span></span></div></h3>
+                        <form>
+                            <i class="far fa-envelope"></i>
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        <div class="social-icons">
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-github"></i>
+                            <i class="fab fa-discord"></i>
+                            <i class="fab fa-linkedin"></i>
+
+
+                        </div>
+                    </div>
+                </div>
+                <hr></hr>
+                <p class="copyright">VitaMatch @ 2023 - All Rights Reserved</p>
+            </footer>
     </main>
 
     <script type="module" src="JS/main.js"></script>
