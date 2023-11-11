@@ -36,7 +36,17 @@
                 <div class="quiz-footer">
                     <button class="prev-btn">Prev</button>
                     <button class="next-btn">Next</button>
-                    <div class="particle"> </div>
+
+                    <script>
+                        const button = document.querySelector(".next-btn");
+                        button.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            button.classList.add("animate");
+                            setTimeout(() => {
+                                button.classList.remove("animate");
+                            }, 600)
+                        });
+                    </script>
                 </div>
             </div>
             <div class="result-box">

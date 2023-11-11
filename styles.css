@@ -425,6 +425,7 @@ section.home video {
 }
 
 .quiz-footer .next-btn {
+    position: relative;
     width: 100px;
     height: 45px;
     background: rgba(255, 255, 255, .1);
@@ -438,19 +439,75 @@ section.home video {
     transition: .5s;
 }
 
-
 .quiz-footer .next-btn.active:hover {
     background: #329da8;
     border-color: #329da8;
 }
-
 
 .quiz-footer .next-btn.active {
     pointer-events: auto;
     background: #66ffcc;
     border-color: #66ffcc;
     color: #09001d;
+}
 
+.quiz-footer .next-btn::before, .next-btn::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-repeat: no-repeat;
+}
+
+.quiz-footer .next-btn.animate::before{
+    top: 70%;
+    background-image: radial-gradiant(circle, #1a47d9 20%, transparent 20%), 
+    radial-gradiant(circle, transparent 20%,#1a47d9 20%, transparent 30%),
+    radial-gradiant(circle,#1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, transparent 10%,#1a47d9 15%, transparent 20%),
+    radial-gradiant(circle,#1a47d9 20%, transparent 20%),
+    radial-gradiant(circle,#1a47d9 20%, transparent 20%),
+    radial-gradiant(circle,#1a47d9 20%, transparent 20%),
+    radial-gradiant(circle,#1a47d9 20%, transparent 20%),;
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 18% 18%;
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    animation: topBubbles 0.6s ease-in-out forwards;
+}
+
+@keyframes topBubbles{
+    50%{
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100%{
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+.quiz-footer .next-btn.animate::after{
+    bottom: 70%;
+    background-image: radial-gradiant(circle, #1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, transparent 10%,#1a47d9 15%, transparent 20%),
+    radial-gradiant(circle, #1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, #1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, #1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, #1a47d9 20%, transparent 20%),
+    radial-gradiant(circle, #1a47d9 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0%, 85% 0%, 70% 0%, 70% 0%;
+    animation: bottomBubbles 0.6s ease-in-out forwards;
+}
+
+@keyframes bottomBubbles{
+    50%{
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100%{
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 115% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
 }
 
 .quiz-footer .prev-btn {
@@ -473,15 +530,6 @@ section.home video {
     border-color: #66ffcc;
     color: #09001d;
     font-weight: 600;
-}
-
-.quiz-footer .particle{
-    border-radius: 50%;
-    left: 0;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    opacity: 0;
 }
 
 .quiz-section .result-box {
@@ -570,93 +618,4 @@ section.home video {
     animation: fill10Percent 2s infinite;
 }
 
-@keyframes fill10Percent{
-    0% {
-        height: 0;
-    }
-    100%{
-        height: 10%;
-    }
-}
-
-@keyframes fill20Percent{
-    0% {
-        height: 10%;
-    }
-    100%{
-        height: 20%;
-    }
-}
-
-@keyframes fill30Percent{
-    0% {
-        height: 20%;
-    }
-    100%{
-        height: 30%;
-    }
-}
-
-@keyframes fill40Percent{
-    0% {
-        height: 30%;
-    }
-    100%{
-        height: 40%;
-    }
-}
-
-@keyframes fill50Percent{
-    0% {
-        height: 40%;
-    }
-    100%{
-        height: 50%;
-    }
-}
-
-@keyframes fill60Percent{
-    0% {
-        height: 50%;
-    }
-    100%{
-        height: 60%;
-    }
-}
-
-@keyframes fill70Percent{
-    0% {
-        height: 60%;
-    }
-    100%{
-        height: 70%;
-    }
-}
-
-@keyframes fill80Percent{
-    0% {
-        height: 70%;
-    }
-    100%{
-        height: 80%;
-    }
-}
-
-@keyframes fill90Percent{
-    0% {
-        height: 80%;
-    }
-    100%{
-        height: 90%;
-    }
-}
-
-@keyframes fill100Percent{
-    0% {
-        height: 90%;
-    }
-    100%{
-        height: 100%;
-    }
-}
 
