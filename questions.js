@@ -166,29 +166,25 @@ const specializedQuestionSets = {
       },
       // Add more questions for this category
     ],
-    /*
-    mood: [   <--- Sub-Category 
+    muscle: [         //<---- Change from Mood to Muscle; Khoi changed this 
       {
         numb: 1,
-        question: "Do you have any form of mood or anxiety disorder? ", 
-        options: ["Yes",
-                  "No"],
+        question: "How often do you experience muscle cramps, spasms, or soreness?", 
+        options: ["Not at all", "Once a while", "Very Frequent"],
       },
       {
         numb: 2,
-        question: "Are you diagnosed with depression or bipolar disorder? ", 
-        options: ["Yes",
-                  "No"],
+        question: "Have you ever been diagnosed with a muscle-related condition (e.g., myopathy, muscular dystrophy)?", 
+        options: ["Yes", "No", "Unsure"],
       },
       {
         numb: 3,
-        question: "Are you currently taking any form of antidepressants? ", 
-        options: ["Yes",
-                  "No"],
+        question: "Are you currently taking any medications that may impact muscle health?", 
+        options: ["Yes", "No"],                  
       },
       // Add more questions for this category
     ],
-    */
+    
     bones: [
       {
         numb: 1,

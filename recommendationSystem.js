@@ -74,6 +74,8 @@ switch(category) {
         
     case 'Mood':
         break;
+    case 'Mood': //<---- Change this to Muscle :)
+        break;
     case 'Bones':
         for (let qcount = 7; qcount < userAnswers.length; qcount++) {
             // we know what question #6 is so we right switch cases for answers 
