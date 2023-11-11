@@ -20,8 +20,10 @@ let vitaminKScore = 0;
 
 // This function will return an array of the vitamins to which will 
 // be sent to the backend to be parsed and used to query the database
+
 export function giveRecommendation(userAnswers){
-    console.log("we in giv reccomendation n shii");
+    console.log("we in giv reccomendation n shii" );
+    console.log(userAnswers);
     // 
     // userAnswers is given to us in an array of literal strings so 
     // userAnswers[0] is == ['0-17'], and not OptionA 
@@ -41,9 +43,35 @@ for(let qcount = 6; qcount < userAnswers.length; ++qcount){
     
 }
 let category = userAnswers[6]; // This is where we ask the goal and send them to the questions specifically for that goal
+let qcount = 7; // We are on question 7 
 switch(category) {
     case 'Health & Fitness': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
-        break;
+        switch (userAnswers[7]){
+        case 'Very often (4-7) times a week':
+            vitaminAScore +=5 // for test
+            /*
+            vitaminB1Score +=5
+            vitaminB2Score +=5
+            vitaminB3Score +=5
+            vitaminB5Score +=5
+            vitaminB6Score +=5
+            */
+            break;
+            case 'Sometimes (once-twice a week)':
+            vitaminB1Score +=1 
+            vitaminB2Score +=1
+            vitaminB3Score +=1
+            vitaminB5Score +=1
+            vitaminB6Score +=1
+            break;
+           case 'Often (3 times a week)':
+                vitaminDScore += 3; // I am using 3 to test threshold, may not be a good recommendation
+            break;
+           case 'Never':
+            vitaminD += 3
+            break;
+        }
+        
     case 'Mood':
         break;
     case 'Bones':
@@ -69,7 +97,7 @@ switch(category) {
         break;
 }
 const vitaminRec = []; // This will be used to send fetch request to the backend database
-let threshold = 3; // An arbitrary number, 3 does not mean anything
+const threshold = 3; // An arbitrary number, 3 does not mean anything
 if (vitaminAScore >= threshold) {
     vitaminRec.push('A')
 }
@@ -113,6 +141,7 @@ if (vitaminKScore >= threshold) {
     vitaminRec.push('K');
 }
 console.log(vitaminRec);
+if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
 const data = { vitamins: vitaminRec };
 
 fetch('/api/calculateVitamins', {
@@ -130,5 +159,6 @@ fetch('/api/calculateVitamins', {
   .catch(error => {
     console.error('Error:', error);
   });
-return vitaminRec; 
+}
+return vitaminRec; // Handle case where vitaminRec is empty and we recommend nothing.
 }

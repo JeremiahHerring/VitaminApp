@@ -21,6 +21,7 @@ app.post('/Api/calculateVitamins', (req, res) => {
   
     // Define a function to query the database for vitamin information
     function getVitaminInfo(vitamin) {
+      console.log("API Is receieving a request")
       return new Promise((resolve, reject) => {
         connection.query(
           'SELECT * FROM vitamins WHERE vitamin_name = ?',
