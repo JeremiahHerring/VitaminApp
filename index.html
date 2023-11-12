@@ -36,18 +36,43 @@
                 <div class="quiz-footer">
                     <button class="prev-btn">Prev</button>
                     <button class="next-btn">Next</button>
-
-                    <script>
-                        const button = document.querySelector(".next-btn");
-                        button.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            button.classList.add("animate");
-                            setTimeout(() => {
-                                button.classList.remove("animate");
-                            }, 600)
-                        });
-                    </script>
                 </div>
+            </div>
+
+            <div class="pill">
+                <button class="pillButton" onclick="fillCapsule()">Click Me!</button>
+                <div class="capsule">
+                    <svg id="caps" width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <clipPath id="clipPath">
+                                <rect id="clipRect" x="50" y="40" width="300" height="120" rx="70" ry="70"/>
+                            </clipPath>
+                            <linearGradient id="colorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color: #66ffcc" />
+                                <stop offset="100%" style="stop-color: #66a4d4" />
+                            </linearGradient>
+                        </defs>
+                        <rect id="innerRect" x="50" y="40" width="5" height="120" rx="20" ry="20" fill="url(#colorGradient)"/>
+                        <rect id="outerRect" x="50" y="40" width="300" height="120" rx="70" ry="70" fill="transparent" stroke="black" stroke-width="5px"/>
+                        <rect id="middleLine" x="200" y="40" width="3" height="120" fill="black"/>
+                    </svg>                      
+                </div>
+
+                <script>
+                    let fillPercentage = 0;
+                    let isFirstClick = true;
+                    function fillCapsule() {
+                        fillPercentage += 7;
+                        const innerRect = document.getElementById("innerRect");
+                        if(isFirstClick){
+                            isFirstClick = false;
+                            innerRect.style.fill = "url(#colorGradient)";
+                        }
+                        else if (fillPercentage <= 100) {
+                            innerRect.style.width = `${fillPercentage}%`;
+                        }
+                    }
+                </script>
             </div>
             <div class="result-box">
                 <h2>Results!</h2>
@@ -56,10 +81,7 @@
                     <button class="goHome-btn">Go To Home</button>
                 </div>
             </div>
-            <!-- <div class="pill">
-                <div class="white"></div>
-                <div class="purple"></div>
-            </div> -->
+            
         </section>
         <section class="home">
             <div class="home-content">
