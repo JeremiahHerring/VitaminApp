@@ -213,7 +213,7 @@ goHomeBtn.onclick = () => {
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
     "Health & Fitness": specializedQuestionSets.healthAndFitness,
-    "Mood": specializedQuestionSets.mood,
+    "Muscle": specializedQuestionSets.muscle,   //<---- Change from Mood to Muscle; Khoi changed this 
     "Bones": specializedQuestionSets.bones,
     "Cognitive Health": specializedQuestionSets.cognitiveHealth,
     "Energy": specializedQuestionSets.energy,
