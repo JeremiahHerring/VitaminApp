@@ -157,13 +157,13 @@ if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
         // Handle the response from the server
         console.log(result);
         vitaminData = result
-        console.log(`ID: ${vitaminData[0].A.ID}`)
-        console.log(`Description: ${vitaminData[0].A.Description}`)
+        console.log(`ID: ${vitaminData[0].vitamin.ID}`)
+        console.log(`Description: ${vitaminData[0].vitamin.Description}`)
        
     })
     .catch(error => {
         console.error('Error:', error);
     });
     }
-     return vitaminRec; // Handle case where vitaminRec is empty and we recommend nothing.
+     return; // Handle case where vitaminRec is empty and we recommend nothing.
     }
