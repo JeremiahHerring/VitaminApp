@@ -555,14 +555,31 @@ section.home video {
     height: 45px;
     background-color: #30ff00;
     cursor: pointer;
+    animation: none;
 }
+
+.pill .pillButton.wobble {
+    animation: wobble 0.5s ease;
+}
+
 
 .capsule {
     overflow: hidden;
     clip-path: url(#clipPath);
 }
 
+.capsule.wobble {
+    animation: wobble 0.5s ease;
+}
+
 #innerRect {
     fill: url(#colorGradient);
-    transition: width 0.5s;
+    transition: width 1s;
+}
+
+@keyframes wobble {
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
 }
