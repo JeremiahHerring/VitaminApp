@@ -8,13 +8,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3651e21373.js"></script>
 </head>
 <body>
+    <section class="questionnaire" style="display: none;">
+        <div class="question" id="question-1">
+            <h2>What's your first name?</h2>
+            <p>We'll use this to personalize your experience.</p>
+            <form>
+                <input type="text" id="user-name">
+                <button type="submit"><i class="fa-light fa-greater-than" aria-hidden="true"></i> </button>
+            </form>
+        </div>
+    </section>
+    <div class="hello-section" style="display: none;">
+        <span class="emoji">👋</span>
+        <h1>Hello there!<span class="emoji">👋</span></h1>
+    </div>
+    <section class="quiz-section" style="display: none;">
+        <h1>What is your age?</h1>
+        <div class="age-section">
+            <div class="age-response-box">
+                <i class="fa-solid fa-child"></i>
+                <p>0-17</p>
+            </div>
+            <div class="age-response-box">
+                <i class="fa-solid fa-user"></i>
+                <p>18-55</p>
+            </div>
+            <div class="age-response-box">
+                <i class="fa-solid fa-person-cane"></i>
+                <p>55+</p>
+            </div>
+        </div>
+    </section>
+    <div class="thank-you-popup" style="display: none;">
+        <p class="thank-you-message">Thanks for choosing VitaMatch!</p>
+    </div>
+    <div class="dont-worry-popup" style="display: none;">
+        <p class="dont-worry-message">Don't worry, this should only take 5 minutes.</p>
+    </div>
+    <section class="basics" style="display: none;">
+        <img src="assets/basics-bg.jpg" alt="" class="white-bg">
+        <div class="basics-content">
+            <h3>01</h3>
+            <h1>Basics</h1>
+            <p>Start by giving us some basic background info so we 
+                understand where you are in your path to wellness.</p>
+            <a>Next Question</a>
+        </div>
+    </section>
     <div class="main">
         <header class="header">
             <a href="index.html" class="back-link">&#9664; Back</a>
             <a href="index.html" class="logo">VitaMatch</a>
-
         </header>
         <section class="beginning">
             <img src="assets/scattered-vitamins.jpg" alt="" class="beginning-img">
@@ -43,6 +90,10 @@
         </div>
     </section>
     </div>
+
+    <!-- JQuery for animations -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script type="module" src="JS/quiz.js"></script>
     <script type="module" src="JS/questions.js"></script>
     <script type="module" src="JS/recommendationSystem.js"></script> 

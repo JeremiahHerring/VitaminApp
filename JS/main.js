@@ -33,7 +33,6 @@ window.addEventListener('scroll', function () {
 ;
 });
 
-
 homeLink.onclick = () => {
     setActive(homeLink);
 } 
