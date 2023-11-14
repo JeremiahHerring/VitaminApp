@@ -7,8 +7,8 @@ const question = document.querySelector(".question")
 const questionnaireSection = document.querySelector('.questionnaire')
 const beginningSection = document.querySelector('.beginning')
 const form = document.querySelector('form')
-const helloSection = document.querySelector('.hello-section')
-const quizSection = document.querySelector('.quiz-section')
+const helloSection = document.querySelector('.hello')
+const quizSection = document.querySelector('.quiz')
 let currentIndex = 0;
 
 function toggleTextBlocks() {
@@ -72,7 +72,7 @@ $(document).ready(function () {
         // Assuming ageGroup is the selected age group (e.g., '0-17', '18-55', '55+')
 
         // Fade out quiz-section and fade in thank-you-popup
-        fadeElements('.quiz-section', '.thank-you-popup');
+        fadeElements('.quiz', '.thank-you-popup');
 
         // After a delay, fade out thank-you-popup and fade in dont-worry-popup
         setTimeout(function () {
@@ -95,4 +95,12 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $(".next-question").click(function () {
+        $(".basics").animate({left: "-100%"}, 500, function () {
+            $(this).hide();
+            $(".questions").show().animate({left: "0"}, 500);
+        });
+    });
+});
 

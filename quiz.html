@@ -11,21 +11,21 @@
     <script src="https://kit.fontawesome.com/3651e21373.js"></script>
 </head>
 <body>
-    <section class="questionnaire" style="display: none;">
+    <section class="questionnaire section" style="display: none;">
         <div class="question" id="question-1">
             <h2>What's your first name?</h2>
-            <p>We'll use this to personalize your experience.</p>
+            <p href="questionnaire.html">We'll use this to personalize your experience.</p>
             <form>
                 <input type="text" id="user-name">
                 <button type="submit"><i class="fa-light fa-greater-than" aria-hidden="true"></i> </button>
             </form>
         </div>
     </section>
-    <div class="hello-section" style="display: none;">
+    <div class="hello section" style="display: none;">
         <span class="emoji">👋</span>
         <h1>Hello there!<span class="emoji">👋</span></h1>
     </div>
-    <section class="quiz-section" style="display: none;">
+    <section class="quiz section" style="display: none;">
         <h1>What is your age?</h1>
         <div class="age-section">
             <div class="age-response-box">
@@ -42,25 +42,25 @@
             </div>
         </div>
     </section>
-    <div class="thank-you-popup" style="display: none;">
+    <div class="thank-you-popup section" style="display: none;">
         <p class="thank-you-message">Thanks for choosing VitaMatch!</p>
     </div>
-    <div class="dont-worry-popup" style="display: none;">
+    <div class="dont-worry-popup section" style="display: none;">
         <p class="dont-worry-message">Don't worry, this should only take 5 minutes.</p>
     </div>
-    <section class="basics" style="display: none;">
+    <section class="basics section" style="display: none;">
         <img src="assets/basics-bg.jpg" alt="" class="white-bg">
         <div class="basics-content">
             <h3>01</h3>
             <h1>Basics</h1>
             <p>Start by giving us some basic background info so we 
                 understand where you are in your path to wellness.</p>
-            <a>Next Question</a>
+            <a href="#" class="next-question">Next Question</a>
         </div>
     </section>
     <div class="main">
         <header class="header">
-            <a href="index.html" class="back-link">&#9664; Back</a>
+            <a href="index.html" class="back-link">&#9664; Back to Home</a>
             <a href="index.html" class="logo">VitaMatch</a>
         </header>
         <section class="beginning">
@@ -91,11 +91,21 @@
     </section>
     </div>
 
+    <section class="questions section" style="display: none;">
+        <div class="first-question">
+            <h3>Have you taken any vitamins in the past?</h3>
+            <p>Vitamins, fish oil, or similar</p>
+           <div class="answer">
+                <div class="answer-circle">Yes</div>
+                <div class="answer-circle">No</div>
+           </div>
+        </div>
+    </section>
+
     <!-- JQuery for animations -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script type="module" src="JS/quiz.js"></script>
-    <script type="module" src="JS/questions.js"></script>
-    <script type="module" src="JS/recommendationSystem.js"></script> 
+    
 </body>
 </html>
