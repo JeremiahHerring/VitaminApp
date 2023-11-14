@@ -59,91 +59,70 @@ form.addEventListener('submit', (event) => {
 });
 
 $(document).ready(function () {
-    // Function to handle fading in/out elements
     function fadeElements(fadeOutElement, fadeInElement) {
         $(fadeOutElement).fadeOut(500, function () {
-            // Callback function after fadeOut completes
             $(fadeInElement).fadeIn(500);
         });
     }
 
-    // Function to handle the quiz submission
     function submitQuiz(ageGroup) {
-        // Assuming ageGroup is the selected age group (e.g., '0-17', '18-55', '55+')
-
-        // Fade out quiz-section and fade in thank-you-popup
         fadeElements('.quiz', '.thank-you-popup');
 
-        // After a delay, fade out thank-you-popup and fade in dont-worry-popup
         setTimeout(function () {
             fadeElements('.thank-you-popup', '.dont-worry-popup');
-        }, 2000); // Adjust the delay time (in milliseconds) as needed
+        }, 2000);
 
-        // After another delay, fade out dont-worry-popup and fade in basics section
         setTimeout(function () {
             fadeElements('.dont-worry-popup', '.basics');
-        }, 4000); // Adjust the delay time (in milliseconds) as needed
+        }, 4000);
     }
 
-    // Attach click event to age-response-box elements
-    $('.response-box').on('click', function () {
-        // Get the age group from the clicked box
+    $('.response-box-1').on('click', function () {
         var ageGroup = $(this).find('p').text().trim();
-
-        // Submit the quiz with the selected age group
         submitQuiz(ageGroup);
     });
-});
 
-$(document).ready(function () {
     $(".next-question").click(function () {
-        $(".basics").animate({left: "-100%"}, 500, function () {
+        $(".basics").animate({ left: "-100%" }, 500, function () {
             $(this).hide();
-            $(".questions").show().animate({left: "0"}, 500);
+            $(".questions").show().animate({ left: "0" }, 500);
         });
     });
+})
+
+// Attach click event to response-box elements in question #2
+$(".response-box").one("click", function () {
+    var nextQuestionId = $(this).data("next-question");
+
+    // Mark the current question as answered
+    $(this).parents(".question").addClass("answered");
+
+    // Fade out all questions except the current one
+    $(".questions .question:not(#" + nextQuestionId + ")").fadeOut(500);
+
+    // Delay the fading in of the next question until after the current question has faded out
+    setTimeout(function () {
+        $("#" + nextQuestionId).fadeIn(500);
+    }, 500);
 });
 
-$(document).ready(function () {
-    // Set the initial question to display
-    var currentQuestion = 2;
 
-    // Show the first question
-    $('.questions .question').hide();
-    $('.questions #question-' + currentQuestion).show();
 
-    // Handle the click event for the answer circles
-    $('.answer-circle').click(function () {
-        var nextQuestion = $(this).data('next-question');
 
-        // Hide the current question
-        $('.questions .question').hide();
 
-        // Show the next question based on the user's response
-        if (nextQuestion !== '') {
-            // If there's a next question, show it
-            $('.questions #' + nextQuestion).show();
-            currentQuestion = parseInt(nextQuestion.split('-')[1]); // Update the current question
-        } else {
-            // Otherwise, proceed to the next sequential question
-            currentQuestion++;
 
-            if (currentQuestion === 3) {
-                var answer = $(this).text().trim().toLowerCase();
-                if (answer === 'no') {
-                    currentQuestion++; // Skip question 3
-                }
-            }
 
-            $('.questions #question-' + currentQuestion).show();
-        }
 
-        // Hide the popups after question 3
-        if (currentQuestion === 3) {
-            $('.thank-you-popup, .dont-worry-popup').hide();
-        }
-    });
-});
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
     height: 100%;
 }
 
-.first-question {
+.question {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,41 +20,29 @@
     margin: 20vh auto; 
 }
 
-.first-question h3 {
-    font-weight: 200;
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.first-question p {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #2b2828;
-
-}
-
-.answer {
+.response-section {
+    text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.answer-circle {
-    font-size: 20px;
+.response-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    margin: 15px;
-    height: 200px;
-    border-radius: 50%;
-    border: 2px solid #ddd; /* Light grey border */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Hint of shadow */
-    transition: border-color 0.3s, background-color 0.3s; /* Smooth transition effect */
-}
+    width: 300px;
+    height: 400px;
+    margin: 20px 15px 10px;
+    padding: 20px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    flex-direction: column;
+    border-radius: 25px;
+    transition: 0.1s;
+    background-color: #fff;
+    border: 2px solid #333;
 
-.answer-circle:hover {
-    border-color: #333; /* Solid blackish color on hover */
 }
