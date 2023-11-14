@@ -36,18 +36,56 @@
                 <div class="quiz-footer">
                     <button class="prev-btn">Prev</button>
                     <button class="next-btn">Next</button>
-
-                    <script>
-                        const button = document.querySelector(".next-btn");
-                        button.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            button.classList.add("animate");
-                            setTimeout(() => {
-                                button.classList.remove("animate");
-                            }, 600)
-                        });
-                    </script>
                 </div>
+            </div>
+
+            <div class="pill">
+                <button class="pillButton" onclick="fillCapsule()">Click Me!</button>
+                <div class="capsule">
+                    <svg id="caps" width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <clipPath id="clipPath">
+                                <rect id="clipRect" x="50" y="40" width="300" height="120" rx="70" ry="70"/>
+                            </clipPath>
+                            <linearGradient id="colorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color: #66ffcc" />
+                                <stop offset="100%" style="stop-color: #66a4d4" />
+                            </linearGradient>
+                        </defs>
+                        <rect id="innerRect" x="50" y="40" width="5" height="120" rx="20" ry="20" fill="url(#colorGradient)"/>
+                        <rect id="outerRect" x="50" y="40" width="300" height="120" rx="70" ry="70" fill="transparent" stroke="#28282B" stroke-width="5px"/>
+                        <rect id="middleLine" x="200" y="40" width="3" height="120" fill="#28282B"/>
+                    </svg>                      
+                </div>
+
+                <script>
+                    let fillPercentage = 0;
+                    let isFirstClick = true;
+                    function fillCapsule() {
+                        fillPercentage += 7;
+                        const innerRect = document.getElementById("innerRect");
+                        const capsule = document.querySelector(".capsule");
+                        if(isFirstClick){
+                            isFirstClick = false;
+                            innerRect.style.fill = "url(#colorGradient)";
+                        }
+                        else if (fillPercentage <= 100) {
+                            innerRect.style.width = `${fillPercentage}%`;
+                        }
+                        capsule.classList.add("wobble");
+                        setTimeout(() => {
+                            capsule.classList.remove("wobble");
+                        }, 500);
+
+                        const colorGradient = document.getElementById("colorGradient");
+                        colorGradient.children[0].style.stopColor = getRandomColor();
+                        colorGradient.children[1].style.stopColor = getRandomColor();
+                    }
+
+                    function getRandomColor() {
+                        return "#" + Math.floor(Math.random()*16777215).toString(16);
+                    }
+                </script>
             </div>
             <div class="result-box">
                 <h2>Results!</h2>
@@ -55,11 +93,20 @@
                     <button class="tryAgain-btn">Take It Again!</button>
                     <button class="goHome-btn">Go To Home</button>
                 </div>
+                <div class="bottle">
+                    <svg id="medicine-bottle" viewBox="0 0 200 400" width="200" height="400" xmlns="http://www.w3.org/2000/svg" >
+                        <!-- Medicine body -->
+                        <rect x="40" y="20" width="120" height="160" rx="20" ry="20" fill="#87CEEB" />
+                        
+                        <!-- Medicine cap -->
+                        <rect x="40" y="0" width="120" height="20" rx="10" ry="10" fill="#FFD700" />
+                        
+                        <!-- Medicine label -->
+                        <text x="100" y="175" font-family="Arial" font-size="24" fill="#fff" text-anchor="middle">Rx</text>
+                      </svg>
+                </div>
             </div>
-            <!-- <div class="pill">
-                <div class="white"></div>
-                <div class="purple"></div>
-            </div> -->
+            
         </section>
         <section class="home">
             <div class="home-content">
