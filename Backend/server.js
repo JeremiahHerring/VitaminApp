@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 
 const connection = mysql2.createConnection({
-    host: "localhos",
+    host: "localhost",
     database: "vitaminsdb",
     user: "tester",
     password: "test"
@@ -55,7 +55,7 @@ app.post('/Api/calculateVitamins', async (req, res) => {
         } else {
           const vitamin = result.length > 0 ? result[0] : null;
           resolve({vitamin});
-        }
+          }
       });
     });
   });
