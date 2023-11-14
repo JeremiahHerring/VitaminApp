@@ -86,7 +86,7 @@ $(document).ready(function () {
     }
 
     // Attach click event to age-response-box elements
-    $('.age-response-box').on('click', function () {
+    $('.response-box').on('click', function () {
         // Get the age group from the clicked box
         var ageGroup = $(this).find('p').text().trim();
 
@@ -103,4 +103,52 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function () {
+    // Set the initial question to display
+    var currentQuestion = 2;
+
+    // Show the first question
+    $('.questions .question').hide();
+    $('.questions #question-' + currentQuestion).show();
+
+    // Handle the click event for the answer circles
+    $('.answer-circle').click(function () {
+        var nextQuestion = $(this).data('next-question');
+
+        // Hide the current question
+        $('.questions .question').hide();
+
+        // Show the next question based on the user's response
+        if (nextQuestion !== '') {
+            // If there's a next question, show it
+            $('.questions #' + nextQuestion).show();
+            currentQuestion = parseInt(nextQuestion.split('-')[1]); // Update the current question
+        } else {
+            // Otherwise, proceed to the next sequential question
+            currentQuestion++;
+
+            if (currentQuestion === 3) {
+                var answer = $(this).text().trim().toLowerCase();
+                if (answer === 'no') {
+                    currentQuestion++; // Skip question 3
+                }
+            }
+
+            $('.questions #question-' + currentQuestion).show();
+        }
+
+        // Hide the popups after question 3
+        if (currentQuestion === 3) {
+            $('.thank-you-popup, .dont-worry-popup').hide();
+        }
+    });
+});
+
+
+
+
+
+
+
 

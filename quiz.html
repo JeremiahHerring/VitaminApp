@@ -12,9 +12,9 @@
 </head>
 <body>
     <section class="questionnaire section" style="display: none;">
-        <div class="question" id="question-1">
+        <div class="question-name" id="question-1">
             <h2>What's your first name?</h2>
-            <p href="questionnaire.html">We'll use this to personalize your experience.</p>
+            <p data-href="questionnaire.html">We'll use this to personalize your experience.</p>
             <form>
                 <input type="text" id="user-name">
                 <button type="submit"><i class="fa-light fa-greater-than" aria-hidden="true"></i> </button>
@@ -27,16 +27,16 @@
     </div>
     <section class="quiz section" style="display: none;">
         <h1>What is your age?</h1>
-        <div class="age-section">
-            <div class="age-response-box">
+        <div class="response-section">
+            <div class="response-box">
                 <i class="fa-solid fa-child"></i>
                 <p>0-17</p>
             </div>
-            <div class="age-response-box">
+            <div class="response-box">
                 <i class="fa-solid fa-user"></i>
                 <p>18-55</p>
             </div>
-            <div class="age-response-box">
+            <div class="response-box">
                 <i class="fa-solid fa-person-cane"></i>
                 <p>55+</p>
             </div>
@@ -92,13 +92,39 @@
     </div>
 
     <section class="questions section" style="display: none;">
-        <div class="first-question">
-            <h3>Have you taken any vitamins in the past?</h3>
+        <div class="question" id="question-2">
+            <h3>Do you take any vitamins or supplements currently?</h3>
             <p>Vitamins, fish oil, or similar</p>
-           <div class="answer">
-                <div class="answer-circle">Yes</div>
-                <div class="answer-circle">No</div>
-           </div>
+            <div class="answer">
+                <div class="answer-circle" data-next-question="question-3">Yes</div>
+                <div class="answer-circle" data-next-question="question-4">No</div>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <h3>How many vitamins or supplements do you currently take?</h3>
+            <div class="response-section">
+                <div class="response-box" data-next-question="question-4">
+                    <i class="fa-solid fa-child"></i>
+                    <p>None</p>
+                </div>
+                <div class="response-box" data-next-question="question-4">
+                    <i class="fa-solid fa-user"></i>
+                    <p>1-4</p>
+                </div>
+                <div class="response-box" data-next-question="question-4">
+                    <i class="fa-solid fa-person-cane"></i>
+                    <p>5+</p>
+                </div>
+            </div>
+        
+        <div class="question" id="question-4">
+            <h3>Do you take any vitamins or supplements currently?</h3>
+            <p>Protein, collagen, or anything mixed into a drink.</p>
+            <div class="answer">
+                <div class="answer-circle" data-next-question="">Yes</div>
+                <div class="answer-circle" data-next-question="">No</div>
+            </div>
         </div>
     </section>
 
