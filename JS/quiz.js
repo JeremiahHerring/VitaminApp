@@ -3,12 +3,12 @@ import {giveRecommendation} from "./recommendationSystem.js";
 
 const continueBtn = document.querySelector('.continue-btn');
 const textBlocks = document.querySelectorAll(".text-block");
-const question = document.querySelector(".question")
-const questionnaireSection = document.querySelector('.questionnaire')
-const beginningSection = document.querySelector('.beginning')
-const form = document.querySelector('form')
-const helloSection = document.querySelector('.hello')
-const quizSection = document.querySelector('.quiz')
+const questionnaireSection = document.querySelector('.questionnaire');
+const beginningSection = document.querySelector('.beginning');
+const form = document.querySelector('form');
+const helloSection = document.querySelector('.hello');
+const quizSection = document.querySelector('.quiz');
+
 let currentIndex = 0;
 
 function toggleTextBlocks() {
@@ -106,31 +106,43 @@ $(".response-box").one("click", function () {
     }, 500);
 });
 
-$(".radio-item input[type='radio']").one("click", function () {
-    var nextQuestionId = $(this).data("next-question");
+// Define variables for question elements
+const question3 = $("#question-3");
+const question4 = $("#question-4");
+const goalsSection = $(".goals");
 
+// Function to handle fading after answering a question
+function answerQuestion(questionElement, nextQuestionElement) {
     // Mark the current question as answered
-    $(this).parents(".question").addClass("answered");
+    questionElement.addClass("answered");
 
-    // Fade out all questions except the current one
-    $(".questions .question:not(#" + nextQuestionId + ")").fadeOut(500);
+    // Fade out the current question
+    questionElement.fadeOut(500);
 
-    // Delay the fading in of the next question until after the current question has faded out
+    // Fade in the next question after a delay
     setTimeout(function () {
-        $("#" + nextQuestionId).fadeIn(500);
+        nextQuestionElement.fadeIn(500);
     }, 500);
+}
+
+// Attach a click event to radio inputs in question #3
+$("#question-3 .radio-item input[type='radio']").one("click", function () {
+    answerQuestion(question3, question4);
 });
 
+// Attach a click event to radio inputs in question #4
+$("#question-4 .radio-item input[type='radio']").one("click", function () {
+    // Mark question 4 as answered
+    question4.addClass("answered");
 
+    // Fade out question 4
+    question4.fadeOut(500);
 
-
-
-
-
-
-
-
-
+    // Fade in the goals section after a delay
+    setTimeout(function () {
+        goalsSection.fadeIn(500);
+    }, 500);
+});
 
 
 
