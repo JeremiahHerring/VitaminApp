@@ -106,6 +106,20 @@ $(".response-box").one("click", function () {
     }, 500);
 });
 
+$(".radio-item input[type='radio']").one("click", function () {
+    var nextQuestionId = $(this).data("next-question");
+
+    // Mark the current question as answered
+    $(this).parents(".question").addClass("answered");
+
+    // Fade out all questions except the current one
+    $(".questions .question:not(#" + nextQuestionId + ")").fadeOut(500);
+
+    // Delay the fading in of the next question until after the current question has faded out
+    setTimeout(function () {
+        $("#" + nextQuestionId).fadeIn(500);
+    }, 500);
+});
 
 
 

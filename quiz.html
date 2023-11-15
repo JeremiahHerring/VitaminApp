@@ -109,25 +109,51 @@
                 </div>
             </div>
         </div>
-        <div class="question" id="question-3" style="display: none;">
+        <div class="question" id="question-3" style="display:none;">
             <h3>In an average week, how often do you take powders?</h3>
-            <p>Protein, collagen, or anything mixed into a drink.</p>
-            <div class="answer-3">
-                <div class="response-check" data-next-question="question-4">Rarely</div>
-                <div class="response-check" data-next-question="question-4">Couple Days</div>
-                <div class="response-check" data-next-question="question-4">Most Days</div>
+            <div class="radio-list">
+                <div class="radio-item">
+                    <input name="radio" id="radio1" type="radio" data-next-question="question-4">
+                    <label for="radio1">
+                        Rarely
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio2" type="radio" data-next-question="question-4">
+                    <label for="radio2">
+                        Couple days
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio3" type="radio" data-next-question="question-4">
+                    <label for="radio3">
+                        Most days
+                    </label></div>
             </div>
         </div>
         <div class="question" id="question-4" style="display: none;">
-            <h3>What is your sex?</h3>
-            <p>Factors like your sex and hormones impact your nutritional needs.
-            </p>
-            <div class="answer-3">
-                <div class="response-check" data-next-question="question-5">Male</div>
-                <div class="response-check" data-next-question="question-5">Female</div>
-                <div class="response-check" data-next-question="question-5">Prefer not to say</div>
+            <h3>What sex best describes you?</h3>
+            <div class="radio-list">
+                <div class="radio-item">
+                    <input name="radio" id="radio1" type="radio" data-next-question="question-4">
+                    <label for="radio1">
+                        Male
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio2" type="radio" data-next-question="question-4">
+                    <label for="radio2">
+                        Female
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio3" type="radio" data-next-question="question-4">
+                    <label for="radio3">
+                        Prefer not to say
+                    </label></div>
             </div>
         </div>
+    </section>
+    <section class="goals section">
+        <h3>Choose your health goals</h3>
+        <p>Select all that matter to you, and we'll explore them together.</p>
+        
     </section>
 
     <!-- JQuery for animations -->

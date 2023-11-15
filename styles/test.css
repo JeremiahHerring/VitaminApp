@@ -13,36 +13,78 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 600px;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
     margin: 20vh auto; 
 }
 
-.response-section {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+
+.radio-item [type="radio"] {
+    display: none;
 }
 
-.response-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 400px;
-    margin: 20px 15px 10px;
-    padding: 20px;
-    border: none;
-    text-align: center;
+.radio-item + .radio-item {
+    margin-top: 15px;
+}
+
+.radio-item label {
+    display: block;
+    padding: 20px 60px;
+    background: #1d1d42;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
     cursor: pointer;
-    flex-direction: column;
-    border-radius: 25px;
-    transition: 0.1s;
-    background-color: #fff;
-    border: 2px solid #333;
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 250;
+    width: 200px;
+    height: 25px;
+    white-space: nowrap;
+    position: relative;
+    transition: .4s ease-in-out 0s;
 
 }
+
+.radio-item label:after,
+.radio-item label:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.radio-item label:after {
+    height: 20px;
+    width: 20px;
+    border: 2px solid #524eee;
+    left: 20px;
+    top: calc(50% - 12px);
+}
+
+.radio-item label:before {
+    background: #524eee;
+    height: 10px;
+    width: 10px;
+    left: 27px;
+    top: calc(50% - 5PX);
+    transform: scale(5);
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s ease-in-out 0s;
+}
+
+.radio-item [type="radio"]:checked ~ label {
+    border-color: #524eee;
+}
+
+.radio-item [type="radio"]:checked ~ label:before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+
+
+
+
