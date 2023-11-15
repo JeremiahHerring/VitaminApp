@@ -1,6 +1,9 @@
 import { initialQuestions, specializedQuestionSets } from './questions.js'
 import {giveRecommendation} from "./recommendationSystem.js";
 
+document.addEventListener('DOMContentLoaded', function () {
+
+
 const continueBtn = document.querySelector('.continue-btn');
 const textBlocks = document.querySelectorAll(".text-block");
 const questionnaireSection = document.querySelector('.questionnaire');
@@ -8,6 +11,10 @@ const beginningSection = document.querySelector('.beginning');
 const form = document.querySelector('form');
 const helloSection = document.querySelector('.hello');
 const quizSection = document.querySelector('.quiz');
+const nameForm = document.querySelector('.question-name form');
+const userNameInput = document.querySelector('.question-name #user-name');
+const userGreeting = document.querySelector('.hello #user-greeting');
+
 
 let currentIndex = 0;
 
@@ -40,12 +47,21 @@ continueBtn.onclick = () => {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    // Get the user's input
+    const userName = userNameInput.value;
+
+    // Store the user's name (you can use localStorage, sessionStorage, or a variable)
+    localStorage.setItem('userName', userName);
+
     questionnaireSection.classList.add('fade-out');
 
     questionnaireSection.addEventListener('animationend', () => {
         questionnaireSection.style.display = 'none';
         helloSection.style.display = 'flex';
         helloSection.classList.add('fade-in');
+
+         // Display the user's name in the "Hello there" section
+         userGreeting.textContent = userName;
 
         setTimeout(() => {
             helloSection.style.display = 'none';
@@ -144,9 +160,17 @@ $("#question-4 .radio-item input[type='radio']").one("click", function () {
     }, 500);
 });
 
+$(".next-question-goals").one("click", function () {
+    // Fade out the goals section
+    goalsSection.fadeOut(500);
 
+    // Show the "choose-goals" section after a delay
+    setTimeout(function () {
+        $(".choose-goals").fadeIn(500);
+    }, 500);
+});
 
-
+});
 
 
 
