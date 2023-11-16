@@ -9,58 +9,80 @@
 
 </head>
 <body>
-    <section class="questions section">
-  
-        <div class="choose-goals">
-            <div class="goals-header">
-                <h3>Choose your health goals</h3>
-                <p>Select all that matter to you, and we'll explore them together</p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vitamin App</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main class="main">
+            <header class="header">
+                <a href="#" class="logo">VitaMatch</a>
+    
+                <nav class="navbar">
+                    <a href="#" class="active">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </header>
+            <div class="container">
+            <section class="quiz-section">
+                <div class="quiz-box">
+                    <h1> Vitamin Questionnare</h1>
+                    <div class="quiz-header">
+                        <span>Progress Bar Goes Here</span>
+                    </div>
+    
+                    <h2 class="question-text">What's Your Age?</h2>
+    
+                    <div class="option-list">
+                    </div>
+                    <div class="quiz-footer">
+                        <button class="prev-btn">Prev</button>
+                        <button class="next-btn">Next</button>
+    
+                        <script>
+                            const button = document.querySelector(".next-btn");
+                            button.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                button.classList.add("animate");
+                                setTimeout(() => {
+                                    button.classList.remove("animate");
+                                }, 600)
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <h2>Results!</h2>
+                    <div class="buttons">
+                        <button class="tryAgain-btn">Take It Again!</button>
+                        <button class="goHome-btn">Go To Home</button>
+                    </div>
+                </div>
+                <!-- <div class="pill">
+                    <div class="white"></div>
+                    <div class="purple"></div>
+                </div> -->
+            </section>
+            <section class="home">
+                <div class="home-content">
+                    <h1>Personalized Vitamins Within Minutes.</h1>
+                    <button class="start-btn">Let's Go!</button>
+                </div>
+                <video autoplay loop muted playsinline>
+                    <source src="/assets/background-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>    
             </div>
-            <div class="tile-container">
-            <div class="tile">
-                <input type="checkbox" name="fitness" id="fitness1">
-                <label for="fitness1">
-                    <i class="fas fa-dumbbell"></i>
-                    <h6>Fitness</h6>
-                </label>
-            </div>
-            <div class="tile">
-                <input type="checkbox" name="Energy" id="Energy1">
-                <label for="energy1">
-                    <i class="fas fa-bolt-lightning"></i>
-                    <h6>Energy</h6>
-                </label>
-            </div>
-            <div class="tile">
-                <input type="checkbox" name="Brain" id="Brain1">
-                <label for="Brain1">
-                    <i class="fas fa-brain"></i>
-                    <h6>Brain</h6>
-                </label>
-            </div>
-            <div class="tile">
-                <input type="checkbox" name="Digestion" id="Digestion1">
-                <label for="Digestion1">
-                    <i class="fas fa-burger"></i>
-                    <h6>Digestion</h6>
-                </label>
-            </div>
-            <div class="tile">
-                <input type="checkbox" name="Hair, Skin & Nails" id="Hair, Skin & Nails1">
-                <label for="Hair, Skin & Nails1">
-                    <i class="fas fa-hand-dots"></i>
-                    <h6>Hair, Skin & Nails</h6>
-                </label>
-            </div>
-            <div class="tile">
-                <input type="checkbox" name="Immunity" id="Immunity1">
-                <label for="Immunity1">
-                    <i class="fas fa-syringe"></i>
-                    <h6>Immunity</h6>
-                </label>
-            </div>
-        </div>
-    </div> 
+        </main>
     </section>
 </body>
 </html>
