@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="main">
@@ -93,7 +94,7 @@
                     <button class="tryAgain-btn">Take It Again!</button>
                     <button class="goHome-btn">Go To Home</button>
                 </div>
-                <div class="resultPill">
+                <div class="resultPill" id="resultPill">
                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
                         <path id="pillInner"
                         fill="red" stroke="black" stroke-width="1"
@@ -188,6 +189,12 @@
                             121.00,361.00 121.00,209.00 121.00,209.00 Z" />
                     </svg>
                 </div>
+
+                <script>
+                    $("#resultPill").click(function(){
+                        alert("Clicked");
+                    });
+                </script>
             </div>
             
         </section>
