@@ -3,81 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitamin App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3651e21373.js"></script>    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+
 </head>
 <body>
-    <main class="main">
+    <main id="main" class="main">
         <header class="header">
-            <a href="#" class="logo">VitaMatch</a>
-
+            <a href="index.html" class="logo">VitaMatch</a>
             <nav class="navbar">
-                <a href="#" class="active">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
+                <a id="home-link" class="navbar-link active" href="#main">Home</a>
+                <a id="how-it-works-link" class="navbar-link" href="#information-section">How it Works</a>
+                <a id="about-us-link" class="navbar-link" href="#team">About Us</a>
+                <a id="contact-link" class="navbar-link" href="#contact">Contact</a>
             </nav>
         </header>
         <div class="container">
-        <section class="quiz-section">
-            <div class="quiz-box">
-                <h1> Vitamin Questionnare</h1>
-                <div class="quiz-header">
-                    <span>Progress Bar Goes Here</span>
-                </div>
-
-                <h2 class="question-text">What's Your Age?</h2>
-
-                <div class="option-list">
-                </div>
-                <div class="quiz-footer">
-                    <span class="question-total">1 of 6 Questions</span>
-                    <button class="next-btn">Next</button>
-                    <div class="particle"> </div>
-                </div>
-            </div>
-            <div class="result-box">
-                <h2>Results!</h2>
-                <div class="buttons">
-                    <button class="tryAgain-btn">Take It Again!</button>
-                    <button class="goHome-btn">Go To Home</button>
-                </div>
-            </div>
-            <div class="pill">
-                <div class="white"></div>
-                <div class="purple"></div>
-            </div>
-        </section>
         <section class="home">
             <div class="home-content">
-                <h1>Get Your Vitamin Recommendations Here!</h1>
-                <p>Welcome to our free vitamin recommendation web application!
-                    Once you complete the questionnare, we will match you with
-                    the specific vitamins that can implement into your diet! 
-                    Thanks for choosing VitaMatch and feel free to contact us 
-                    if you have any questions!
-                </p>
-                <button class="start-btn">Let's Go!</button>
+                <h1>Personalized Vitamins Within Minutes.</h1>
+                <button class="start-btn">Begin Quiz</button>
+            </div>
+            <video autoplay loop muted playsinline>
+                <source src="/assets/background-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>    
+            </section>
+        <section id="information-section" class="information-section">
+            <h2>How it Works</h2>
+            <div class="image-container">
+                <div class="image-item">
+                    <img src="assets/vitamin-heart.jpg" alt="Image 1" class="vitamin-heart">
+                    <p class="main-desc">TELL US ABOUT YOURSELF</p>
+                    <p class="sub-desc">Take our quiz and tell us about your goals, lifestyle, and values.</p>
+                </div>
+                <div class="image-item">
+                    <img src="assets/healthy-meal.jpg" class="healthy-meal">
+                    <p class="main-desc">FIND YOUR ROUTINE</p>
+                    <p class="sub-desc">We’ll personalize a plan backed by science made just for you.</p>
+
+                </div>
+                <div class="image-item">
+                    <img src="assets/asian.jpg" alt="Image 3" class="asian">
+                    <p class="main-desc">STICK WITH IT</p>
+                    <p class="sub-desc">Build habits that improve your health goals by using our app.</p>
+                </div>
+            </div>
+
+            <div class="reminder">
+                <h3>Let's Get Started</h3>
+                <button class="start-btn">Begin Quiz</button>
             </div>
         </section>
-        </div>
+        <section id="team" class="team">
+            <style>
+                .team {
+                    background-image: url('assets/oranges.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            </style>
+            <h1>We do the <i>research</i> so you don't have to</h1>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-1"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/jeremiah.PNG" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Jeremiah Herring</h2>
+                                <p class="description">Full Stack Developer</p>
+    
+                                <button class="button" id="btn1">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-2"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/Q.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Quasim Hussain</h2>
+                                <p class="description">Product Manager</p>
+    
+                                <button class="button" id="btn2">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-3"></span>
+    
+                                <div class="card-image">
+                                    <img src="assets/david.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">David Trujillo</h2>
+                                <p class="description">Back End Engineer</p>
+    
+                                <button class="button" id="btn3">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-4"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/p2.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Chau Phan</h2>
+                                <p class="description">UI Designer</p>
+    
+                                <button class="button" id="btn4">About Me</button>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay" id="overlay-5"></span>
+    
+                                <div class="card-image">
+                                    <img src="images/p4.jpg" alt="" class="card-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-content">
+                                <h2 class="name">Du Mars</h2>
+                                <p class="description">Research and Development</p>
+    
+                                <button class="button" id="btn5">About Me</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            </section>
+            <footer id="contact">
+                <div class="row">
+                    <div class="class col">
+                        <a href="index.html" class="logo">VitaMatch</a>
+                        <p>Contact Us!</p>
+                    </div>
+                    <div class="class col">
+                        <h3>Office <div class="underline"><span></span></div></h3>
+                        <p>800 N State College Blvd</p>
+                        <p>Fullerton, California</p>
+                        <p>United States</p>
+                        <p class="email-id">vitamatch@outlook.com</p>
+                        <h4>+1 - 0123456789</h4>
+                    </div>
+                    <div class="class col">
+                        <h3>Links <div class="underline"><span></span></div></h3>
+                        <ul>
+                            <li><a href="#main">Home</a></li>
+                            <li><a href="#information-section">How it Works</a></li>
+                            <li><a href="#team">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="class col">
+                        <h3>Newsletter <div class="underline"><span></span></div></h3>
+                        <form>
+                            <i class="far fa-envelope"></i>
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        <div class="social-icons">
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-github"></i>
+                            <i class="fab fa-discord"></i>
+                            <i class="fab fa-linkedin"></i>
+
+
+                        </div>
+                    </div>
+                </div>
+                <hr></hr>
+                <p class="copyright">VitaMatch @ 2023 - All Rights Reserved</p>
+            </footer>
     </main>
 
-    <div class="popup-info">
-        <h2>Questionnare Guide</h2>
-        <span class="info">1. Try to answer the questions to the best of your ability.</span>
-        <span class="info">2. This is not an official diagnosis. Consult a medical professional if your health situation is urgent.</span>
-        <span class="info">3. By taking this questionnare you consent to give away basic health information.</span>
-        <span class="info">4. Thanks for choosing VitaMatch!</span>
+    <script type="module" src="JS/main.js"></script>
 
-        <div class="btn-group">
-            <button class="info-btn exit-btn">Exit Questionnare</button>
-            <a href="#" class="info-btn continue-btn">Continue</a>
-        </div>
-    </div>
-
-    <script type="module" src="questions.js"></script>
-    <script type="module" src="recommendationSystem.js"></script> <!-- David Trujillo added this t -->
-    <script type="module" src="main.js"></script>
+    <!-- Swiper JS -->
+    <script src="JS/swiper-bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="styles/quiz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3651e21373.js"></script>
+</head>
+<body>
+    <section class="questionnaire section" style="display: none;">
+        <div class="question-name" id="question-1">
+            <h2>What's your first name?</h2>
+            <p data-href="questionnaire.html">We'll use this to personalize your experience.</p>
+            <form>
+                <input type="text" id="user-name">
+                <button type="submit"><i class="fa-light fa-greater-than" aria-hidden="true"></i> </button>
+            </form>
+        </div>
+    </section>
+    <div class="hello section" style="display: none;">
+        <span class="emoji">👋</span>
+        <h1>Hello there, <span id="user-greeting"></span>!<span class="emoji">👋</span></h1>
+    </div>
+    <section class="quiz section" style="display: none;">
+        <h1>What is your age?</h1>
+        <div class="response-section">
+            <div class="response-box-1">
+                <i class="fa-solid fa-child"></i>
+                <p>0-17</p>
+            </div>
+            <div class="response-box-1">
+                <i class="fa-solid fa-user"></i>
+                <p>18-55</p>
+            </div>
+            <div class="response-box-1">
+                <i class="fa-solid fa-person-cane"></i>
+                <p>55+</p>
+            </div>
+        </div>
+    </section>
+    <div class="thank-you-popup section" style="display: none;">
+        <p class="thank-you-message">Thanks for choosing VitaMatch!</p>
+    </div>
+    <div class="dont-worry-popup section" style="display: none;">
+        <p class="dont-worry-message">Don't worry, this should only take 5 minutes.</p>
+    </div>
+    <section class="basics section" style="display: none;">
+        <img src="assets/basics-bg.jpg" alt="" class="white-bg">
+        <div class="basics-content">
+            <h3>01</h3>
+            <h1>Basics</h1>
+            <p>Start by giving us some basic background info so we 
+                understand where you are in your path to wellness.</p>
+            <a href="#" class="next-question">Next Question</a>
+        </div>
+    </section>
+    <div class="main">
+        <header class="header">
+            <a href="index.html" class="back-link">&#9664; Back to Home</a>
+            <a href="index.html" class="logo">VitaMatch</a>
+        </header>
+        <section class="beginning">
+            <img src="assets/scattered-vitamins.jpg" alt="" class="beginning-img">
+            <div class="beginning-content">
+                <h1>Tell us about yourself</h1>
+                <p>We’ll get to know you and personalize an effective plan for your body, lifestyle, and goals.</p>
+                <button class="continue-btn">Let's Go</button>
+            
+            <div class="backed-by-science">
+                <h1>Backed By Science</h1>
+                <div class="science-content">
+                    <div class="text-block" id="text-block1">
+                        <h2>1000+</h2>
+                        <p>Hours spent ensuring quality, safety, and efficacy</p>
+                    </div>
+                    <div class="text-block" id="text-block2">
+                        <h2>5%</h2>
+                        <p>Of all ingredients make the cut for our products</p>
+                    </div>
+                    <div class="text-block" id="text-block3">
+                        <h2>1200+</h2>
+                        <p>Studies references when developing our products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <section class="questions section" style="display: none;">            
+        <div class="question" id="question-2">
+            <h3>How many vitamins or supplements do you currently take?</h3>
+            <div class="response-section">
+                <div class="response-box" data-next-question="question-3">
+                    <img src="assets/None.svg" alt="" class="response-img">
+                    <p>None</p>
+                </div>
+                <div class="response-box" data-next-question="question-3">
+                    <img src="assets/1-4.svg" alt="" class="response-img">
+                    <p>1-4</p>
+                </div>
+                <div class="response-box" data-next-question="question-3">
+                    <img src="assets/1-5.svg" alt="" class="response-img">
+                    <p>5+</p>
+                </div>
+            </div>
+        </div>
+        <div class="question" id="question-3" style="display:none;">
+            <h3>In an average week, how often do you take powders?</h3>
+            <div class="radio-list">
+                <div class="radio-item">
+                    <input name="radio" id="radio1" type="radio" data-next-question="question-4">
+                    <label for="radio1">
+                        Rarely
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio2" type="radio" data-next-question="question-4">
+                    <label for="radio2">
+                        Couple days
+                    </label></div>
+                <div class="radio-item">
+                    <input name="radio" id="radio3" type="radio" data-next-question="question-4">
+                    <label for="radio3">
+                        Most days
+                    </label></div>
+            </div>
+        </div>
+        <div class="question" id="question-4" style="display: none;">
+            <h3>What sex best describes you?</h3>
+            <div class="radio-list">
+                <div class="radio-item">
+                    <input name="radio" id="radio4" type="radio">
+                    <label for="radio4">
+                        Male
+                    </label>
+                </div>
+                <div class="radio-item">
+                    <input name="radio" id="radio5" type="radio">
+                    <label for="radio5">
+                        Female
+                    </label>
+                </div>
+                <div class="radio-item">
+                    <input name="radio" id="radio6" type="radio">
+                    <label for="radio6">
+                        Prefer not to say
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="goals section" style="display: none;">
+            <img src="assets/goals-bg.jpg" alt="" class="white-bg">
+            <div class="basics-content">
+                <h3>02</h3>
+                <h1>Goals</h1>
+                <p>Start by giving us some basic background info so we 
+                    understand where you are in your path to wellness.</p>
+                <a href="#" class="next-question-goals">Next Question</a>
+            </div>
+        </div>
+
+        <div class="choose-goals" style="display: none;">
+            <div class="goals-header">
+                <h3>Choose your health goals</h3>
+                <p>Select all that matter to you, and we'll explore them together</p>
+            </div>
+            <div class="tile-container">
+            <div class="tile">
+                <input type="checkbox" name="fitness" id="fitness1">
+                <label for="fitness1">
+                    <i class="fas fa-dumbbell"></i>
+                    <h6>Fitness</h6>
+                </label>
+            </div>
+            <div class="tile">
+                <input type="checkbox" name="Energy" id="Energy1">
+                <label for="energy1">
+                    <i class="fas fa-bolt-lightning"></i>
+                    <h6>Energy</h6>
+                </label>
+            </div>
+            <div class="tile">
+                <input type="checkbox" name="Brain" id="Brain1">
+                <label for="Brain1">
+                    <i class="fas fa-brain"></i>
+                    <h6>Brain</h6>
+                </label>
+            </div>
+            <div class="tile">
+                <input type="checkbox" name="Digestion" id="Digestion1">
+                <label for="Digestion1">
+                    <i class="fas fa-burger"></i>
+                    <h6>Digestion</h6>
+                </label>
+            </div>
+            <div class="tile">
+                <input type="checkbox" name="Hair, Skin & Nails" id="Hair, Skin & Nails1">
+                <label for="Hair, Skin & Nails1">
+                    <i class="fas fa-hand-dots"></i>
+                    <h6>Hair, Skin & Nails</h6>
+                </label>
+            </div>
+            <div class="tile">
+                <input type="checkbox" name="Immunity" id="Immunity1">
+                <label for="Immunity1">
+                    <i class="fas fa-syringe"></i>
+                    <h6>Immunity</h6>
+                </label>
+            </div>
+        </div>
+        <button class="cont-btn">Continue</button>
+    </div> 
+
+    <main class="main" style="display: none;">
+        <section class="quiz-section">
+            <div class="quiz-box">
+                <h1> Vitamin Questionnare</h1>
+
+                <h2 class="question-text">What's Your Age?</h2>
+
+                <div class="option-list">
+                </div>
+                <div class="quiz-footer">
+                    <button class="prev-btn">Prev</button>
+                    <button class="next-btn">Next</button>
+                </div>
+        </section>
+    </main>
+    </section>
+
+    <!-- JQuery for animations -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="module" src="JS/questions.js"></script>
+    <script type="module" src="JS/questionnaire.js"></script>
+    <script type="module" src="JS/quiz.js"></script>
+    
+</body>
+</html>
