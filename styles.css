@@ -479,7 +479,8 @@ section.home video {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 800px;
+    height: 800px;
     background: #329da8;
     border: 2px solid #66ffcc;
     border-radius: 6px;
@@ -501,7 +502,6 @@ section.home video {
     transform: translate(-50%, -50%);
     transition: 0.5s ease;
     transition-delay: 1s;
-    
 }
 
 .result-box h2 {
@@ -582,4 +582,16 @@ section.home video {
     50% { transform: rotate(5deg); }
     75% { transform: rotate(-5deg); }
     100% { transform: rotate(0deg); }
+}
+
+.resultPill {
+    position: absolute;
+    border: solid red 10px;
+    /* transform: translateY(500%); */
+}
+
+.bottle {
+    position: relative;
+    border: solid red 10px;
+    transform: translateY(10%);
 }
