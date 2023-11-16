@@ -248,7 +248,7 @@ const specializedQuestionSets = {
   const lifestyleQuestions = [
     {
         numb: 1,
-        question: "When it comes to living a healthy lifestyle, you are:?",
+        question: "When it comes to living a healthy lifestyle, you are:",
         question_desc: "",
         options: [
             "Really dedicated",

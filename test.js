@@ -1,5 +1,5 @@
-import { initialQuestions, specializedQuestionSets } from '.JS/questions.js'
-import {giveRecommendation} from ".JS/recommendationsystem.js";
+import { lifestyleQuestions, specializedQuestionSets } from "./JS/questions.js"
+// import {giveRecommendation} from "./JS/recommendationsystem.js";
 // DEFINING ALL OUR VARIABLES
 const quizBox = document.querySelector('.quiz-box')
 const nextBtn = document.querySelector('.next-btn');
@@ -11,7 +11,7 @@ const prevBtn = document.querySelector('.prev-btn')
 
 prevBtn.classList.remove('active');
 
-let currentQuestionSet = initialQuestions;
+let currentQuestionSet = lifestyleQuestions;
 let userAnswers = [];
 
 function changeQuestionSet(newQuestionSet) {
