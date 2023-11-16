@@ -1,5 +1,5 @@
-import { initialQuestions, specializedQuestionSets } from './questions.js'
-import {giveRecommendation} from "./recommendationsystem.js";
+import { initialQuestions, specializedQuestionSets } from '.JS/questions.js'
+import {giveRecommendation} from ".JS/recommendationsystem.js";
 // DEFINING ALL OUR VARIABLES
 const startBtn = document.querySelector('.start-btn');
 const popupInfo = document.querySelector('.popup-info');
@@ -17,45 +17,15 @@ const prevBtn = document.querySelector('.prev-btn')
 
 prevBtn.classList.remove('active');
 
-// When start button is clicked initialize popupInfo and blur the background
-startBtn.onclick = () => {
-    popupInfo.classList.add('active');
-    main.classList.add('active');
-}
-
-// When exit button is clicked exit out of popupInfo and unblur the backgorund
-exitBtn.onclick = () => {
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
-}
 
 let currentQuestionSet = initialQuestions;
 let userAnswers = [];
+
 function changeQuestionSet(newQuestionSet) {
     currentQuestionSet = newQuestionSet;
     questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount);
-}
-// When continue button is clicked, initialize quizSection, remove popup and main,
-// home page, and add quizBox. 
-continueBtn.onclick = () => {
-
-    const currentQuestion = questionCount;
-    if (currentQuestion <= 5) {
-        currentQuestionSet = initialQuestions;
-        showQuestionsFromSet(currentQuestion);
-    } else if (currentQuestion === 6) {
-        // For the sixth question, veer off into specialized question set based on the category
-        const selectedCategory = getSelectedCategory();
-        changeQuestionSet(specializedQuestionSets[selectedCategory])
-        showQuestionsFromSet(currentQuestion);        
-    }
-
-    quizSection.classList.add('active');
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
-    quizBox.classList.add('active');
 }
 
 let questionCount = 0;
@@ -181,41 +151,12 @@ function showResults() {
     userAnswers = []; // ^
 }
 
-tryAgainBtn.onclick = () => {
-    // Reset to the initial question set
-    currentQuestionSet = initialQuestions;
 
-    // Reset the question count and number
-    questionCount = 0;
-    questionNumb = 1;
-
-    // Display the first question
-    showQuestions(questionCount, currentQuestionSet);
-
-    // Hide the result box
-    resultBox.classList.remove('active');
-
-    // Show the quiz box
-    quizBox.classList.add('active');
-}
-
-goHomeBtn.onclick = () => {
-    quizSection.classList.remove('active');
-    nextBtn.classList.remove('active')
-    resultBox.classList.remove('active');
-
-    questionCount = 0;
-    questionNumb = 1;
-    
-    showQuestions(questionCount);
-}
 
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
     "Health & Fitness": specializedQuestionSets.healthAndFitness,
-    "Muscle": specializedQuestionSets.muscle,   //<---- Change from Mood to Muscle; Khoi changed this 
-    "Bones": specializedQuestionSets.bones,
-    "Cognitive Health": specializedQuestionSets.cognitiveHealth,
+    "Brain": specializedQuestionSets.cognitiveHealth,
     "Energy": specializedQuestionSets.energy,
     "Sleep": specializedQuestionSets.sleep,
     "Digestion": specializedQuestionSets.digestion,
@@ -225,7 +166,7 @@ const categoryToQuestionSet = {
     "Joints": specializedQuestionSets.joints
     // Add mappings for other categories
 };
-  
+
 let selectedCategory = null;
 // Add this function to get the selected category
 function getSelectedCategory() {
