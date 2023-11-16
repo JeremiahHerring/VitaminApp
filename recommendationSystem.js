@@ -158,7 +158,7 @@ if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
         console.log(result);
         vitaminData = result
         console.log(`ID: ${vitaminData[0].vitamin.ID}`)
-        console.log(`Description: ${vitaminData[0].vitamin.Description}`)
+        console.log(`Sources: ${vitaminData[0].vitamin.Sources}`)
        
     })
     .catch(error => {
