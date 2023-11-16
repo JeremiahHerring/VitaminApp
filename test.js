@@ -1,17 +1,15 @@
 import { lifestyleQuestions, specializedQuestionSets } from "./JS/questions.js"
 // import {giveRecommendation} from "./JS/recommendationsystem.js";
 // DEFINING ALL OUR VARIABLES
-const quizBox = document.querySelector('.quiz-box')
+const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
-const resultBox = document.querySelector('.result-box')
-const tryAgainBtn = document.querySelector('.tryAgain-btn')
-const goHomeBtn = document.querySelector('.goHome-btn')
-const prevBtn = document.querySelector('.prev-btn')
+const prevBtn = document.querySelector('.prev-btn');
+
 
 prevBtn.classList.remove('active');
 
-let currentQuestionSet = lifestyleQuestions;
+let currentQuestionSet = specializedQuestionSets.healthAndFitness; // Start with the Fitness question set
 let userAnswers = [];
 
 function changeQuestionSet(newQuestionSet) {
@@ -29,16 +27,7 @@ let questionTotal = 1
 nextBtn.onclick = () => {
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {
-            // Advance to the next question in the current set
             questionCount++;
-
-            if (questionCount == 1) {
-            // Add the 'animate' class to trigger the animation
-            quizBox.classList.add('animate');
-            }  else if (questionCount == 2) {
-                quizBox.classList.add('animate1')
-            }
-
             showQuestions(questionCount, currentQuestionSet);
             questionNumb++;
             questionTotal++;
@@ -47,29 +36,13 @@ nextBtn.onclick = () => {
                 prevBtn.classList.add('active');
             }
             quizBox.scrollTop = 0;
-
-            // Remove the 'animate' class after the animation completes
-            setTimeout(() => {
-                quizBox.classList.remove('animate');
-            }, 650); // Adjust the duration (0.65s) + a little buffer for timing
-        } else if (questionCount === 5) {
-            getSelectedCategory();
-
-            if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
-                currentQuestionSet = categoryToQuestionSet[selectedCategory];
-                questionCount = 0;
-                questionTotal++;
-                showQuestions(questionCount, currentQuestionSet);
-                questionNumb = 1;
-                nextBtn.classList.remove('active');
-                prevBtn.classList.remove('active'); // Deactivate prevBtn when returning to category questions
-                quizBox.scrollTop = 0;
-            }
         } else {
+            // Handle the case where there are no more questions in the set
             showResults();
         }
+    
         isOptionSelected = false;
-    }
+    };
 };
 
 prevBtn.onclick = () => {
@@ -96,6 +69,7 @@ function showQuestionsFromSet(index) {
     }
 }
 
+
 // Define a function to display questions based on the index and question set
 function showQuestions(index, questionSet) {
     if (questionSet && index >= 0 && index < questionSet.length) {
@@ -111,7 +85,7 @@ function showQuestions(index, questionSet) {
 
         const option = document.querySelectorAll('.option');
         option.forEach((opt, i) => {
-            opt.addEventListener('click', () => optionSelected(opt));
+            opt.addEventListener('click', (event) => optionSelected(event.target));
         });
     }
 }
@@ -119,18 +93,30 @@ function showQuestions(index, questionSet) {
 
 // Get what the option the user clicked on
 function optionSelected(answer) {
-    const selectedOptionText = answer.textContent; // Get the text content of the selected option
-    // Store the user's choice in the userAnswers array
+    console.log("Option selected:", answer.textContent)
+    const selectedOptionText = answer.textContent;
     userAnswers[questionTotal - 1] = selectedOptionText;
-    console.log(userAnswers);
+
+    // Remove 'active' class from all options
     const allOptions = document.querySelectorAll('.option-list .option');
     allOptions.forEach(option => {
         option.classList.remove('active');
     });
-    answer.classList.add('active');
+
+    // Add 'active' class to the selected option's parent (the div with class 'option')
+    answer.parentNode.classList.add('active');
+
+    // Log the class names of all options
+    console.log("All option classes:", Array.from(allOptions).map(option => option.className));
+
+    // Log the class names of the selected option's parent
+    console.log("Selected option parent classes:", answer.parentNode.className);
+    
     isOptionSelected = true;
     nextBtn.classList.add('active');
 }
+
+
 
 function showRecommendations() {
 
@@ -150,14 +136,11 @@ function showResults() {
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
     "Health & Fitness": specializedQuestionSets.healthAndFitness,
-    "Brain": specializedQuestionSets.cognitiveHealth,
+    "Brain": specializedQuestionSets.brain,
     "Energy": specializedQuestionSets.energy,
-    "Sleep": specializedQuestionSets.sleep,
     "Digestion": specializedQuestionSets.digestion,
     "Hair, Skin & Nails": specializedQuestionSets.hairSkinNails,
     "Immunity": specializedQuestionSets.immunity,
-    "Organs": specializedQuestionSets.organs,
-    "Joints": specializedQuestionSets.joints
     // Add mappings for other categories
 };
 
