@@ -22,56 +22,143 @@ let vitaminKScore = 0;
 // be sent to the backend to be parsed and used to query the database
 
 export function giveRecommendation(userAnswers){
-    console.log("we in giv reccomendation n shii" );
+    console.log("we in giv reccomendation" );
     console.log(userAnswers);
     // 
     // userAnswers is given to us in an array of literal strings so 
     // userAnswers[0] is == ['0-17'], and not OptionA 
 // Right now I am testing the question #6 answers
-for(let qcount = 6; qcount < userAnswers.length; ++qcount){
-    switch (userAnswers[qcount]){
-        case 'Daily':
-            // No change as we do not need to give them any vitamins
-            break;
-        case 'A few times a week':
-            vitaminDScore++;
-            break;
-     case 'Rarely':
-            vitaminDScore += 3; // I am using 3 to test threshold, may not be a good recommendation
-            break;
-    }
-    
-}
+
 let category = userAnswers[5]; // This is where we ask the goal and send them to the questions specifically for that goal
 let qcount = 7; // We are on question 7 
 switch(category) {
     case 'Health & Fitness': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
-        switch (userAnswers[6]){
-        case 'Very often (4-7) times a week':
-            vitaminAScore +=5 // for test
-            /*
-            vitaminB1Score +=5
-            vitaminB2Score +=5
-            vitaminB3Score +=5
-            vitaminB5Score +=5
-            vitaminB6Score +=5
-            */
-            break;
-            case 'Sometimes (once-twice a week)':
-            vitaminB1Score +=1 
-            vitaminB2Score +=1
-            vitaminB3Score +=1
-            vitaminB5Score +=1
-            vitaminB6Score +=1
-            break;
-           case 'Often (3 times a week)':
-                vitaminDScore += 3; // I am using 3 to test threshold, may not be a good recommendation
-            break;
-           case 'Never':
-            vitaminD += 3
-            break;
+        for(let qcount = 6; qcount < userAnswers.length; ++qcount){
+            switch(qcount) {
+                case 6:
+                    switch(userAnswers[qcount]){
+                        case 'Sometimes (once-twice a week)':
+                            vitaminB1Score +=1 
+                            vitaminB2Score +=1
+                            vitaminB3Score +=1
+                            vitaminB5Score +=1
+                            vitaminB6Score +=1
+                            break
+                        case 'Often (3 times a week)':
+                            break
+                        case 'Very often (4-7) times a week':
+                            vitaminAScore +=5
+                            break
+                        case 'Never':
+                            vitaminDScore += 3
+                            break
+                }
+                case 7:
+                    switch(userAnswers[qcount]){
+                        case '0-15min':
+                            break
+                        case '15-30min':
+                            break
+                        case '30min - 1hr':
+                            break
+                        case '1hr+':
+                            break
+                }
+                case 8:
+                    switch(userAnswers[qcount]){
+                        case 'Weightlifting/Strength':
+                            break
+                        case 'Cardio/Running/Swimming':
+                            break
+                        case 'Yoga/Stretching/Pilates':
+                            break
+                        case 'Mixture':
+                            break
+                }
+
+            }
+    } // End of Health & Fitness Category
+    case 'Muscle': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
+    for(let qcount = 6; qcount < userAnswers.length; ++qcount){
+        switch(qcount) {
+            case 6:
+                switch(userAnswers[qcount]){
+                    case 'Never':
+                        break
+                    case 'Rarely':
+                        vitaminDScore += 3
+                        break
+                    case 'Frequently':
+                        vitaminDScore += 5
+                        console.log("we in frequentyly")
+                        break
+            }
+            case 7:
+                switch(userAnswers[qcount]){
+                    case 'yes':
+                        vitaminDScore += 12
+                        break
+                    case 'no':
+                        break
+                    case 'unsure':
+                        break
+            }
+            case 8:
+                switch(userAnswers[qcount]){
+                    case 'Strong and Healthy':
+                        break
+                    case 'Average':
+                        break
+                    case 'Weak or Fatigued':
+                        vitaminDscore += 4
+                        break
+            }
+
         }
-        
+} // End of Muscle Category 
+case 'Bones': // We know the exact answers to the questions in Health & Fitness, so we assign points to each answer
+for(let qcount = 6; qcount < userAnswers.length; ++qcount){
+    switch(qcount) {
+        case 6:
+            switch(userAnswers[qcount]){
+                case 'Strong and Healthy':
+                    break
+                case 'Average':
+                    vitaminDScore += 3
+                    break
+                case 'Weak or Brittle':
+                    vitaminDscore += 6
+                    break
+        }
+        case 7:
+            switch(userAnswers[qcount]){
+                case 'yes':
+                    break
+                case 'no':
+                    vitaminDScore += 3
+                    break
+        }
+        case 8:
+            switch(userAnswers[qcount]){
+                case 'Yes':
+                    vitaminDScore += 10
+                    break
+                case 'No':
+                    break
+                case 'Unsure':
+                    break
+        }
+        case 9:
+            switch(userAnswers[qcount]){
+                case 'Yes':
+                    break
+                case 'Ocassionally':
+                    break
+                case 'No':
+                    break
+            }
+    }
+} // End of Muscle Category 
     case 'Mood':
         break;
     case 'Mood': //<---- Change this to Muscle :)
