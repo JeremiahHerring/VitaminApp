@@ -219,14 +219,162 @@ const specializedQuestionSets = {
     // Add more categories and their respective questions
   };
 
-const lifestyleQuestionSet = {
-  {
-    numb: 1,
+  const lifestyleQuestions = [
+    {
+        numb: 1,
+        question: "When it comes to living a healthy lifestyle, you are:?",
+        options: [
+            "Really dedicated",
+            "On a kick right now",
+            "Ready to get started"
+        ]
+    },
+    {
+        numb: 2,
+        question: "On an average day, you eat fruit:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+        ]
+    },
+    {
+        numb: 3,
+        question: "On an average day, you eat vegetables:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+        ]
+    },
+    {
+        numb: 4,
+        question: "On an average day, you eat dairy:", 
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+        ]
+    },
+    {
+        numb: 5,
+        question: "On an average day, you eat high fiber foods:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+        ]
+    },
+    {
+        numb: 6,
+        question: "On an average day, you eat fermented foods:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+          ]
+    },
+    {
+        numb: 7,
+        question: "On an average day, you eat protein:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+          ]
+    },
+    {
+        numb: 8,
+        question: "On an average day, you eat fermented foods:",
+        options: [
+            "Rarely",
+            "Once or twice",
+            "Three or more times"
+          ]
+    },
+    {
+      numb: 9,
+      question: "On an average day, you eat meat:",
+      options: [
+          "Never",
+          "Once or twice",
+          "Three or more times"
+        ]
+    },
+    {
+      numb: 10,
+      question: "On an average day, you eat fatty fish:",
+      options: [
+          "Never",
+          "Once or twice",
+          "Three or more times"
+        ]
+    },
+    {
+      numb: 11,
+      question: "Do you often consume 15 or more alcoholic drinks in a week?",
+      options: [
+          "Yes",
+          "No",
+        ]
+    },
+    {
+      numb: 12,
+      question: "How would you describe your diet?",
+      options: [
+          "Prefer plant-based",
+          "Vegetarian",
+          "Vegan",
+          "Anything goes"
+        ]
+    },
+    {
+      numb: 13,
+      question: "Do you have any other diet preferences or restrictions",
+      options: [
+          "Limiting dairy",
+          "Limiting gluten",
+          "Celiac",
+          "Paleo",
+          "None"
+        ]
+    },
+    {
+      numb: 14,
+      question: "Are you trying to snack less throughout the day?",
+      options: [
+          "Yes",
+          "No",
+        ]
+    },
+    {
+      numb: 15,
+      question: "Do you often get really thirsty?",
+      options: [
+          "Yes",
+          "No",
+        ]
+    },
+    {
+      numb: 16,
+      question: "Do you smoke?",
+      options: [
+          "Yes",
+          "No",
+        ]
+    },
+    {
+      numb: 17,
+      question: "Has your doctor recommended you get more of the following?",
+      options: [
+          "Iron",
+          "Vitamin D",
+          "None"
+        ]
+    },
+  ]
 
-  }
-}
-
-export { specializedQuestionSets };
+export { lifestyleQuestions, specializedQuestionSets };
 
 
   
