@@ -1,4 +1,4 @@
-import { lifestyleQuestions, specializedQuestionSets } from './newquestions.js'
+import { lifestyleQuestions, specializedQuestionSets } from './questions.js'
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
 const quizSection = document.querySelector('.quiz-section')
@@ -9,11 +9,9 @@ const resultBox = document.querySelector('.result-box')
 const prevBtn = document.querySelector('.prev-btn')
 
 prevBtn.classList.remove('active');
-
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
-// Move the initialization logic into a function
-// ... (your existing code)
+
 
 function initializeQuiz(initialSetName) {
     let currentQuestion = 0;
@@ -189,6 +187,3 @@ function getSelectedCategory() {
         selectedCategory = selectedOption.textContent;
     }
 }
-
-
-

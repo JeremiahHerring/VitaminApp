@@ -1,6 +1,3 @@
-import { lifestyleQuestions, specializedQuestionSets } from "./questions.js"
-import {giveRecommendation} from "./recommendationSystem.js";
-
 document.addEventListener('DOMContentLoaded', function () {
 
 
@@ -11,7 +8,6 @@ const beginningSection = document.querySelector('.beginning');
 const form = document.querySelector('form');
 const helloSection = document.querySelector('.hello');
 const quizSection = document.querySelector('.quiz');
-const nameForm = document.querySelector('.question-name form');
 const userNameInput = document.querySelector('.question-name #user-name');
 const userGreeting = document.querySelector('.hello #user-greeting');
 
@@ -172,6 +168,21 @@ $(".next-question-goals").one("click", function () {
 
 });
 
+$(".cont-btn").on("click", function () {
+    // Check if at least one checkbox is checked
+    if ($('.choose-goals input[type="checkbox"]:checked').length > 0) {
+        // Fade out the current section (choose-goals)
+        $(".choose-goals").fadeOut(500, function () {
+            // Fade in the main section after the current section has faded out
+            $(".main").fadeIn(500);
+        });
+    } else {
+        // If no checkbox is checked, you can show an alert or handle it as needed
+        alert("Please select at least one goal before continuing.");
+    }
+});
+
+// ... (your existing code)
 
 
 
