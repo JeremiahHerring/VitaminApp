@@ -1,4 +1,3 @@
-import { initialQuestions, specializedQuestionSets } from './questions.js'
 import {giveRecommendation} from "./recommendationSystem.js";
 
 document.addEventListener('DOMContentLoaded', function () {
