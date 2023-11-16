@@ -1,12 +1,6 @@
 import { initialQuestions, specializedQuestionSets } from '.JS/questions.js'
 import {giveRecommendation} from ".JS/recommendationsystem.js";
 // DEFINING ALL OUR VARIABLES
-const startBtn = document.querySelector('.start-btn');
-const popupInfo = document.querySelector('.popup-info');
-const exitBtn = document.querySelector('.exit-btn');
-const main = document.querySelector('.main');
-const continueBtn = document.querySelector('.continue-btn')
-const quizSection = document.querySelector('.quiz-section')
 const quizBox = document.querySelector('.quiz-box')
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
@@ -16,7 +10,6 @@ const goHomeBtn = document.querySelector('.goHome-btn')
 const prevBtn = document.querySelector('.prev-btn')
 
 prevBtn.classList.remove('active');
-
 
 let currentQuestionSet = initialQuestions;
 let userAnswers = [];
@@ -32,6 +25,7 @@ let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 let questionTotal = 1
+
 nextBtn.onclick = () => {
     if (isOptionSelected) {
         if (questionCount < currentQuestionSet.length - 1) {

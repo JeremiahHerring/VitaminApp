@@ -15,28 +15,102 @@
     width: 100vh;
 }
 
-.quiz-box {
+.quiz-section {
+    position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.quiz-section .quiz-box {
+    background-color: darkblue;
+    display: flex;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 .quiz-box .quiz-header {
-    margin-top: 100px;
+    position: absolute;
+    top: 20%;
 }
 
 .quiz-header .question-text {
     font-size: 32px;
 }
 
-.quiz-footer {
+.quiz-header .question-desc {
+    margin-top: 20px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.option-list .option {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.option-list .option:hover {
+    background: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.quiz-box .quiz-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;
-    position: relative;
 }
 
 .quiz-footer button {
+    margin: 80px 60px 0 60px;
 }
+
+.quiz-footer .next-btn {
+    width: 100px;
+    height: 45px;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .3);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.quiz-footer .prev-btn {
+    width: 100px;
+    height: 45px;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .3);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.quiz-footer .next-btn:hover {
+    background: #950170;
+    border-color: #950170;
+}
+
+.quiz-footer .prev-btn:active {
+    background: #950170;
+    border-color: #950170;
+}
+
+
 
