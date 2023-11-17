@@ -215,7 +215,7 @@ const categoryToQuestionSet = {
     "Brain": specializedQuestionSets.brain,
     "Energy": specializedQuestionSets.energy,
     "Digestion": specializedQuestionSets.digestion,
-    "Hair, Skin & Nails": specializedQuestionSets.hairSkinNails,
+    "Cosmetics": specializedQuestionSets.cosmetics,
     "Immunity": specializedQuestionSets.immunity,
 };
   
