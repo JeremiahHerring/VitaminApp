@@ -320,7 +320,7 @@ h1 .emoji {
 
 .quiz h1 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .response-box {
@@ -737,12 +737,12 @@ h1 .emoji {
 
 
 /* Add media query for smaller screens */
-@media (max-width: 768px) {
+@media (min-width: 900px) {
     .tile {
         width: calc(50% - 20px); /* Full width for smaller screens */
     }
     .cont-btn {
-        bottom: 20px;
+        bottom: 50px;
     }
 }
 

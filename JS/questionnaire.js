@@ -43,7 +43,7 @@ function iterateThroughGoals(goals) {
             
         } else {
             // No more goals, show results or handle as needed
-            showResults();
+            transitionToLifeStyle();
         }
     }
 
@@ -70,8 +70,6 @@ function iterateThroughGoals(goals) {
             }
         }
     };
-
-    
 }
         
 
@@ -110,14 +108,10 @@ function updateQuizTitle(setName) {
 }
 
 
-
 // When you change the question set, call the updateQuizTitle function
 // Example: changeQuestionSet('energy');
 function changeQuestionSet(newSetName) {
-    console.log('Changing question set to:', newSetName);
-    console.log('Before setting currentQuestionSet:', currentQuestionSet);
     currentQuestionSet = specializedQuestionSets[newSetName]; // Convert to lowercase
-    console.log('After setting currentQuestionSet:', currentQuestionSet);
     questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount, currentQuestionSet);
@@ -193,17 +187,17 @@ function optionSelected(answer) {
     nextBtn.classList.add('active');
 }
 
-function showRecommendations() {
-    giveRecommendation(userAnswers);
-}
 // Show results of questionnare
-function showResults() {
-    showRecommendations();
-    quizBox.classList.remove('active');
-    resultBox.classList.add('active')
-    questionTotal = 1; // Need to reset incase user wants to do another run
-    userAnswers = []; // ^
-}
+function transitionToLifeStyle() {
+        // Fade out the quiz section
+        main.fadeOut(500);
+
+        // Show the "choose-goals" section after a delay
+        setTimeout(function () {
+            $(".lifestyle").fadeIn(500);
+        }, 500);
+    };
+
 
 
 // Define an object that maps the user's choice to question sets

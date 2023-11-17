@@ -213,8 +213,6 @@ function showRecommendations() {
 // Show results of questionnare
 function showResults() {
     showRecommendations();
-    quizBox.classList.remove('active');
-    resultBox.classList.add('active')
     questionTotal = 1; // Need to reset incase user wants to do another run
     userAnswers = []; // ^
 }
