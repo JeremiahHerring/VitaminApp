@@ -6,9 +6,7 @@ const quizSection = document.querySelector('.quiz-section');
 const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
-const resultBox = document.querySelector('.result-box');
 const prevBtn = document.querySelector('.prev-btn');
-const lifestyleSection = document.querySelector('.lifestyle-quiz');
 
 
 prevBtn.classList.remove('active');
@@ -271,8 +269,6 @@ let currentLifestyleQuestionCount = 0;
 let currentLifestyleQuestionIndex = 0;
 let lifestyleQuestionNumb = 1;
 
-
-
 function initializeLifestyleQuiz() {
     currentQuestionSet = lifestyleQuestions;
     showQuestionsFromLifeStyleSet(0);
@@ -292,10 +288,10 @@ function initializeLifestyleQuiz() {
                 isOptionSelected = false;
 
                 // Enable the "Next" button
-                nextBtn.classList.add('active');
+                $(".lifestyle-footer .next-btn").removeClass('active');
 
                 if (lifestyleQuestionNumb >= 2) {
-                    prevBtn.classList.add('active');
+                    $(".lifestyle-footer .prev-btn").addClass('active');
                 }
             } else {
                 // If no more questions, transition to the next section or handle as needed
@@ -317,11 +313,9 @@ function prevLifestyleQuestion() {
         lifestyleQuestionNumb--;
 
         // Check if you're now on the first question to deactivate the prevBtn
-        if (currentLifestyleQuestionIndex <= 0) {
-            prevBtn.classList.remove('active');
+        if (currentLifestyleQuestionIndex <= 1) {
+            $(".lifestyle-footer .prev-btn").removeClass('active');
         }
-
-
     }
 }
 

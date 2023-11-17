@@ -1034,6 +1034,161 @@ label h6 {
     border-color: #329da8;
 }
 
+.lifestyle-quiz {
+    width: 100%;
+}
+
+.lifestyle-section {
+    position: relative;
+    min-height: 100vh;  /* Use min-height instead of height */
+    background: #e3f0fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  /* Set width to 100% */
+}
+
+.lifestyle-section.active {
+    left: 0;
+}
+
+.lifestyle-section .lifestyle-box {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    border-radius: 6px;
+    flex-direction: column;
+    padding: 20px 30px;
+    opacity: 0;
+    pointer-events: auto;
+    overflow-y: auto;
+    transform: scale(.9);
+    transition: .3s ease;
+    transition-delay: 0s;
+    opacity: 1;
+}
+
+.lifestyle-section .lifestyle-box.active {
+    opacity: 1;
+    pointer-events: auto;
+    overflow-y: auto;
+}
+
+.lifestyle-box h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.lifestyle-header span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.lifestyle-box .question-text {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.lifestyle-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lifestyle-list .option:hover {
+    border: 2px solid #333;
+}
+
+.lifestyle-list .option {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: 17px;
+    margin: 20px 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+
+.lifestyle-list .option.active {
+    color: #00a63d;
+    border: 2px solid #333;
+}
+
+.lifestyle-box .lifestyle-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.lifestyle-footer .question-total {
+    font-weight: 600;
+}
+
+.lifestyle-footer .next-btn {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.lifestyle-footer .next-btn.active:hover {
+    background: #329da8;
+    border-color: #329da8;
+}
+
+.lifestyle-footer .next-btn.active {
+    pointer-events: auto;
+    background-color: #2c2c51;
+    border-color: #2c2c51;
+}
+
+.lifestyle-footer .prev-btn {
+    padding: 10px 20px;
+    background-color: lightgray;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.lifestyle-footer .prev-btn.active {
+    pointer-events: auto;
+    background-color: #2c2c51;
+    border-color: #2c2c51;
+}
+
+.lifestyle-footer .prev-btn.active:hover {
+    background: #329da8;
+    border-color: #329da8;
+}
 
 
 

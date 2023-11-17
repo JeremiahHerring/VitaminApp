@@ -8,6 +8,7 @@ const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
 const prevBtn = document.querySelector('.prev-btn');
 
+
 prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
@@ -68,7 +69,6 @@ function iterateThroughGoals(goals) {
             } else {
                 // Move to the next goal if available
                 displayNextGoal();
-                questionTotal++;
             }
         }
     };
@@ -109,6 +109,11 @@ function updateQuizTitle(setName) {
     quizTitle.textContent = setName;
 }
 
+function updateLifestyleTitle(setName) {
+    const lifestyleTitle = document.querySelector('.lifestyle-box h1');
+    lifestyleTitle.textContent = setName;
+}
+
 
 // When you change the question set, call the updateQuizTitle function
 // Example: changeQuestionSet('energy');
@@ -121,10 +126,9 @@ function changeQuestionSet(newSetName) {
 }
 
 
-
 let userAnswers = [];
 
-let questionCount = 0; // Maybe set question count to 1? - David T
+let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 let questionTotal = 1
@@ -153,6 +157,16 @@ function showQuestionsFromSet(index) {
     }
 }
 
+function showQuestionsFromLifeStyleSet(index) {
+    if (index < currentQuestionSet.length) {
+        showLifestyleQuestions(index, currentQuestionSet);
+    } else {
+        // Handle the case where there are no more questions in the set
+        // You can display a message or take some other action
+        console.log("No more questions in the lifestyle set");
+    }
+}
+
 // Define a function to display questions based on the index and question set
 function showQuestions(index, questionSet) {
     if (questionSet && index >= 0 && index < questionSet.length) {
@@ -173,6 +187,26 @@ function showQuestions(index, questionSet) {
     }
 }
 
+function showLifestyleQuestions(index, questionSet) {
+    const lifestyleList = document.querySelector('.lifestyle-list');
+
+    if (questionSet && index >= 0 && index < questionSet.length) {
+        const questionText = document.querySelector('.lifestyle-text');
+        questionText.textContent = `${questionSet[index].numb}. ${questionSet[index].question}`;
+
+        let optionTag = '';
+        for (let i = 0; i < questionSet[index].options.length; i++) {
+            optionTag += `<div class="option" data-index="${i}"><span>${questionSet[index].options[i]}</span></div>`;
+        }
+
+        lifestyleList.innerHTML = optionTag;
+
+        const option = document.querySelectorAll('.option');
+        option.forEach((opt, i) => {
+            opt.addEventListener('click', () => lifestyleOptionSelected(opt));
+        });
+    }
+}
 
 // Get what the option the user clicked on
 function optionSelected(answer) {
@@ -189,17 +223,27 @@ function optionSelected(answer) {
     nextBtn.classList.add('active');
 }
 
-function showRecommendations() {
+function lifestyleOptionSelected(answer) {
+    const lifestyleOptionText = answer.textContent; // Get the text content of the selected option
+    userAnswers[questionTotal - 1] = lifestyleOptionText;
+    console.log(userAnswers)
+    const allOptions = document.querySelectorAll('.lifestyle-list .option');
+    allOptions.forEach(option => {
+        option.classList.remove('active');
+    answer.classList.add('active');
+    isOptionSelected = true;
+    nextBtn.classList.add('active');
 
-    giveRecommendation(userAnswers, selectedGoals);
+    });
 }
+
 // Show results of questionnare
-function showResults() {
-    showRecommendations();
-    quizBox.classList.remove('active');
-    resultBox.classList.add('active')
-    questionTotal = 1; // Need to reset incase user wants to do another run
-    userAnswers = []; // ^
+function transitionToLifeStyle() {
+    // Fade out the quiz section
+    $(".main").fadeOut(500, function () {
+        // Show the "lifestyle" section after the current section has faded out
+        $(".lifestyle").fadeIn(500);
+    });
 }
 
 // Define an object that maps the user's choice to question sets
@@ -221,26 +265,58 @@ function getSelectedCategory() {
     }
 }
 
-// Add a new function to initialize the lifestyle quiz
+let currentLifestyleQuestionCount = 0;
+let currentLifestyleQuestionIndex = 0;
+let lifestyleQuestionNumb = 1;
+
 function initializeLifestyleQuiz() {
     currentQuestionSet = lifestyleQuestions;
-    showQuestionsFromSet(0);
-    updateQuizTitle("Lifestyle"); // Set a title for the lifestyle quiz
+    showQuestionsFromLifeStyleSet(0);
+    updateLifestyleTitle("Lifestyle"); // Set a title for the lifestyle quiz
 
-    let currentLifestyleQuestionIndex = 0;
 
     // Update the click event for the "Next" button
-    $(".quiz-footer .next-btn").on("click", function () {
-        if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
-            // If there are more questions, show the next question
-            currentLifestyleQuestionIndex++;
-            showQuestionsFromSet(currentLifestyleQuestionIndex);
-        } else {
-            // If no more questions, transition to the next section or handle as needed
-            // For example, you can call a function to handle the transition
-            showResults();
+    $(".lifestyle-footer .next-btn").on("click", function () {
+        if (isOptionSelected) {
+            if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
+                // If there are more questions, show the next question
+                currentLifestyleQuestionIndex++;
+                showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
+                lifestyleQuestionNumb++;
+
+                // Reset isOptionSelected to false for the next question
+                isOptionSelected = false;
+
+                // Enable the "Next" button
+                $(".lifestyle-footer .next-btn").removeClass('active');
+
+                if (lifestyleQuestionNumb >= 2) {
+                    $(".lifestyle-footer .prev-btn").addClass('active');
+                }
+            } else {
+                // If no more questions, transition to the next section or handle as needed
+                // For example, you can call a function to handle the transition
+                showResults();
+            }
         }
     });
+    $(".lifestyle-footer .prev-btn").on("click", function () {
+        prevLifestyleQuestion();
+    });
+}
+
+function prevLifestyleQuestion() {
+    if (currentLifestyleQuestionIndex > 0) {
+        // Go back to the previous question in the lifestyle set
+        currentLifestyleQuestionIndex--;
+        showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
+        lifestyleQuestionNumb--;
+
+        // Check if you're now on the first question to deactivate the prevBtn
+        if (currentLifestyleQuestionIndex <= 1) {
+            $(".lifestyle-footer .prev-btn").removeClass('active');
+        }
+    }
 }
 
 // Example function for transitioning to the next section
@@ -249,7 +325,7 @@ function showResults() {
     console.log("RESULTS!!!!");
 }
 
-// Update the click event for next-question-lifestyle to call initializeLifestyleQuiz
+
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
     $(".lifestyle").fadeOut(500);
@@ -257,15 +333,6 @@ $(".next-question-lifestyle").one("click", function () {
     // Show the "lifestyle-quiz" section after a delay
     setTimeout(function () {
         $(".lifestyle-quiz").fadeIn(500);
-   // Change opacity to 1
-        document.querySelector(".quiz-section .quiz-box").style.opacity = 1;
-
-        // Change pointer-events to auto
-        document.querySelector(".quiz-section .quiz-box").style.pointerEvents = 'auto';
-
-        // Change overflow-y to auto
-        document.querySelector(".quiz-section .quiz-box").style.overflowY = 'auto';
-
 
         // Initialize the lifestyle quiz
         initializeLifestyleQuiz();
