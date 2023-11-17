@@ -11,24 +11,103 @@ const prevBtn = document.querySelector('.prev-btn')
 prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
+let selectedGoals = [];
 
+$(".cont-btn").on("click", function () {
+    selectedGoals = [];
+    // Check which goals are selected
+    $('.choose-goals input[type="checkbox"]:checked').each(function () {
+        selectedGoals.push(this.name.toLowerCase());
+    });
 
-function initializeQuiz(initialSetName) {
+    // Check if at least one goal is selected
+    if (selectedGoals.length > 0) {
+        // Display questions based on selected goals
+        iterateThroughGoals(selectedGoals);
+    } else {
+        // If no checkbox is checked, you can show an alert or handle it as needed
+        alert("Please select at least one goal before continuing.");
+    }
+});
+
+function iterateThroughGoals(goals) {
+    let currentGoalIndex = 0;
+    
+    function displayNextGoal() {
+        // Check if there are more goals to display
+        if (currentGoalIndex < goals.length) {
+            initializeQuiz(goals[currentGoalIndex]);
+            currentGoalIndex++;
+        } else {
+            // No more goals, show results or handle as needed
+            showResults();
+        }
+    }
+
+        // Display the first goal
+        displayNextGoal();
+
+        // Update the nextBtn click event to progress through goals
+        nextBtn.onclick = () => {
+            if (isOptionSelected) {
+                if (questionCount < currentQuestionSet.length - 1) {
+                    // Advance to the next question in the current set
+                    questionCount++;
+                    showQuestions(questionCount, currentQuestionSet);
+                    questionNumb++;
+                    questionTotal++;
+                    nextBtn.classList.remove('active');
+                    if (questionNumb >= 2) {
+                        prevBtn.classList.add('active');
+                    }
+                    quizBox.scrollTop = 0;
+        
+                    // Remove the 'animate' class after the animation completes
+                } else {
+                    // Move to the next goal if available
+                    if (currentGoalIndex < selectedGoals.length) {
+                        // Call changeQuestionSet here to switch to the next goal
+                        changeQuestionSet(selectedGoals[currentGoalIndex]);
+                        currentGoalIndex++;
+                        isOptionSelected = false; // Reset the option selected flag for the new goal
+                    } else {
+                        // No more goals, show results
+                        showResults();
+                    }
+                }
+            }
+        };
+}
+        
+
+// Function to initialize the quiz with the selected goal
+function initializeQuiz(initialGoal) {
     let currentQuestion = 0;
-    // Convert the initialSetName to lowercase
-    currentQuestionSet = specializedQuestionSets[initialSetName.toLowerCase()];
+
+    // Handle the special case for "Hair, Skin & Nails" with case-insensitive matching
+    if (initialGoal.toLowerCase() === "hair, skin & nails") {
+        currentQuestionSet = specializedQuestionSets.hairSkinNails;
+    } else {
+        // Convert the initial goal to lowercase and get the question set
+        currentQuestionSet = specializedQuestionSets[initialGoal.toLowerCase()];
+    }
+
+    // Check if the category is not found in the mapping (e.g., if the mapping is undefined)
+    if (!currentQuestionSet) {
+        console.error(`Question set not found for category: ${initialGoal}`);
+        // You may want to handle this case, such as showing an error message
+        return;
+    }
+
     showQuestionsFromSet(currentQuestion);
 
     // Set the content of the h1 element to the name of the current question set
-    updateQuizTitle(initialSetName);
+    updateQuizTitle(initialGoal);
 
     quizSection.classList.add('active');
     main.classList.remove('active');
     quizBox.classList.add('active');
 }
-
-// Call the initialization function with the initial question set
-initializeQuiz('Fitness'); 
 
 function updateQuizTitle(setName) {
     const quizTitle = document.querySelector('.quiz-box h1');
@@ -41,13 +120,14 @@ function updateQuizTitle(setName) {
 function changeQuestionSet(newSetName) {
     console.log('newSetName:', newSetName);
     console.log('specializedQuestionSets:', specializedQuestionSets);
-    currentQuestionSet = specializedQuestionSets[newSetName.toLowerCase()]; // Convert to lowercase
+    currentQuestionSet = specializedQuestionSets[newSetName]; // Convert to lowercase
     console.log('currentQuestionSet:', currentQuestionSet);
-    questionCount = 0;
+    questionCount = 0;  // Reset the question count to 0 when changing the goal
     questionNumb = 1;
     showQuestions(questionCount, currentQuestionSet);
     updateQuizTitle(newSetName);
 }
+
 
 let userAnswers = [];
 
@@ -55,45 +135,6 @@ let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 let questionTotal = 1
-nextBtn.onclick = () => {
-    if (isOptionSelected) {
-        if (questionCount < currentQuestionSet.length - 1) {
-            // Advance to the next question in the current set
-            questionCount++;
-
-
-            showQuestions(questionCount, currentQuestionSet);
-            questionNumb++;
-            questionTotal++;
-            nextBtn.classList.remove('active');
-            if (questionNumb >= 2) {
-                prevBtn.classList.add('active');
-            }
-            quizBox.scrollTop = 0;
-
-            // Remove the 'animate' class after the animation completes
-            setTimeout(() => {
-                quizBox.classList.remove('animate');
-            }, 650); // Adjust the duration (0.65s) + a little buffer for timing
-        } else if (questionCount === 5) {
-            getSelectedCategory();
-
-            if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
-                currentQuestionSet = categoryToQuestionSet[selectedCategory];
-                questionCount = 0;
-                questionTotal++;
-                showQuestions(questionCount, currentQuestionSet);
-                questionNumb = 1;
-                nextBtn.classList.remove('active');
-                prevBtn.classList.remove('active'); // Deactivate prevBtn when returning to category questions
-                quizBox.scrollTop = 0;
-            }
-        } else {
-            showResults();
-        }
-        isOptionSelected = false;
-    }
-};
 
 prevBtn.onclick = () => {
     if (questionCount > 0) {
@@ -156,7 +197,6 @@ function optionSelected(answer) {
 }
 
 function showRecommendations() {
-
     giveRecommendation(userAnswers);
 }
 // Show results of questionnare
