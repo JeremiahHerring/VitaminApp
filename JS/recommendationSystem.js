@@ -39,7 +39,7 @@ switch(userGoals[x]) {
 /*
 Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 */
-    case 1: // We are in fitness category
+    case 'fitness': // We are in fitness category
         fitnessQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
         for(let y = 0; qnum < fitnessQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
             switch(y+1) {
@@ -96,7 +96,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 }
 
             } // End of Health & Fitness Category
-    case 2: // We are in Energy category
+    case 'energy': // We are in Energy category
         energyQ += qnum // This makes Energy = 5 more than qnum which is how many questions we have
         for(let y = 0; qnum < energyQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
             switch(y+1) {
@@ -142,7 +142,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                     }
                 }
             }// End of Energy
-    case 3: // We are in Brain category
+    case 'brain': // We are in Brain category
     brainQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < brainQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -172,7 +172,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
         }
     } // End of Brain
 
-    case 4: // We are in digestion category
+    case 'digestion': // We are in digestion category
     digestionQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
     for(let y = 0; qnum < digestionQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -202,7 +202,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             }
         }
     } // End of Digestion
-    case 5: // We are in HairSkinNails category
+    case 'cosmetics': // We are in HairSkinNails category
     hairSkinNailsQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < hairSkinNailsQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -281,8 +281,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 }
         }
     } // End of hairSkinNails
-    case 6: // We are in Immunity category
-    imunnityQ += qnum // This makes Immunity = 5 more than qnum which is how many questions we have
+    case 'immunity': // We are in Immunity category
+    immunityQ += qnum // This makes Immunity = 5 more than qnum which is how many questions we have
     for(let y = 0; qnum < immunityQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
             case 1: // This means we are at the first question
@@ -328,7 +328,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 
 } // Finished the userGoals switch
 } // Finished the userGoals Loop
-lifestyle = qnum + 16 // 
+let lifestyle = qnum + 16 // 
 for (let y = 0; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
 {
 
@@ -379,22 +379,27 @@ if (vitaminKScore >= threshold) {
     vitaminRec.push('K');
 }
 console.log(vitaminRec);
-const data = { vitamins: vitaminRec };
-
-fetch('/api/calculateVitamins', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data),
-})
-  .then(response => response.json())
-  .then(result => {
-    // Handle the response from the server
-    console.log(result);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-return vitaminRec; 
-}
+if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
+    let vitaminData = {}
+    fetch('http://localhost:3000/Api/calculateVitamins', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(vitaminRec),
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Handle the response from the server
+        console.log(result);
+        vitaminData = result
+        console.log(`ID: ${vitaminData[0].vitamin.ID}`)
+        console.log(`Sources: ${vitaminData[0].vitamin.Sources}`)
+       
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    }
+     return; // Handle case where vitaminRec is empty and we recommend nothing.
+    }
