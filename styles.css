@@ -538,6 +538,7 @@ section.home video {
     color: #fff;
 }
 
+
 .pill{
     position: relative;
     width: 500px;
@@ -584,23 +585,14 @@ section.home video {
     opacity: 0;
 }
 
-.animateDropAndDisappear {
-    animation: dropAndDisappear 3s linear forwards;
+.particle5{
+    position: absolute;
+    animation: none;
+    opacity: 0;
 }
 
-@keyframes dropAndDisappear {
-    0% {
-        transform: translateY(-200%);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
+.animateDropAndDisappear {
+    animation: dropDown 3s linear forwards;
 }
 
 .capsule {
@@ -633,9 +625,13 @@ section.home video {
 
 @keyframes dropDown {
     0% {
-        transform: translateY(-200px);
+        transform: translateY(-100px);
         opacity: 1;
     }
+    /* 50%{
+        transform: translateY(-50px);
+        opacity: 0.5
+    } */
     100% {
         transform: translateY(100px);
         opacity: 0;
@@ -644,4 +640,22 @@ section.home video {
 
 .bottle {
     position: relative;
+    animation: wobble2 1s ease infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes wobble2 {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
 }
