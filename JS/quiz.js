@@ -165,8 +165,7 @@ $(".next-question-goals").one("click", function () {
         $(".choose-goals").fadeIn(500);
     }, 500);
 });
-
-});
+})
 
 $(".cont-btn").on("click", function () {
     // Check if at least one checkbox is checked
@@ -181,6 +180,8 @@ $(".cont-btn").on("click", function () {
         alert("Please select at least one goal before continuing.");
     }
 });
+
+
 
 
 

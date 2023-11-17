@@ -191,16 +191,12 @@ function optionSelected(answer) {
 
 // Show results of questionnare
 function transitionToLifeStyle() {
-        // Fade out the quiz section
-        main.fadeOut(500);
-
-        // Show the "choose-goals" section after a delay
-        setTimeout(function () {
-            $(".lifestyle").fadeIn(500);
-        }, 500);
-    };
-
-
+    // Fade out the quiz section
+    $(".main").fadeOut(500, function () {
+        // Show the "lifestyle" section after the current section has faded out
+        $(".lifestyle").fadeIn(500);
+    });
+}
 
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
@@ -220,3 +216,13 @@ function getSelectedCategory() {
         selectedCategory = selectedOption.textContent;
     }
 }
+
+$(".next-question-lifestyle").one("click", function () {
+    // Fade out the goals section
+    $(".lifestyle").fadeOut(500);
+
+    // Show the "choose-goals" section after a delay
+    setTimeout(function () {
+        $(".lifestyle-quiz").fadeIn(500);
+    }, 500);
+});
