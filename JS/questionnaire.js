@@ -6,7 +6,6 @@ const quizSection = document.querySelector('.quiz-section');
 const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
-const resultBox = document.querySelector('.result-box');
 const prevBtn = document.querySelector('.prev-btn');
 
 prevBtn.classList.remove('active');
@@ -217,12 +216,54 @@ function getSelectedCategory() {
     }
 }
 
+// Add a new function to initialize the lifestyle quiz
+function initializeLifestyleQuiz() {
+    currentQuestionSet = lifestyleQuestions;
+    showQuestionsFromSet(0);
+    updateQuizTitle("Lifestyle"); // Set a title for the lifestyle quiz
+
+    let currentLifestyleQuestionIndex = 0;
+
+    // Update the click event for the "Next" button
+    $(".quiz-footer .next-btn").on("click", function () {
+        if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
+            // If there are more questions, show the next question
+            currentLifestyleQuestionIndex++;
+            showQuestionsFromSet(currentLifestyleQuestionIndex);
+        } else {
+            // If no more questions, transition to the next section or handle as needed
+            // For example, you can call a function to handle the transition
+            showResults();
+        }
+    });
+}
+
+// Example function for transitioning to the next section
+function showResults() {
+    // Your transition logic goes here
+    console.log("RESULTS!!!!");
+}
+
+// Update the click event for next-question-lifestyle to call initializeLifestyleQuiz
 $(".next-question-lifestyle").one("click", function () {
-    // Fade out the goals section
+    // Fade out the lifestyle section
     $(".lifestyle").fadeOut(500);
 
-    // Show the "choose-goals" section after a delay
+    // Show the "lifestyle-quiz" section after a delay
     setTimeout(function () {
         $(".lifestyle-quiz").fadeIn(500);
+   // Change opacity to 1
+        document.querySelector(".quiz-section .quiz-box").style.opacity = 1;
+
+        // Change pointer-events to auto
+        document.querySelector(".quiz-section .quiz-box").style.pointerEvents = 'auto';
+
+        // Change overflow-y to auto
+        document.querySelector(".quiz-section .quiz-box").style.overflowY = 'auto';
+
+
+        // Initialize the lifestyle quiz
+        initializeLifestyleQuiz();
     }, 500);
 });
+
