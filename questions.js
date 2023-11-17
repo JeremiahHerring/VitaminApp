@@ -73,7 +73,7 @@ const initialQuestions = [
         question: "What Are Your Goals?",
         options: [
             "Health & Fitness",
-            "Mood",
+            "Muscle",
             "Bones",
             "Cognitive Health",
             "Energy",
@@ -169,8 +169,8 @@ const specializedQuestionSets = {
     muscle: [         //<---- Change from Mood to Muscle; Khoi changed this 
       {
         numb: 1,
-        question: "How often do you experience muscle cramps, spasms, or soreness?", 
-        options: ["Not at all", "Once a while", "Very Frequent"],
+        question: "Do you experience muscle cramps, spasms, or soreness?", 
+        options: ["Never", "Rarely", "Frequently"],
       },
       {
         numb: 2,
@@ -179,8 +179,8 @@ const specializedQuestionSets = {
       },
       {
         numb: 3,
-        question: "Are you currently taking any medications that may impact muscle health?", 
-        options: ["Yes", "No"],                  
+        question: "How would you describe the overall condition of your muscles?", 
+        options: ["Strong and healthy", "Average", "Weak or Fatigued"],                  
       },
       // Add more questions for this category
     ],
@@ -188,18 +188,23 @@ const specializedQuestionSets = {
     bones: [
       {
         numb: 1,
+        question: "How would you describe the overall condition of your bones?",  
+        options: ["Strong and Healthy", "Average", "Weak or Brittle"],          
+      },
+      {
+        numb: 2,
         question: "Do you consume dairy products (such as milk, yogurt and cheese)?  ",  
         options: ["Yes", "No"],          
       },
       {
-        numb: 2,
+        numb: 3,
         question: "Do you have osteoporosis? ",  
         options: ["Yes", "No", "Unsure"],             
       },
       {
-        numb: 3,
-        question: "Are you taking corticosteroid medications on a long-term basis?  ",  
-        options: ["Yes", "No",],          
+        numb: 4,
+        question: "Do you engage in weight-bearing exercises (Weight Lifting)",  
+        options: ["Yes", "Ocassionally", "No"],          
       },
       // Add more questions for this category
     ],
