@@ -232,7 +232,7 @@ function lifestyleOptionSelected(answer) {
         option.classList.remove('active');
     answer.classList.add('active');
     isOptionSelected = true;
-    nextBtn.classList.add('active');
+    $(".lifestyle-footer .next-btn1").addClass('active');
 
     });
 }
@@ -276,7 +276,7 @@ function initializeLifestyleQuiz() {
 
 
     // Update the click event for the "Next" button
-    $(".lifestyle-footer .next-btn").on("click", function () {
+    $(".lifestyle-footer .next-btn1").on("click", function () {
         if (isOptionSelected) {
             if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
                 // If there are more questions, show the next question
@@ -288,10 +288,10 @@ function initializeLifestyleQuiz() {
                 isOptionSelected = false;
 
                 // Enable the "Next" button
-                $(".lifestyle-footer .next-btn").removeClass('active');
+                $(".lifestyle-footer .next-btn1").removeClass('active');
 
                 if (lifestyleQuestionNumb >= 2) {
-                    $(".lifestyle-footer .prev-btn").addClass('active');
+                    $(".lifestyle-footer .prev-btn1").addClass('active');
                 }
             } else {
                 // If no more questions, transition to the next section or handle as needed
@@ -300,7 +300,7 @@ function initializeLifestyleQuiz() {
             }
         }
     });
-    $(".lifestyle-footer .prev-btn").on("click", function () {
+    $(".lifestyle-footer .prev-btn1").on("click", function () {
         prevLifestyleQuestion();
     });
 }
@@ -314,7 +314,7 @@ function prevLifestyleQuestion() {
 
         // Check if you're now on the first question to deactivate the prevBtn
         if (currentLifestyleQuestionIndex <= 1) {
-            $(".lifestyle-footer .prev-btn").removeClass('active');
+            $(".lifestyle-footer .prev-btn1").removeClass('active');
         }
     }
 }
@@ -324,7 +324,6 @@ function showResults() {
     // Your transition logic goes here
     console.log("RESULTS!!!!");
 }
-
 
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
