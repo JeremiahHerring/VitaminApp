@@ -320,7 +320,7 @@ h1 .emoji {
 
 .quiz h1 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .response-box {
@@ -486,6 +486,17 @@ h1 .emoji {
     overflow: hidden;
 }
 
+.lifestyle {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: 100vw;
+    height: 100vh;
+    position: relative;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
 .white-bg {
     max-height: 100%;
     object-fit: cover;
@@ -530,12 +541,24 @@ h1 .emoji {
     text-align: center;
 }
 
+.lifestyle h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .basics p {
     text-align: center;
     margin-top: 10px;
 }
 
+
 .goals p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.lifestyle p {
     text-align: center;
     margin-top: 10px;
 }
@@ -551,6 +574,16 @@ h1 .emoji {
 }
 
 .goals a {
+    border-bottom: 1px solid #333;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.lifestyle a {
     border-bottom: 1px solid #333;
     color: inherit;
     text-decoration: none;
@@ -736,13 +769,9 @@ h1 .emoji {
 }
 
 
-/* Add media query for smaller screens */
-@media (max-width: 768px) {
-    .tile {
-        width: calc(50% - 20px); /* Full width for smaller screens */
-    }
+@media (min-width: 900px) {
     .cont-btn {
-        bottom: 20px;
+        bottom: 30%;
     }
 }
 
@@ -842,6 +871,11 @@ label h6 {
 .main {
     width: 100%;
 }
+
+.lifestyle-quiz {
+    width: 100%;
+}
+
 .questions {
     display: flex;
     justify-content: center;

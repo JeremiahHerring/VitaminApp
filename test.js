@@ -1,18 +1,5 @@
-import { lifestyleQuestions, specializedQuestionSets } from './newquestions.js';
+import { lifestyleQuestions, specializedQuestionSets } from './questions.js';
 
-$(".cont-btn").on("click", function () {
-    // Check if at least one checkbox is checked
-    if ($('.choose-goals input[type="checkbox"]:checked').length > 0) {
-        // Fade out the current section (choose-goals)
-        $(".choose-goals").fadeOut(500, function () {
-            // Fade in the main section after the current section has faded out
-            $(".main").fadeIn(500);
-        });
-    } else {
-        // If no checkbox is checked, you can show an alert or handle it as needed
-        alert("Please select at least one goal before continuing.");
-    }
-});
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
 const quizSection = document.querySelector('.quiz-section');
@@ -53,9 +40,12 @@ function iterateThroughGoals(goals) {
             const currentGoal = goals[currentGoalIndex];
             initializeQuiz(currentGoal);
             currentGoalIndex++;
+            questionCount = 0;
+            questionNumb = 1;
+            
         } else {
             // No more goals, show results or handle as needed
-            showResults();
+            transitionToLifeStyle();
         }
     }
 
@@ -82,23 +72,20 @@ function iterateThroughGoals(goals) {
             }
         }
     };
-
-    
 }
+        
 
-
-
-
-
-
-    
 // Function to initialize the quiz with the selected goal
 function initializeQuiz(initialGoal) {
     let currentQuestion = 0;
 
-
-    currentQuestionSet = specializedQuestionSets[initialGoal.toLowerCase()];
-    
+    // Handle the special case for "Hair, Skin & Nails" with case-insensitive matching
+    if (initialGoal.toLowerCase() === "hair, skin & nails") {
+        currentQuestionSet = specializedQuestionSets.hairSkinNails;
+    } else {
+        // Convert the initial goal to lowercase and get the question set
+        currentQuestionSet = specializedQuestionSets[initialGoal.toLowerCase()];
+    }
 
     // Check if the category is not found in the mapping (e.g., if the mapping is undefined)
     if (!currentQuestionSet) {
@@ -119,18 +106,14 @@ function initializeQuiz(initialGoal) {
 
 function updateQuizTitle(setName) {
     const quizTitle = document.querySelector('.quiz-box h1');
-    quizTitle.textContent = setName
+    quizTitle.textContent = setName;
 }
-
 
 
 // When you change the question set, call the updateQuizTitle function
 // Example: changeQuestionSet('energy');
 function changeQuestionSet(newSetName) {
-    console.log('Changing question set to:', newSetName);
-    console.log('Before setting currentQuestionSet:', currentQuestionSet);
     currentQuestionSet = specializedQuestionSets[newSetName]; // Convert to lowercase
-    console.log('After setting currentQuestionSet:', currentQuestionSet);
     questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount, currentQuestionSet);
@@ -162,7 +145,6 @@ prevBtn.onclick = () => {
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
-    console.log("Showing questions from set:", index, currentQuestionSet)
     if (index < currentQuestionSet.length) {
         showQuestions(index, currentQuestionSet);
     } else {
@@ -207,18 +189,14 @@ function optionSelected(answer) {
     nextBtn.classList.add('active');
 }
 
-function showRecommendations() {
-    giveRecommendation(userAnswers);
-}
 // Show results of questionnare
-function showResults() {
-    showRecommendations();
-    quizBox.classList.remove('active');
-    resultBox.classList.add('active')
-    questionTotal = 1; // Need to reset incase user wants to do another run
-    userAnswers = []; // ^
+function transitionToLifeStyle() {
+    // Fade out the quiz section
+    $(".main").fadeOut(500, function () {
+        // Show the "lifestyle" section after the current section has faded out
+        $(".lifestyle").fadeIn(500);
+    });
 }
-
 
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
@@ -239,4 +217,13 @@ function getSelectedCategory() {
     }
 }
 
+$(".next-question-lifestyle").one("click", function () {
+    // Fade out the goals section
+    $(".lifestyle").fadeOut(500);
+
+    // Show the "choose-goals" section after a delay
+    setTimeout(function () {
+        $(".lifestyle-quiz").fadeIn(500);
+    }, 500);
+});
 
