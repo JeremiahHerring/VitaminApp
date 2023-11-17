@@ -1,5 +1,5 @@
 import { lifestyleQuestions, specializedQuestionSets } from './questions.js';
-
+import { giveRecommendation } from './recommendationSystem.js';
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
 const quizSection = document.querySelector('.quiz-section');
@@ -69,6 +69,7 @@ function iterateThroughGoals(goals) {
             } else {
                 // Move to the next goal if available
                 displayNextGoal();
+                questionTotal++;
             }
         }
     };
@@ -124,7 +125,7 @@ function changeQuestionSet(newSetName) {
 
 let userAnswers = [];
 
-let questionCount = 0;
+let questionCount = 0; // Maybe set question count to 1? - David T
 let questionNumb = 1;
 let isOptionSelected = false;
 let questionTotal = 1
@@ -189,18 +190,18 @@ function optionSelected(answer) {
     nextBtn.classList.add('active');
 }
 
+function showRecommendations() {
+
+    giveRecommendation(userAnswers, selectedGoals);
+}
 // Show results of questionnare
-function transitionToLifeStyle() {
-        // Fade out the quiz section
-        main.fadeOut(500);
-
-        // Show the "choose-goals" section after a delay
-        setTimeout(function () {
-            $(".lifestyle").fadeIn(500);
-        }, 500);
-    };
-
-
+function showResults() {
+    showRecommendations();
+    quizBox.classList.remove('active');
+    resultBox.classList.add('active')
+    questionTotal = 1; // Need to reset incase user wants to do another run
+    userAnswers = []; // ^
+}
 
 // Define an object that maps the user's choice to question sets
 const categoryToQuestionSet = {
@@ -220,3 +221,13 @@ function getSelectedCategory() {
         selectedCategory = selectedOption.textContent;
     }
 }
+
+$(".next-question-lifestyle").one("click", function () {
+    // Fade out the goals section
+    $(".lifestyle").fadeOut(500);
+
+    // Show the "choose-goals" section after a delay
+    setTimeout(function () {
+        $(".lifestyle-quiz").fadeIn(500);
+    }, 500);
+});
