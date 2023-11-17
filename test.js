@@ -1,55 +1,143 @@
-import { lifestyleQuestions, specializedQuestionSets } from './newquestions.js'
+import { lifestyleQuestions, specializedQuestionSets } from './newquestions.js';
+
+$(".cont-btn").on("click", function () {
+    // Check if at least one checkbox is checked
+    if ($('.choose-goals input[type="checkbox"]:checked').length > 0) {
+        // Fade out the current section (choose-goals)
+        $(".choose-goals").fadeOut(500, function () {
+            // Fade in the main section after the current section has faded out
+            $(".main").fadeIn(500);
+        });
+    } else {
+        // If no checkbox is checked, you can show an alert or handle it as needed
+        alert("Please select at least one goal before continuing.");
+    }
+});
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
-const quizSection = document.querySelector('.quiz-section')
-const quizBox = document.querySelector('.quiz-box')
+const quizSection = document.querySelector('.quiz-section');
+const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
-const resultBox = document.querySelector('.result-box')
-const prevBtn = document.querySelector('.prev-btn')
+const resultBox = document.querySelector('.result-box');
+const prevBtn = document.querySelector('.prev-btn');
 
 prevBtn.classList.remove('active');
-
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
-// Move the initialization logic into a function
-// ... (your existing code)
+let selectedGoals = [];
 
-function initializeQuiz(initialSetName) {
+$(".cont-btn").on("click", function () {
+    selectedGoals = [];
+    // Check which goals are selected
+    $('.choose-goals input[type="checkbox"]:checked').each(function () {
+        selectedGoals.push(this.name.toLowerCase());
+    });
+
+    // Check if at least one goal is selected
+    if (selectedGoals.length > 0) {
+        // Display questions based on selected goals
+        iterateThroughGoals(selectedGoals);
+    } else {
+        // If no checkbox is checked, you can show an alert or handle it as needed
+        alert("Please select at least one goal before continuing.");
+    }
+});
+
+function iterateThroughGoals(goals) {
+    let currentGoalIndex = 0;
+
+    function displayNextGoal() {
+        // Check if there are more goals to display
+        if (currentGoalIndex < goals.length) {
+            const currentGoal = goals[currentGoalIndex];
+            initializeQuiz(currentGoal);
+            currentGoalIndex++;
+        } else {
+            // No more goals, show results or handle as needed
+            showResults();
+        }
+    }
+
+    // Display the first goal
+    displayNextGoal();
+
+    // Update the nextBtn click event to progress through goals
+    nextBtn.onclick = () => {
+        if (isOptionSelected) {
+            if (currentQuestionSet && questionCount < currentQuestionSet.length - 1) {
+                // Advance to the next question in the current set
+                questionCount++;
+                showQuestions(questionCount, currentQuestionSet);
+                questionNumb++;
+                questionTotal++;
+                nextBtn.classList.remove('active');
+                if (questionNumb >= 2) {
+                    prevBtn.classList.add('active');
+                }
+                quizBox.scrollTop = 0;
+            } else {
+                // Move to the next goal if available
+                displayNextGoal();
+            }
+        }
+    };
+
+    
+}
+
+
+
+
+
+
+    
+// Function to initialize the quiz with the selected goal
+function initializeQuiz(initialGoal) {
     let currentQuestion = 0;
-    // Convert the initialSetName to lowercase
-    currentQuestionSet = specializedQuestionSets[initialSetName.toLowerCase()];
+
+
+    currentQuestionSet = specializedQuestionSets[initialGoal.toLowerCase()];
+    
+
+    // Check if the category is not found in the mapping (e.g., if the mapping is undefined)
+    if (!currentQuestionSet) {
+        console.error(`Question set not found for category: ${initialGoal}`);
+        // You may want to handle this case, such as showing an error message
+        return;
+    }
+
     showQuestionsFromSet(currentQuestion);
 
     // Set the content of the h1 element to the name of the current question set
-    updateQuizTitle(initialSetName);
+    updateQuizTitle(initialGoal);
 
     quizSection.classList.add('active');
     main.classList.remove('active');
     quizBox.classList.add('active');
 }
 
-// Call the initialization function with the initial question set
-initializeQuiz('Fitness'); 
-
 function updateQuizTitle(setName) {
     const quizTitle = document.querySelector('.quiz-box h1');
-    quizTitle.textContent = setName;
+    quizTitle.textContent = setName
 }
+
 
 
 // When you change the question set, call the updateQuizTitle function
 // Example: changeQuestionSet('energy');
 function changeQuestionSet(newSetName) {
-    console.log('newSetName:', newSetName);
-    console.log('specializedQuestionSets:', specializedQuestionSets);
-    currentQuestionSet = specializedQuestionSets[newSetName.toLowerCase()]; // Convert to lowercase
-    console.log('currentQuestionSet:', currentQuestionSet);
+    console.log('Changing question set to:', newSetName);
+    console.log('Before setting currentQuestionSet:', currentQuestionSet);
+    currentQuestionSet = specializedQuestionSets[newSetName]; // Convert to lowercase
+    console.log('After setting currentQuestionSet:', currentQuestionSet);
     questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount, currentQuestionSet);
     updateQuizTitle(newSetName);
 }
+
+
 
 let userAnswers = [];
 
@@ -57,45 +145,6 @@ let questionCount = 0;
 let questionNumb = 1;
 let isOptionSelected = false;
 let questionTotal = 1
-nextBtn.onclick = () => {
-    if (isOptionSelected) {
-        if (questionCount < currentQuestionSet.length - 1) {
-            // Advance to the next question in the current set
-            questionCount++;
-
-
-            showQuestions(questionCount, currentQuestionSet);
-            questionNumb++;
-            questionTotal++;
-            nextBtn.classList.remove('active');
-            if (questionNumb >= 2) {
-                prevBtn.classList.add('active');
-            }
-            quizBox.scrollTop = 0;
-
-            // Remove the 'animate' class after the animation completes
-            setTimeout(() => {
-                quizBox.classList.remove('animate');
-            }, 650); // Adjust the duration (0.65s) + a little buffer for timing
-        } else if (questionCount === 5) {
-            getSelectedCategory();
-
-            if (selectedCategory && categoryToQuestionSet[selectedCategory]) {
-                currentQuestionSet = categoryToQuestionSet[selectedCategory];
-                questionCount = 0;
-                questionTotal++;
-                showQuestions(questionCount, currentQuestionSet);
-                questionNumb = 1;
-                nextBtn.classList.remove('active');
-                prevBtn.classList.remove('active'); // Deactivate prevBtn when returning to category questions
-                quizBox.scrollTop = 0;
-            }
-        } else {
-            showResults();
-        }
-        isOptionSelected = false;
-    }
-};
 
 prevBtn.onclick = () => {
     if (questionCount > 0) {
@@ -113,6 +162,7 @@ prevBtn.onclick = () => {
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
+    console.log("Showing questions from set:", index, currentQuestionSet)
     if (index < currentQuestionSet.length) {
         showQuestions(index, currentQuestionSet);
     } else {
@@ -158,7 +208,6 @@ function optionSelected(answer) {
 }
 
 function showRecommendations() {
-
     giveRecommendation(userAnswers);
 }
 // Show results of questionnare
@@ -177,7 +226,7 @@ const categoryToQuestionSet = {
     "Brain": specializedQuestionSets.brain,
     "Energy": specializedQuestionSets.energy,
     "Digestion": specializedQuestionSets.digestion,
-    "Hair, Skin & Nails": specializedQuestionSets.hairSkinNails,
+    "Cosmetics": specializedQuestionSets.cosmetics,
     "Immunity": specializedQuestionSets.immunity,
 };
   
@@ -189,6 +238,5 @@ function getSelectedCategory() {
         selectedCategory = selectedOption.textContent;
     }
 }
-
 
 

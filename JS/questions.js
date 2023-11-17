@@ -137,7 +137,7 @@ const specializedQuestionSets = {
 
   ],
 
-  hairSkinNails: [
+  cosmetics: [
       {
         numb: 1,
         question: "How does your skin feel generally?",

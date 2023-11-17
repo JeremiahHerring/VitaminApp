@@ -1,12 +1,13 @@
-import { lifestyleQuestions, specializedQuestionSets } from './questions.js'
+import { lifestyleQuestions, specializedQuestionSets } from './questions.js';
+
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
-const quizSection = document.querySelector('.quiz-section')
-const quizBox = document.querySelector('.quiz-box')
+const quizSection = document.querySelector('.quiz-section');
+const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
-const resultBox = document.querySelector('.result-box')
-const prevBtn = document.querySelector('.prev-btn')
+const resultBox = document.querySelector('.result-box');
+const prevBtn = document.querySelector('.prev-btn');
 
 prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
@@ -32,51 +33,45 @@ $(".cont-btn").on("click", function () {
 
 function iterateThroughGoals(goals) {
     let currentGoalIndex = 0;
-    
+
     function displayNextGoal() {
         // Check if there are more goals to display
         if (currentGoalIndex < goals.length) {
-            initializeQuiz(goals[currentGoalIndex]);
+            const currentGoal = goals[currentGoalIndex];
+            initializeQuiz(currentGoal);
             currentGoalIndex++;
+            
         } else {
             // No more goals, show results or handle as needed
             showResults();
         }
     }
 
-        // Display the first goal
-        displayNextGoal();
+    // Display the first goal
+    displayNextGoal();
 
-        // Update the nextBtn click event to progress through goals
-        nextBtn.onclick = () => {
-            if (isOptionSelected) {
-                if (questionCount < currentQuestionSet.length - 1) {
-                    // Advance to the next question in the current set
-                    questionCount++;
-                    showQuestions(questionCount, currentQuestionSet);
-                    questionNumb++;
-                    questionTotal++;
-                    nextBtn.classList.remove('active');
-                    if (questionNumb >= 2) {
-                        prevBtn.classList.add('active');
-                    }
-                    quizBox.scrollTop = 0;
-        
-                    // Remove the 'animate' class after the animation completes
-                } else {
-                    // Move to the next goal if available
-                    if (currentGoalIndex < selectedGoals.length) {
-                        // Call changeQuestionSet here to switch to the next goal
-                        changeQuestionSet(selectedGoals[currentGoalIndex]);
-                        currentGoalIndex++;
-                        isOptionSelected = false; // Reset the option selected flag for the new goal
-                    } else {
-                        // No more goals, show results
-                        showResults();
-                    }
+    // Update the nextBtn click event to progress through goals
+    nextBtn.onclick = () => {
+        if (isOptionSelected) {
+            if (currentQuestionSet && questionCount < currentQuestionSet.length - 1) {
+                // Advance to the next question in the current set
+                questionCount++;
+                showQuestions(questionCount, currentQuestionSet);
+                questionNumb++;
+                questionTotal++;
+                nextBtn.classList.remove('active');
+                if (questionNumb >= 2) {
+                    prevBtn.classList.add('active');
                 }
+                quizBox.scrollTop = 0;
+            } else {
+                // Move to the next goal if available
+                displayNextGoal();
             }
-        };
+        }
+    };
+
+    
 }
         
 
@@ -115,18 +110,20 @@ function updateQuizTitle(setName) {
 }
 
 
+
 // When you change the question set, call the updateQuizTitle function
 // Example: changeQuestionSet('energy');
 function changeQuestionSet(newSetName) {
-    console.log('newSetName:', newSetName);
-    console.log('specializedQuestionSets:', specializedQuestionSets);
+    console.log('Changing question set to:', newSetName);
+    console.log('Before setting currentQuestionSet:', currentQuestionSet);
     currentQuestionSet = specializedQuestionSets[newSetName]; // Convert to lowercase
-    console.log('currentQuestionSet:', currentQuestionSet);
-    questionCount = 0;  // Reset the question count to 0 when changing the goal
+    console.log('After setting currentQuestionSet:', currentQuestionSet);
+    questionCount = 0;
     questionNumb = 1;
     showQuestions(questionCount, currentQuestionSet);
     updateQuizTitle(newSetName);
 }
+
 
 
 let userAnswers = [];
@@ -215,7 +212,7 @@ const categoryToQuestionSet = {
     "Brain": specializedQuestionSets.brain,
     "Energy": specializedQuestionSets.energy,
     "Digestion": specializedQuestionSets.digestion,
-    "Hair, Skin & Nails": specializedQuestionSets.hairSkinNails,
+    "Cosmetics": specializedQuestionSets.cosmetics,
     "Immunity": specializedQuestionSets.immunity,
 };
   
