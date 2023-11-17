@@ -40,6 +40,8 @@ function iterateThroughGoals(goals) {
             const currentGoal = goals[currentGoalIndex];
             initializeQuiz(currentGoal);
             currentGoalIndex++;
+            questionCount = 0;
+            questionNumb = 1;
             
         } else {
             // No more goals, show results or handle as needed

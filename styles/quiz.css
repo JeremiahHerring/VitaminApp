@@ -738,9 +738,7 @@ h1 .emoji {
 
 /* Add media query for smaller screens */
 @media (min-width: 900px) {
-    .tile {
-        width: calc(50% - 20px); /* Full width for smaller screens */
-    }
+
     .cont-btn {
         bottom: 50px;
     }
