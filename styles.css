@@ -541,12 +541,13 @@ section.home video {
 .pill{
     position: relative;
     width: 500px;
-    height: 300px;
+    height: 500px;
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: solid black 2px;
 }
 
 .pill .pillButton{
@@ -556,14 +557,54 @@ section.home video {
     background-color: #30ff00;
     cursor: pointer;
     animation: none;
+    transform: translateY(-100%);
 }
 
-.pill .pillButton.wobble {
-    animation: wobble 0.5s ease;
+.particle1{
+    position: absolute;
+    animation: none;
+    opacity: 0;
 }
 
+.particle2{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle3{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle4{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.animateDropAndDisappear {
+    animation: dropAndDisappear 3s linear forwards;
+}
+
+@keyframes dropAndDisappear {
+    0% {
+        transform: translateY(-200%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
 
 .capsule {
+    position: relative;
     overflow: hidden;
     clip-path: url(#clipPath);
 }
