@@ -570,7 +570,7 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
 } 
 
 const vitaminRec = []; // This will be used to send fetch request to the backend database
-let threshold = 3; // An arbitrary number, 3 does not mean anything
+let threshold = 10; // An arbitrary number, 10 does not mean anything. NEED TO DO MORE TESTING TO FIND A GOOD THRESHOLD
 if (vitaminAScore >= threshold) {
     vitaminRec.push('A')
 }
@@ -636,5 +636,5 @@ if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
         console.error('Error:', error);
     });
     }
-     return; // Handle case where vitaminRec is empty and we recommend nothing.
+     return vitaminData; // Handle case where vitaminRec is empty and we recommend nothing.
     }
