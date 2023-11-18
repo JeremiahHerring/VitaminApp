@@ -1055,7 +1055,8 @@ label h6 {
     position: relative;
     width: 500px;
     height: 500px;
-    padding: 20px 30px;
+    margin-top: -30px;
+    padding: 20px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1299,6 +1300,7 @@ label h6 {
     width: 500px;
     height: 500px;
     padding: 20px 30px;
+    margin-top: -30px;
     display: flex;
     flex-direction: column;
     justify-content: center;

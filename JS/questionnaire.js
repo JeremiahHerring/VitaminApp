@@ -18,7 +18,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-let sumTotalQ = 5;
+let sumTotalQ = 23;
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
