@@ -26,12 +26,12 @@ export function giveRecommendation(userAnswers, userGoals){
     // userAnswers is given to us in an array of literal strings so 
     // userAnswers[0] is == ['0-17'], and not OptionA 
 // Right now I am testing the question #6 answers
-let qnum = 1 // This will be where the total questions are at
+let qnum = 0 // This will be where the total questions are at
 let fitnessQ = 4
 let energyQ = 5
 let brainQ = 3
-let digestionQ= 2
-let hairSkinNailsQ = 7
+let digestionQ= 3
+let hairSkinNailsQ = 5
 let immunityQ = 5
 for(let x = 0; x < userGoals.length; ++x) {
 
@@ -41,10 +41,11 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 */
     case 'fitness': // We are in fitness category
         fitnessQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
+        console.log(fitnessQ)
         for(let y = 0; qnum < fitnessQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
             switch(y+1) {
                 case 1: // This means we are at the first question
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Rarely':
                             vitaminDScore +=1 
                             vitaminB12Score += 4
@@ -57,38 +58,81 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                             break
                 }
                 case 2:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Resistance':
+                            vitaminDScore += 4
+                            vitaminB6Score += 4
+                            vitaminB12Score += 4
                             break
                         case 'High-intensity':
+                            vitaminB12Score += 2
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 3
                             break
                         case 'Endurance':
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 3
                             break
                         case 'None of these':
+                            vitaminDScore += 2
                             break
                 }
                 case 3:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Performance':
+                            vitaminB12Score += 1
+                            vitaminB1Score += 1
+                            vitaminB2Score += 1
+                            vitaminB3Score += 1
+                            vitaminB6Score += 2
+                            VitaminCScore += 3
+                            vitaminEScore += 4
                             break
                         case 'Breaking a sweat':
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 2
+                            vitaminCScore += 3
                             break
                         case 'Muscle toning':
+                            vitaminB6Score +=3
+                            vitaminB12Score +=3
                             break
                         case 'Muscle building':
+                            vitaminB6Score +=3
+                            vitaminB6Score += 3
+                            vitaminDScore +=3
                             break
                         case 'General health':
+                            vitaminDScore += 3
+                            vitaminCScore += 3
+                            vitaminEScore += 5
                             break
                     }
                 case 4:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Muscle recovery':
+                            VitaminCScore += 2
+                            vitaminEScore += 2
+                            vitaminB6Score +=2
+                            vitaminB12Score += 2
                             break
                         case 'Muscle cramping':
+
                             break
                         case 'Hydration':
+                            vitaminCScore += 4
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'Joints':
+                            vitaminDScore += 2
+                            vitaminCScore += 4
                             break
                         case 'None':
                             break
@@ -98,46 +142,60 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             } // End of Health & Fitness Category
     case 'energy': // We are in Energy category
         energyQ += qnum // This makes Energy = 5 more than qnum which is how many questions we have
+        console.log(energyQ)
         for(let y = 0; qnum < energyQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
             switch(y+1) {
                 case 1: // This means we are at the first question
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Yes':
-                            vitaminDScore +=1 
-                            vitaminB12Score += 4
+                            vitaminB6Score += 2
                             break
                         case 'No':
-                            vitaminDScore +=3
+                            
                             break
                 }
                 case 2:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Yes':
+                            vitaminB6Score += 2
                             break
                         case 'No':
                             break
                 }
                 case 3:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Yes':
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'No':
                             break
                     }
                 case 4:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Worked up':
+                            vitaminB5Score += 4
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'Drained':
+                            vitaminCScore += 4
                             break
                     }
                 case 5:
-                    switch(userAnswers[y]){
+                    switch(userAnswers[qnum]){
                         case 'Rarely':
+                            vitaminB5Score +=2
+                            vitaminB6Score +=2
                             break
                         case 'Two to three days':
+                            vitaminCScore += 3
                             break
                         case 'Every day':
+                            vitaminDScore += 3
+                            vitaminB5Score += 2
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                     }
                 }
@@ -147,23 +205,33 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
     for(let y = 0; qnum < brainQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
             case 1: // This means we are at the first question
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminB6Score += 2
+                        vitaminB9Score += 4
+                        vitaminB12Score += 2
+                        vitaminDScore += 2
                         break
                     case 'No':
                         
                         break
             }
             case 2:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminB5Score += 2
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
                         break
                     case 'No':
                         break;
             }
             case 3:
-                switch(userAnswers[y]){ // Ask jeremiah to word this question more nicely lol
+                switch(userAnswers[qnum]){ // Ask jeremiah to word this question more nicely lol
                     case 'Yes':
+                        vitaminB5Score += 3
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
                         break
                     case 'No':
                         break
@@ -171,114 +239,159 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 
         }
     } // End of Brain
-
+// Skipping digestion for now, need better questions
     case 'digestion': // We are in digestion category
     digestionQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
     for(let y = 0; qnum < digestionQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
-            case 1: // This means we are at the first question
-                switch(userAnswers[x]){
-                    case 'Less than once a day':
+            case 1: 
+                switch(userAnswers[qnum]){
+                    case 'Great':
                         break
-                    case 'About once a day':
+                    case 'Average':
+                        vitaminAScore += 1
+                        vitaminDScore +=1
+                        vitaminB6Score += 1
+                        vitaminB12Score += 1
                         break
-                    case 'More than once a day':
+                    case 'Ocassional Issues':
+                        vitaminDScore += 3
+                        vitaminAScore += 5
+                        vitaminB6Score += 3
+                        vitaminB12Score += 3
                         break
-                    case 'Irregular':
-                        break
-            }
+                }
             case 2:
-                switch(userAnswers[x]){
-                    case 'Gas':
-                        break
-                    case 'Bloating':
-                        break
-                    case 'Burping':
+                switch(userAnswers[qnum]){
+                    case 'Gut Health':
+                        vitaminDScore += 2
+                        vitaminCScore += 2
+                        vitaminAScore += 3
                         break
                     case 'Indigestion':
+                        vitaminB9Score += 5
+                        vitaminB6Score += 2
+                        vitaminAScore += 2
+                        vitaminCScore +=2
+                        vitaminEScore += 5
+                        break
+                    case 'Constipation':
+                        vitaminB9Score += 6
+                        break
+            }
+            case 3:
+                switch(userAnswers[qnum]){
+                    case 'Gas':
+                        vitaminB12Score += 2
+                        vitaminB6Score += 2
+                        break
+                    case 'Bloating':
+                        vitaminB6Score += 4
+                        break
+                    case 'Burping':
+                        vitaminB6Score +=3
+                        break
+                    case 'Indigestion':
+                        vitaminB12+= 2
                         break
                     case 'None':
                         break
             }
         }
     } // End of Digestion
+
     case 'cosmetics': // We are in HairSkinNails category
     hairSkinNailsQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < hairSkinNailsQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
             case 1: // This means we are at the first question
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Dry':    
+                    vitaminEScore += 3
+                    vitaminCScore += 4
                         break
                     case 'Oily':    
+                    vitaminAScore += 3
+                    vitaminEScore += 2
                         break
                     case 'Uneven':
+                        vitaminKScore += 5 
                         break
                     case 'Dull':
+                        vitaminCScore += 3
+                        vitaminB3Score += 5
                         break
                     case 'Pretty good':
                         break
             }
             case 2:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Breakouts':
+                        vitaminAScore += 3
                         break
                     case 'Hyperpigmentation':
+                        vitaminCScore +=3
+                        vitaminAScore +=3
                         break
                     case 'Wrinkles':
-                        break
-                    case 'Elasticity':
+                        vitaminCScore += 2
+                        vitaminEScore += 4
+                        vitaminAScore += 2
                         break
                     case 'General aging':
+                        vitaminDScore += 3
+                        vitaminKScore += 2
                         break
                     case 'None':
                         break
             }
             case 3:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminAScore +=2
+                        vitaminCScore +=2
+                        vitaminEScore += 1
                         break
                     case 'No':
                         break
             }
             case 4:
-                switch(userAnswers[y]){
-                    case 'Yes':
-                        break
-                    case 'No':
-                        break
-            }
-            case 5:
-                switch(userAnswers[y]){
-                    case 'Yes':
-                        break
-                    case 'No':
-                        break
-            }
-            case 6:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Starting to thin':
+                        vitaminEScore += 3
                         break
                     case 'Dry':
+                        vitaminEScore +=3
+                        vitaminAScore += 2
                         break
                     case 'Damaged':
+                        vitaminCScore += 2
+                        vitaminAScore += 2
                         break
-                    case 'Growing Slowly':
+                    case 'Growing slowly':
+                        vitaminB5Score += 3
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
+                        break
+                    case "None of these":
+                        break
+                    
+            }
+            case 5:
+                switch(userAnswers[qnum]){
+                    case 'Strength':
+                        vitaminEScore += 2
+                        break
+                    case 'Growth':
+                        vitaminAScore +=2
+                        vitaminCScore +=2
+                        break
+                    case 'Condition':
+                        vitaminB12Score += 2
                         break
                     case 'None of these':
                         break
             }
-            case 7:
-                switch(userAnswers[y]) {
-                    case 'Strength':
-                        break
-                    case 'Growth':
-                        break
-                    case 'Condition':
-                        break
-                    case 'None of these':
-                        break
-                }
         }
     } // End of hairSkinNails
     case 'immunity': // We are in Immunity category
@@ -286,37 +399,52 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
     for(let y = 0; qnum < immunityQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
             case 1: // This means we are at the first question
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminCScore +=2
+                        vitaminDScore +=2
                         break
                     case 'No':
-                        vitaminDScore +=3
+                        vitaminDScore +=1
                         break
             }
             case 2:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminCScore += 3
+                        vitaminDScore +=1
                         break
                     case 'No':
                         break
             }
             case 3:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminB12Score +=1
+                        vitaminB9Score += 3
+                        vitaminB6Score += 1
+                        vitaminCScore +=1
+                        vitaminDScore +=1
                         break
                     case 'No':
                         break
             }
             case 4:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminCScore +=3
+                        vitaminDScore +=3
                         break
                     case 'No':
                         break
                 }
             case 5:
-                switch(userAnswers[y]){
+                switch(userAnswers[qnum]){
                     case 'Yes':
+                        vitaminKScore += 6
+                        vitaminB12Score +=1
+                        vitaminB9Score += 1
+                        vitaminB6Score += 1
                         break
                     case 'No':
                         break
@@ -329,13 +457,120 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 } // Finished the userGoals switch
 } // Finished the userGoals Loop
 let lifestyle = qnum + 16 // 
-for (let y = 0; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
+for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
 {
+    switch(y){
+        case 1: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminCScore += 3
+                    vitaminAScore += 3
+                    break
+                case 'Once or twice':
+                    vitaminCScore += 1
+                    vitaminAScore += 1
+                    break
+                case 'Three or more times':
+                    break
 
+            }
+            case 2: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminKScore += 3
+                    vitaminAScore += 3
+                    break
+                case 'Once or twice':
+                    vitaminKScore += 1
+                    vitaminAScore += 1
+                    break
+                case 'Three or more times':
+                    break
+
+            }
+            case 3: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminDScore += 3
+                    vitaminB12Score += 3
+                    break
+                case 'Once or twice':
+                    vitaminDScore += 1
+                    vitaminB12Score += 1
+                    break
+                case 'Three or more times':
+                    break
+
+            }
+            case 4: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminDScore += 3
+                    vitaminB12Score += 3
+                    break
+                case 'Once or twice':
+                    vitaminDScore += 1
+                    vitaminB12Score += 1
+                    break
+                case 'Three or more times':
+                    break
+
+            }
+            case 5: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminB12Score += 1
+                    break
+                case 'Once or twice':
+                    break
+                case 'Three or more times':
+                    vitaminB12Score -= 3
+                    break
+
+            }
+            case 7: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminB12Score += 3
+                    break
+                case 'Once or twice':
+                    break
+                case 'Three or more times':
+                    vitaminB12Score -= 3
+                    break
+
+            }
+            case 8: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminDScore += 3
+                    break
+                case 'Once or twice':
+                    vitaminDScore += 1
+                    break
+                case 'Three or more times':
+                    vitaminDScore -= 3
+                    break
+
+            }
+            case 9: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Yes':
+                    vitaminB1Score += 1
+                    vitaminB12Score += 1
+                    vitaminB6Score += 2
+                    vitaminAScore += 2
+                    break
+                case 'No':
+                    break
+            
+            }
+    
+    }
 } 
 
 const vitaminRec = []; // This will be used to send fetch request to the backend database
-let threshold = 3; // An arbitrary number, 3 does not mean anything
+let threshold = 10; // An arbitrary number, 10 does not mean anything. NEED TO DO MORE TESTING TO FIND A GOOD THRESHOLD
 if (vitaminAScore >= threshold) {
     vitaminRec.push('A')
 }
@@ -401,5 +636,5 @@ if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
         console.error('Error:', error);
     });
     }
-     return; // Handle case where vitaminRec is empty and we recommend nothing.
+     return vitaminData; // Handle case where vitaminRec is empty and we recommend nothing.
     }

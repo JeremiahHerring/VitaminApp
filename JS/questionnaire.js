@@ -233,7 +233,7 @@ function optionSelected(answer) {
 
 function lifestyleOptionSelected(answer) {
     const lifestyleOptionText = answer.textContent; // Get the text content of the selected option
-    userAnswers[questionTotal - 1] = lifestyleOptionText;
+    userAnswers[questionTotal] = lifestyleOptionText;
     console.log(userAnswers)
     const allOptions = document.querySelectorAll('.lifestyle-list .option');
     allOptions.forEach(option => {
@@ -289,6 +289,7 @@ function initializeLifestyleQuiz() {
             if (isOptionSelected) {
                 if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
                     // If there are more questions, show the next question
+                    ++questionTotal
                     currentLifestyleQuestionIndex++;
                     showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
                     lifestyleQuestionNumb++;
@@ -320,6 +321,7 @@ function initializeLifestyleQuiz() {
 
 function prevLifestyleQuestion() {
     if (currentLifestyleQuestionIndex > 0) {
+        --questionTotal
         // Go back to the previous question in the lifestyle set
         currentLifestyleQuestionIndex--;
         showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
@@ -331,7 +333,7 @@ function prevLifestyleQuestion() {
         }
     }
 }
-
+let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
     $(".lifestyle-quiz").fadeOut(500);
