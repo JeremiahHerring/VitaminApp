@@ -303,12 +303,15 @@ function initializeLifestyleQuiz() {
                     if (lifestyleQuestionNumb >= 2) {
                         $(".lifestyle-footer .prev-btn1").addClass('active');
                     }
-            }
             } else {
                 // If no more questions, transition to the next section or handle as needed
                 // For example, you can call a function to handle the transition
+                console.log("show the results")
                 showResults();
             }
+            } 
+        } else {
+            console.log("Option not selected")
         }
     });
     $(".lifestyle-footer .prev-btn1").on("click", function () {
@@ -333,9 +336,13 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
-    vitaminsData = giveRecommendation(userAnswers, selectedGoals) // This calls for the algorithm in recommendationsystem.js
-    // Your transition logic goes here
-    console.log("RESULTS!!!!");
+    $(".lifestyle-quiz").fadeOut(500);
+
+    // Show the "lifestyle-quiz" section after a delay
+    setTimeout(function () {
+        $(".results-section").fadeIn(500);
+
+    }, 500);
 }
 
 $(".next-question-lifestyle").one("click", function () {
@@ -351,3 +358,32 @@ $(".next-question-lifestyle").one("click", function () {
     }, 500);
 });
 
+var swiper = new Swiper(".slide-content", {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: 'true',
+    fade: 'true',
+    grabCursor: 'true',
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    breakpoints:{
+        0: {
+            slidesPerView: 1,
+        },
+        520: {
+            slidesPerView: 2,
+        },
+        950: {
+            slidesPerView: 3,
+        },
+    },
+  });
