@@ -13,7 +13,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-
+let sumTotalQ = 5;
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -24,12 +24,43 @@ $(".cont-btn").on("click", function () {
     // Check if at least one goal is selected
     if (selectedGoals.length > 0) {
         // Display questions based on selected goals
+        sumTotalQ = giveTotalQuestion(selectedGoals);
         iterateThroughGoals(selectedGoals);
     } else {
         // If no checkbox is checked, you can show an alert or handle it as needed
         alert("Please select at least one goal before continuing.");
     }
 });
+
+function giveTotalQuestion(selectedGoals) {
+    console.log(selectedGoals)
+    let total = 0
+    for (let x = 0; x < selectedGoals.length; ++x)
+    {
+        switch(selectedGoals[x]){
+            case 'Fitness':
+                total += 4
+                break
+            case 'Energy':
+                total += 5
+                break
+            case 'Brain':
+                total += 3
+                break
+            case 'Digestion':
+                total += 3
+                break
+            case 'Cosmetic':
+                total += 5
+                break
+            case 'Immunity':
+                total += 5
+                break
+        }
+    }
+    console.log("Total amount of questions: " + sumTotalQ)
+    return total
+}
 
 function iterateThroughGoals(goals) {
     let currentGoalIndex = 0;
@@ -73,6 +104,7 @@ function iterateThroughGoals(goals) {
                     // Move to the next goal if available
                     displayNextGoal();
                 }
+                fillCapsule();
             }
         }
     };
@@ -141,6 +173,7 @@ let questionTotal = 1
 prevBtn.onclick = () => {
     if (questionCount > 0) {
         // Go back to the previous question in the current set
+        unfillCapsule();
         questionCount--;
         showQuestions(questionCount, currentQuestionSet);
         questionNumb--;
@@ -149,8 +182,57 @@ prevBtn.onclick = () => {
         if (questionNumb <= 1) {
             prevBtn.classList.remove('active');
         }
+
     }
 };
+
+let isFirstClick = true;
+let currentParticle = 1;
+let fillAmount = 300 / (sumTotalQ + 16);
+function fillCapsule() {
+    const innerRect = document.getElementById("innerRect");
+    const capsule = document.querySelector(".capsule");
+    const particles = document.querySelectorAll(".particle");
+    const currentParticleElement = document.querySelector(`.particle${currentParticle}`);
+    
+    //Particle
+    particles.forEach(particle => {
+        particle.style.display = "none"; // Hide all particles
+    });
+    currentParticleElement.style.display = "block";
+    currentParticle = (currentParticle % 5) + 1;
+
+    //Fill 
+    if(isFirstClick){
+        isFirstClick = false;
+        console.log(fillAmount)
+        innerRect.style.fill = "url(#colorGradient)";
+        innerRect.style.width = `${fillAmount}px`;
+    }
+    else if (fillAmount <= 300) {
+        console.log(sumTotalQ)
+        fillAmount += 300 / (sumTotalQ + 16);
+        console.log(fillAmount)
+        innerRect.style.width = `${fillAmount}px`;
+    }
+
+    //Animation
+    currentParticleElement.classList.add("animateDropAndDisappear");
+    setTimeout(() => {         
+        capsule.classList.add("wobble");
+        currentParticleElement.classList.remove("animateDropAndDisappear");
+        setTimeout(() => {
+            capsule.classList.remove("wobble");
+        }, 500);
+    }, 700);
+}
+
+function unfillCapsule(){
+    const innerRect = document.getElementById("innerRect");
+    fillAmount -= 300 / (sumTotalQ + 16);
+    console.log(fillAmount)
+    innerRect.style.width = `${fillAmount}px`;
+}
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
@@ -292,6 +374,7 @@ function initializeLifestyleQuiz() {
             if (isOptionSelected) {
                 if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
                     // If there are more questions, show the next question
+                    fillCapsule2()
                     ++questionTotal
                     currentLifestyleQuestionIndex++;
                     showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
@@ -323,6 +406,7 @@ function prevLifestyleQuestion() {
     if (currentLifestyleQuestionIndex > 0) {
         --questionTotal
         // Go back to the previous question in the lifestyle set
+        unfillCapsule2();
         currentLifestyleQuestionIndex--;
         showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
         lifestyleQuestionNumb--;
@@ -336,7 +420,24 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+    giveRecommendation(userAnswers, selectedGoals)
+        .then(vitaminsData => {
+            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
+            $(".lifestyle-quiz").fadeOut(500);
+
+            // Show the "lifestyle-quiz" section after a delay
+            setTimeout(function () {
+                $(".results-section").fadeIn(500);
+            }, 500);
+        })
+        .catch(error => {
+            console.error('Error in giveRecommendation:', error);
+        });
+}
+/*
+function showResults() {
     vitaminsData = giveRecommendation(userAnswers,selectedGoals)
+    console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.Benefits_Description)
     $(".lifestyle-quiz").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
@@ -345,7 +446,7 @@ function showResults() {
 
     }, 500);
 }
-
+*/
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
     $(".lifestyle").fadeOut(500);
@@ -355,9 +456,49 @@ $(".next-question-lifestyle").one("click", function () {
         $(".lifestyle-quiz").fadeIn(500);
 
         // Initialize the lifestyle quiz
+        const innerRect2 = document.getElementById("innerRect2");
+        innerRect2.style.width = `${fillAmount}px`;
         initializeLifestyleQuiz();
     }, 500);
 });
+
+let currentShape = 1;
+function fillCapsule2() {
+    const innerRect2 = document.getElementById("innerRect2");
+    const capsule2 = document.querySelector(".capsule2");
+    const shapes = document.querySelectorAll(".shape");
+    const currentShapeElement = document.querySelector(`.shape${currentShape}`);
+    
+    //Particle
+    shapes.forEach(shape => {
+        shape.style.display = "none"; // Hide all particles
+    });
+    currentShapeElement.style.display = "block";
+    currentShape = (currentShape % 5) + 1;
+
+    //Fill 
+    if (fillAmount <= 300) {
+        fillAmount += 300 / (sumTotalQ + 16);
+        innerRect2.style.width = `${fillAmount}px`;
+    }
+
+    //Animation
+    currentShapeElement.classList.add("animateDropAndDisappear2");
+    setTimeout(() => {         
+        capsule2.classList.add("wobble");
+        currentShapeElement.classList.remove("animateDropAndDisappear2");
+        setTimeout(() => {
+            capsule2.classList.remove("wobble");
+        }, 500);
+    }, 700);
+}
+
+function unfillCapsule2(){
+    const innerRect2 = document.getElementById("innerRect2");
+    fillAmount -= 300 / (sumTotalQ + 16);
+    innerRect2.style.width = `${fillAmount}px`;
+    console.log(fillAmount)
+}
 
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,

@@ -916,7 +916,10 @@ label h6 {
     width: 100%;
     height: 100vh;
     border-radius: 6px;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px 30px;
     opacity: 0;
     pointer-events: none;
@@ -1005,6 +1008,7 @@ label h6 {
     font-weight: 600;
     cursor: pointer;
     transition: .5s;
+    margin-left: 500px;
 }
 
 .quiz-footer .next-btn.active:hover {
@@ -1047,6 +1051,89 @@ label h6 {
     border-color: #329da8;
 }
 
+.pill{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.particle1{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle2{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle3{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle4{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.particle5{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.animateDropAndDisappear {
+    animation: dropDown 3s linear forwards;
+}
+
+.capsule {
+    position: absolute;
+    overflow: hidden;
+    
+    clip-path: url(#clipPath);
+}
+
+.capsule.wobble {
+    animation: wobble 0.5s ease;
+}
+
+#innerRect {
+    fill: url(#colorGradient);
+    transition: width 1s;
+}
+
+@keyframes wobble {
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg);}
+}
+
+@keyframes dropDown {
+    0% {
+        transform: translateY(-100px);
+        opacity: 1;
+    }
+    /* 50%{
+        transform: translateY(-50px);
+        opacity: 0.5
+    } */
+    100% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
 .lifestyle-quiz {
     width: 100%;
 }
@@ -1071,7 +1158,10 @@ label h6 {
     width: 100%;
     height: 100vh;
     border-radius: 6px;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px 30px;
     opacity: 0;
     pointer-events: auto;
@@ -1161,6 +1251,7 @@ label h6 {
     font-weight: 600;
     cursor: pointer;
     transition: .5s;
+    margin-left: 500px;
 }
 
 .lifestyle-footer .next-btn1.active:hover {
@@ -1201,6 +1292,82 @@ label h6 {
 .lifestyle-footer .prev-btn1.active:hover {
     background: #329da8;
     border-color: #329da8;
+}
+
+.pill2{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shape1{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.shape2{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.shape3{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.shape4{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.shape5{
+    position: absolute;
+    animation: none;
+    opacity: 0;
+}
+
+.capsule2 {
+    position: absolute;
+    overflow: hidden;
+    
+    clip-path: url(#clipPath2);
+}
+
+.capsule2.wobble {
+    animation: wobble 0.5s ease;
+}
+
+#innerRect2 {
+    fill: url(#colorGradient2);
+    transition: width 1s;
+}
+
+.animateDropAndDisappear2 {
+    animation: dropDown2 3s linear forwards;
+}
+
+@keyframes dropDown2 {
+    0% {
+        transform: translateY(-100px);
+        opacity: 1;
+    }
+    /* 50%{
+        transform: translateY(-50px);
+        opacity: 0.5
+    } */
+    100% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
 }
 
 .made-for-img {
