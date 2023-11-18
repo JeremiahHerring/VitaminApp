@@ -82,7 +82,7 @@ const specializedQuestionSets = {
       },
       {
         numb: 2,
-        question: "Do you sometimes have trouble stayinig asleep?",
+        question: "Do you sometimes have trouble staying asleep?",
         question_desc: "",
         options: ["Yes", 
                   "No"],
