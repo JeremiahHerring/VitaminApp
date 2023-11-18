@@ -89,7 +89,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                             vitaminB2Score += 1
                             vitaminB3Score += 1
                             vitaminB6Score += 2
-                            VitaminCScore += 3
+                            VitaminCScore += 5
                             vitaminEScore += 4
                             break
                         case 'Breaking a sweat':
@@ -97,7 +97,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                             vitaminB2Score += 2
                             vitaminB3Score += 2
                             vitaminB6Score += 2
-                            vitaminCScore += 3
+                            vitaminCScore += 5
                             break
                         case 'Muscle toning':
                             vitaminB6Score +=3
@@ -110,14 +110,14 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                             break
                         case 'General health':
                             vitaminDScore += 3
-                            vitaminCScore += 3
+                            vitaminCScore += 5
                             vitaminEScore += 5
                             break
                     }
                 case 4:
                     switch(userAnswers[qnum]){
                         case 'Muscle recovery':
-                            VitaminCScore += 2
+                            VitaminCScore += 4
                             vitaminEScore += 2
                             vitaminB6Score +=2
                             vitaminB12Score += 2
@@ -249,8 +249,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                     case 'Great':
                         break
                     case 'Average':
-                        vitaminAScore += 1
-                        vitaminDScore +=1
+                        vitaminAScore += 3
+                        vitaminDScore +=3
                         vitaminB6Score += 1
                         vitaminB12Score += 1
                         break
@@ -264,8 +264,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 2:
                 switch(userAnswers[qnum]){
                     case 'Gut Health':
-                        vitaminDScore += 2
-                        vitaminCScore += 2
+                        vitaminDScore += 4
+                        vitaminCScore += 4
                         vitaminAScore += 3
                         break
                     case 'Indigestion':
@@ -335,7 +335,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                         break
                     case 'Wrinkles':
                         vitaminCScore += 2
-                        vitaminEScore += 4
+                        vitaminEScore += 6
                         vitaminAScore += 2
                         break
                     case 'General aging':
@@ -350,7 +350,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                     case 'Yes':
                         vitaminAScore +=2
                         vitaminCScore +=2
-                        vitaminEScore += 1
+                        vitaminEScore += 5
                         break
                     case 'No':
                         break
@@ -380,7 +380,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 5:
                 switch(userAnswers[qnum]){
                     case 'Strength':
-                        vitaminEScore += 2
+                        vitaminEScore += 3
                         break
                     case 'Growth':
                         vitaminAScore +=2
@@ -423,8 +423,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                         vitaminB12Score +=1
                         vitaminB9Score += 3
                         vitaminB6Score += 1
-                        vitaminCScore +=1
-                        vitaminDScore +=1
+                        vitaminCScore +=3
+                        vitaminDScore +=3
                         break
                     case 'No':
                         break
@@ -467,8 +467,8 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
                     vitaminAScore += 3
                     break
                 case 'Once or twice':
-                    vitaminCScore += 1
-                    vitaminAScore += 1
+                    vitaminCScore += 3
+                    vitaminAScore += 3
                     break
                 case 'Three or more times':
                     break
@@ -481,7 +481,7 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
                     vitaminAScore += 3
                     break
                 case 'Once or twice':
-                    vitaminKScore += 1
+                    vitaminKScore += 6
                     vitaminAScore += 1
                     break
                 case 'Three or more times':
@@ -559,7 +559,7 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
                     vitaminB1Score += 1
                     vitaminB12Score += 1
                     vitaminB6Score += 2
-                    vitaminAScore += 2
+                    vitaminAScore += 5
                     break
                 case 'No':
                     break
@@ -568,9 +568,42 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
     
     }
 } 
-
+// Create an array of objects with vitamin names and scores
+const vitaminArray = [
+    { vitamin: 'A', score: vitaminAScore },
+    { vitamin: 'B1', score: vitaminB1Score },
+    { vitamin: 'B2', score: vitaminB2Score },
+    { vitamin: 'B3', score: vitaminB3Score },
+    { vitamin: 'B5', score: vitaminB5Score },
+    { vitamin: 'B6', score: vitaminB6Score },
+    { vitamin: 'B9', score: vitaminB9Score },
+    { vitamin: 'B12', score: vitaminB12Score },
+    { vitamin: 'Biotin', score: biotinScore },
+    { vitamin: 'C', score: vitaminCScore },
+    { vitamin: 'Choline', score: cholineScore },
+    { vitamin: 'D', score: vitaminDScore },
+    { vitamin: 'E', score: vitaminEScore },
+    { vitamin: 'K', score: vitaminKScore },
+  ];
+  
+  // Sort the array in descending order based on scores
+  vitaminArray.sort((a, b) => b.score - a.score);
+  
+  // Get the top five entries
+  const topFiveVitamins = vitaminArray.slice(0, 5);
+  
+  // Create an array to store the recommended vitamins
+  const vitaminRec = [];
+  
+  // Add the top five vitamins to the recommendation array
+  topFiveVitamins.forEach(({ vitamin }) => {
+    vitaminRec.push(vitamin);
+  });
+  
+  console.log("Top Five Vitamins:", vitaminRec);
+/*
 const vitaminRec = []; // This will be used to send fetch request to the backend database
-let threshold = 10; // An arbitrary number, 10 does not mean anything. NEED TO DO MORE TESTING TO FIND A GOOD THRESHOLD
+let threshold = 3; // An arbitrary number, 3 does not mean anything
 if (vitaminAScore >= threshold) {
     vitaminRec.push('A')
 }
@@ -614,6 +647,7 @@ if (vitaminKScore >= threshold) {
     vitaminRec.push('K');
 }
 console.log(vitaminRec);
+*/
 if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
     let vitaminData = {}
     fetch('http://localhost:3000/Api/calculateVitamins', {
