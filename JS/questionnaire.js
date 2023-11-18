@@ -180,7 +180,7 @@ prevBtn.onclick = () => {
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillPercentage = 5;
+let fillAmount = 300 / 16;
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -198,11 +198,11 @@ function fillCapsule() {
     if(isFirstClick){
         isFirstClick = false;
         innerRect.style.fill = "url(#colorGradient)";
-        innerRect.style.width = `${fillPercentage}%`;
+        innerRect.style.width = `${fillAmount}px`;
     }
-    else if (fillPercentage <= 100) {
-        fillPercentage += 5;
-        innerRect.style.width = `${fillPercentage}%`;
+    else if (fillAmount <= 300) {
+        fillAmount += 300 / 16;
+        innerRect.style.width = `${fillAmount}px`;
     }
 
     //Animation
@@ -218,8 +218,8 @@ function fillCapsule() {
 
 function unfillCapsule(){
     const innerRect = document.getElementById("innerRect");
-    fillPercentage -= 5;
-    innerRect.style.width = `${fillPercentage}%`;
+    fillAmount -= 300 / 16;
+    innerRect.style.width = `${fillAmount}px`;
 }
 
 // Define a function to show questions from a given set
@@ -421,9 +421,9 @@ function fillCapsule2() {
     currentShape = (currentShape % 5) + 1;
 
     //Fill 
-    if (fillPercentage <= 100) {
-        fillPercentage += 5;
-        innerRect2.style.width = `${fillPercentage}%`;
+    if (fillAmount <= 300) {
+        fillAmount += 300 / 16;
+        innerRect2.style.width = `${fillAmount}px`;
     }
 
     //Animation
@@ -439,8 +439,8 @@ function fillCapsule2() {
 
 function unfillCapsule2(){
     const innerRect2 = document.getElementById("innerRect2");
-    fillPercentage2 -= 5;
-    innerRect2.style.width = `${fillPercentage2}%`;
+    fillAmount -= 300 / 16;
+    innerRect2.style.width = `${fillAmount}px`;
 }
 
 // Example function for transitioning to the next section
@@ -452,7 +452,7 @@ function showResults() {
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
     const innerRect2 = document.getElementById("innerRect2");
-    innerRect2.style.width = `${fillPercentage}%`;
+    innerRect2.style.width = `${fillAmount}px`;
 
     $(".lifestyle").fadeOut(500);
 
