@@ -59,36 +59,79 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 case 2:
                     switch(userAnswers[y]){
                         case 'Resistance':
+                            vitaminDScore += 4
+                            vitaminB6Score += 4
+                            vitaminB12Score += 4
                             break
                         case 'High-intensity':
+                            vitaminB12Score += 2
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 3
                             break
                         case 'Endurance':
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 3
                             break
                         case 'None of these':
+                            vitaminDScore += 2
                             break
                 }
                 case 3:
                     switch(userAnswers[y]){
                         case 'Performance':
+                            vitaminB12Score += 1
+                            vitaminB1Score += 1
+                            vitaminB2Score += 1
+                            vitaminB3Score += 1
+                            vitaminB6Score += 2
+                            VitaminCScore += 3
+                            vitaminEScore += 4
                             break
                         case 'Breaking a sweat':
+                            vitaminB1Score += 2
+                            vitaminB2Score += 2
+                            vitaminB3Score += 2
+                            vitaminB6Score += 2
+                            vitaminCScore += 3
                             break
                         case 'Muscle toning':
+                            vitaminB6Score +=3
+                            vitaminB12Score +=3
                             break
                         case 'Muscle building':
+                            vitaminB6Score +=3
+                            vitaminB6Score += 3
+                            vitaminDScore +=3
                             break
                         case 'General health':
+                            vitaminDScore += 3
+                            vitaminCScore += 3
+                            vitaminEScore += 5
                             break
                     }
                 case 4:
                     switch(userAnswers[y]){
                         case 'Muscle recovery':
+                            VitaminCScore += 2
+                            vitaminEScore += 2
+                            vitaminB6Score +=2
+                            vitaminB12Score += 2
                             break
                         case 'Muscle cramping':
+
                             break
                         case 'Hydration':
+                            vitaminCScore += 4
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'Joints':
+                            vitaminDScore += 2
+                            vitaminCScore += 4
                             break
                         case 'None':
                             break
@@ -103,16 +146,16 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 case 1: // This means we are at the first question
                     switch(userAnswers[y]){
                         case 'Yes':
-                            vitaminDScore +=1 
-                            vitaminB12Score += 4
+                            vitaminB6Score += 2
                             break
                         case 'No':
-                            vitaminDScore +=3
+                            
                             break
                 }
                 case 2:
                     switch(userAnswers[y]){
                         case 'Yes':
+                            vitaminB6Score += 2
                             break
                         case 'No':
                             break
@@ -120,6 +163,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 case 3:
                     switch(userAnswers[y]){
                         case 'Yes':
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'No':
                             break
@@ -127,17 +172,28 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 case 4:
                     switch(userAnswers[y]){
                         case 'Worked up':
+                            vitaminB5Score += 4
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                         case 'Drained':
+                            vitaminCScore += 4
                             break
                     }
                 case 5:
                     switch(userAnswers[y]){
                         case 'Rarely':
+                            vitaminB5Score +=2
+                            vitaminB6Score +=2
                             break
                         case 'Two to three days':
+                            vitaminCScore += 3
                             break
                         case 'Every day':
+                            vitaminDScore += 3
+                            vitaminB5Score += 2
+                            vitaminB6Score += 2
+                            vitaminB12Score += 2
                             break
                     }
                 }
@@ -149,6 +205,10 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 1: // This means we are at the first question
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminB6Score += 2
+                        vitaminB9Score += 4
+                        vitaminB12Score += 2
+                        vitaminDScore += 2
                         break
                     case 'No':
                         
@@ -157,6 +217,9 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 2:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminB5Score += 2
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
                         break
                     case 'No':
                         break;
@@ -164,6 +227,9 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 3:
                 switch(userAnswers[y]){ // Ask jeremiah to word this question more nicely lol
                     case 'Yes':
+                        vitaminB5Score += 3
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
                         break
                     case 'No':
                         break
@@ -171,37 +237,67 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 
         }
     } // End of Brain
-
+// Skipping digestion for now, need better questions
     case 'digestion': // We are in digestion category
     digestionQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
     for(let y = 0; qnum < digestionQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
-            case 1: // This means we are at the first question
+            case 1: 
                 switch(userAnswers[x]){
-                    case 'Less than once a day':
+                    case 'Great':
                         break
-                    case 'About once a day':
+                    case 'Average':
+                        vitaminAScore += 1
+                        vitaminDScore +=1
+                        vitaminB6Score += 1
+                        vitaminB12Score += 1
                         break
-                    case 'More than once a day':
+                    case 'Ocassional Issues':
+                        vitaminDScore += 3
+                        vitaminAScore += 5
+                        vitaminB6Score += 3
+                        vitaminB12Score += 3
                         break
-                    case 'Irregular':
-                        break
-            }
+                }
             case 2:
                 switch(userAnswers[x]){
-                    case 'Gas':
-                        break
-                    case 'Bloating':
-                        break
-                    case 'Burping':
+                    case 'Gut Health':
+                        vitaminDScore += 2
+                        vitaminCScore += 2
+                        vitaminAScore += 3
                         break
                     case 'Indigestion':
+                        vitaminB9Score += 5
+                        vitaminB6Score += 2
+                        vitaminAScore += 2
+                        vitaminCScore +=2
+                        vitaminEScore += 5
+                        break
+                    case 'Constipation':
+                        vitaminB9Score += 6
+                        break
+            }
+            case 3:
+                switch(userAnswers[x]){
+                    case 'Gas':
+                        vitaminB12Score += 2
+                        vitaminB6Score += 2
+                        break
+                    case 'Bloating':
+                        vitaminB6Score += 4
+                        break
+                    case 'Burping':
+                        vitaminB6Score +=3
+                        break
+                    case 'Indigestion':
+                        vitaminB12+= 2
                         break
                     case 'None':
                         break
             }
         }
     } // End of Digestion
+
     case 'cosmetics': // We are in HairSkinNails category
     hairSkinNailsQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < hairSkinNailsQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
@@ -209,12 +305,19 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 1: // This means we are at the first question
                 switch(userAnswers[y]){
                     case 'Dry':    
+                    vitaminEScore += 3
+                    vitaminCScore += 4
                         break
                     case 'Oily':    
+                    vitaminAScore += 3
+                    vitaminEScore += 2
                         break
                     case 'Uneven':
+                        vitaminKScore += 5 
                         break
                     case 'Dull':
+                        vitaminCScore += 3
+                        vitaminB3Score += 5
                         break
                     case 'Pretty good':
                         break
@@ -222,14 +325,20 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 2:
                 switch(userAnswers[y]){
                     case 'Breakouts':
+                        vitaminAScore += 3
                         break
                     case 'Hyperpigmentation':
+                        vitaminCScore +=3
+                        vitaminAScore +=3
                         break
                     case 'Wrinkles':
-                        break
-                    case 'Elasticity':
+                        vitaminCScore += 2
+                        vitaminEScore += 4
+                        vitaminAScore += 2
                         break
                     case 'General aging':
+                        vitaminDScore += 3
+                        vitaminKScore += 2
                         break
                     case 'None':
                         break
@@ -237,48 +346,50 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 3:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminAScore +=2
+                        vitaminCScore +=2
+                        vitaminEScore += 1
                         break
                     case 'No':
                         break
             }
             case 4:
                 switch(userAnswers[y]){
-                    case 'Yes':
+                    case 'Starting to thin':
+                        vitaminEScore += 3
                         break
-                    case 'No':
+                    case 'Dry':
+                        vitaminEScore +=3
+                        vitaminAScore += 2
                         break
+                    case 'Damaged':
+                        vitaminCScore += 2
+                        vitaminAScore += 2
+                        break
+                    case 'Growing slowly':
+                        vitaminB5Score += 3
+                        vitaminB6Score += 2
+                        vitaminB12Score += 2
+                        break
+                    case "None of these":
+                        break
+                    
             }
             case 5:
                 switch(userAnswers[y]){
-                    case 'Yes':
-                        break
-                    case 'No':
-                        break
-            }
-            case 6:
-                switch(userAnswers[y]){
-                    case 'Starting to thin':
-                        break
-                    case 'Dry':
-                        break
-                    case 'Damaged':
-                        break
-                    case 'Growing Slowly':
-                        break
-                    case 'None of these':
-                        break
-            }
-            case 7:
-                switch(userAnswers[y]) {
                     case 'Strength':
+                        vitaminEScore += 2
                         break
                     case 'Growth':
+                        vitaminAScore +=2
+                        vitaminCScore +=2
                         break
                     case 'Condition':
+                        vitaminB12Score += 2
                         break
                     case 'None of these':
                         break
-                }
+            }
         }
     } // End of hairSkinNails
     case 'immunity': // We are in Immunity category
@@ -288,14 +399,18 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 1: // This means we are at the first question
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminCScore +=2
+                        vitaminDScore +=2
                         break
                     case 'No':
-                        vitaminDScore +=3
+                        vitaminDScore +=1
                         break
             }
             case 2:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminCScore += 3
+                        vitaminDScore +=1
                         break
                     case 'No':
                         break
@@ -303,6 +418,11 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 3:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminB12Score +=1
+                        vitaminB9Score += 3
+                        vitaminB6Score += 1
+                        vitaminCScore +=1
+                        vitaminDScore +=1
                         break
                     case 'No':
                         break
@@ -310,6 +430,8 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 4:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminCScore +=3
+                        vitaminDScore +=3
                         break
                     case 'No':
                         break
@@ -317,6 +439,10 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             case 5:
                 switch(userAnswers[y]){
                     case 'Yes':
+                        vitaminKScore += 6
+                        vitaminB12Score +=1
+                        vitaminB9Score += 1
+                        vitaminB6Score += 1
                         break
                     case 'No':
                         break
