@@ -13,7 +13,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-let sumTotalQ = 0
+let sumTotalQ = 23
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -34,30 +34,32 @@ $(".cont-btn").on("click", function () {
 
 function giveTotalQuestion(selectedGoals) {
     console.log(selectedGoals)
+    let total = 0
     for (let x = 0; x < selectedGoals.length; ++x)
     {
         switch(selectedGoals[x]){
             case 'fitness':
-                sumTotalQ += 4
+                total += 4
                 break
             case 'energy':
-                sumTotalQ += 5
+                total += 5
                 break
             case 'brain':
-                sumTotalQ += 3
+                total += 3
                 break
             case 'digestion':
-                sumTotalQ += 3
+                total += 3
                 break
             case 'cosmetic':
-                sumTotalQ += 5
+                total += 5
                 break
             case 'immunity':
-                sumTotalQ += 5
+                total += 5
                 break
         }
     }
     console.log("Total amount of questions: " + sumTotalQ)
+    return total
 }
 function iterateThroughGoals(goals) {
     let currentGoalIndex = 0;
@@ -180,7 +182,7 @@ prevBtn.onclick = () => {
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillAmount = 300 / 16;
+let fillAmount = 300 / sumTotalQ + 16;
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -197,11 +199,14 @@ function fillCapsule() {
     //Fill 
     if(isFirstClick){
         isFirstClick = false;
+        console.log(fillAmount)
         innerRect.style.fill = "url(#colorGradient)";
         innerRect.style.width = `${fillAmount}px`;
     }
     else if (fillAmount <= 300) {
-        fillAmount += 300 / 16;
+        console.log(sumTotalQ)
+        fillAmount += 300 / (sumTotalQ + 16);
+        console.log(fillAmount)
         innerRect.style.width = `${fillAmount}px`;
     }
 
@@ -218,7 +223,8 @@ function fillCapsule() {
 
 function unfillCapsule(){
     const innerRect = document.getElementById("innerRect");
-    fillAmount -= 300 / 16;
+    fillAmount -= 300 / (sumTotalQ + 16);
+    console.log(fillAmount)
     innerRect.style.width = `${fillAmount}px`;
 }
 
@@ -422,7 +428,7 @@ function fillCapsule2() {
 
     //Fill 
     if (fillAmount <= 300) {
-        fillAmount += 300 / 16;
+        fillAmount += 300 / (sumTotalQ + 16);
         innerRect2.style.width = `${fillAmount}px`;
     }
 
@@ -439,8 +445,9 @@ function fillCapsule2() {
 
 function unfillCapsule2(){
     const innerRect2 = document.getElementById("innerRect2");
-    fillAmount -= 300 / 16;
+    fillAmount -= 300 / (sumTotalQ + 16);
     innerRect2.style.width = `${fillAmount}px`;
+    console.log(fillAmount)
 }
 
 // Example function for transitioning to the next section
