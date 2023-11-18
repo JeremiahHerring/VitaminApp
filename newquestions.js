@@ -65,7 +65,7 @@ const specializedQuestionSets = {
         },
         {
           numb: 3,
-          question: "Do you want help with your short-term memorry?",
+          question: "Do you want help with your short-term memory?",
           question_desc: "You find yourself forgetting small things like the name of a movie you saw last week",
           options: ["Yes", 
                     "No"],
@@ -82,7 +82,7 @@ const specializedQuestionSets = {
         },
         {
           numb: 2,
-          question: "Do you sometimes have trouble stayinig asleep?",
+          question: "Do you sometimes have trouble staying asleep?",
           question_desc: "",
           options: ["Yes", 
                     "No"],
@@ -159,7 +159,7 @@ const specializedQuestionSets = {
         },
         {
           numb: 2,
-          question: "What are your skin conerns?",
+          question: "What are your skin concerns?",
           question_desc: "",
           options: ["Breakouts", 
                     "Hyperpigmentation", 
