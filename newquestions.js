@@ -113,18 +113,27 @@ const specializedQuestionSets = {
     ],
    
     digestion: [
+      {
+        numb: 1,
+        question: "How would you describe your overall digestive health?",
+        question_desc: "",
+        options: ["Great",
+                  "Average", 
+                  "Ocassional issues",
+                ],
+      },
         {
-          numb: 1,
-          question: "Which best describes your bowel movements, usually?",
+          
+          numb: 2,
+          question: "Which are you the most concerned about?",
           question_desc: "",
-          options: ["Less than once a day", 
-                    "About once a day",
-                    "More than once a day",
-                    "Irregular"
+          options: ["Gut Health", 
+                    "Indigestion",
+                    "Constipation",
                   ],
         },
         {
-          numb: 2,
+          numb: 3,
           question: "Do you regularly experience any of the following?",
           question_desc: "More than three times per week",
           options: ["Gas", 
@@ -159,7 +168,7 @@ const specializedQuestionSets = {
                     "General aging",
                     "None"
                   ],
-        },
+        }, /* This is redundant if they answer dry on num 1
         {
           numb: 3,
           question: "Do you have dry skin on your body?",
@@ -167,25 +176,25 @@ const specializedQuestionSets = {
           options: ["Yes", 
                     "No" 
                   ],
-        },
+        }, */
         {
-          numb: 4,
+          numb: 3,
           question: "Not including acne, do you experience any skin conditions?",
           question_desc: "",
           options: ["Yes",
                     "No"
                   ]
-        },
+        }, /* how am i gonna assign vitamins for this Q
         {
-          numb: 5,
+          numb: 4,
           question: "Do you live in a city or industrial area?",
           question_desc: "",
           options: ["Yes",
                     "No"
                   ]
-        },
+        }, */
         {
-          numb: 6,
+          numb: 4,
           question: "Your hair is:",
           question_desc: "",
           options: ["Starting to thin",
@@ -196,7 +205,7 @@ const specializedQuestionSets = {
                   ]
         },
         {
-          numb: 7,
+          numb: 5,
           question: "You're looking to improve your nail:",
           question_desc: "",
           options: ["Strength",
