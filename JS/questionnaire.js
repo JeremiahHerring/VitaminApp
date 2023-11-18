@@ -336,6 +336,7 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+    vitaminsData = giveRecommendation(userAnswers,selectedGoals)
     $(".lifestyle-quiz").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
