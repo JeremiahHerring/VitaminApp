@@ -13,7 +13,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-let sumTotalQ = 5;
+let sumTotalQ = 23;
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -25,6 +25,7 @@ $(".cont-btn").on("click", function () {
     if (selectedGoals.length > 0) {
         // Display questions based on selected goals
         sumTotalQ = giveTotalQuestion(selectedGoals);
+        console.log("This is sumtotalQ: " + sumTotalQ)
         iterateThroughGoals(selectedGoals);
     } else {
         // If no checkbox is checked, you can show an alert or handle it as needed
@@ -38,27 +39,27 @@ function giveTotalQuestion(selectedGoals) {
     for (let x = 0; x < selectedGoals.length; ++x)
     {
         switch(selectedGoals[x]){
-            case 'Fitness':
+            case 'fitness':
                 total += 4
                 break
-            case 'Energy':
+            case 'energy':
                 total += 5
                 break
-            case 'Brain':
+            case 'brain':
                 total += 3
                 break
-            case 'Digestion':
+            case 'digestion':
                 total += 3
                 break
-            case 'Cosmetic':
+            case 'cosmetics':
                 total += 5
                 break
-            case 'Immunity':
+            case 'immunity':
                 total += 5
                 break
         }
     }
-    console.log("Total amount of questions: " + sumTotalQ)
+    console.log("Total amount of questions: " + total)
     return total
 }
 
@@ -422,7 +423,8 @@ let vitaminsData = {} // This is gonna hold all of the data from the server.js
 function showResults() {
     giveRecommendation(userAnswers, selectedGoals)
         .then(vitaminsData => {
-            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
+            // We have Benefits_Description, Sources, ID, Vitamin_Name, Deficiency_Symptoms
+            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.Benefits_Description);
             $(".lifestyle-quiz").fadeOut(500);
 
             // Show the "lifestyle-quiz" section after a delay
