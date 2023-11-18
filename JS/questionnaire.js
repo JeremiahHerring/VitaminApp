@@ -193,7 +193,7 @@ prevBtn.onclick = () => {
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillAmount = 0;
+let fillAmount = 300 / (sumTotalQ + 16);
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -206,8 +206,6 @@ function fillCapsule() {
     });
     currentParticleElement.style.display = "block";
     currentParticle = (currentParticle % 5) + 1;
-    
-    fillAmount += 300 / (sumTotalQ + 16); 
 
     //Fill 
     if(isFirstClick){
@@ -533,7 +531,10 @@ function fillCapsule2() {
 
     //Fill 
     if (fillAmount <= 300) {
+        console.log(sumTotalQ)
+        console.log(fillAmount)
         fillAmount += 300 / (sumTotalQ + 16);
+        console.log(fillAmount)
         innerRect2.style.width = `${fillAmount}px`;
     }
 
