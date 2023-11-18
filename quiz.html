@@ -282,7 +282,7 @@
                             <h2 class="name">Vitamin A</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a href="" class="button" id="btn1" target="_blank">Learn More</a>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -298,7 +298,7 @@
                             <h2 class="name">Vitamin B</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a href="" class="button" id="btn2" target="_blank">Learn More</a>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -314,7 +314,7 @@
                             <h2 class="name">Vitamin C</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a href="" class="button" id="btn3" target="_blank">Learn More</a>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -329,7 +329,7 @@
                         <div class="card-content">
                             <h2 class="name">Vitamin D</h2>
                             <p class="description">Vitamin Desc</p>
-                            <a href="" class="button" id="btn4" target="_blank">Learn More</a>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -344,7 +344,7 @@
                         <div class="card-content">
                             <h2 class="name">Vitamin E</h2>
                             <p class="description">Vitamin Desc</p>
-                            <a href="" class="button" id="btn5" target="_blank">Learn More</a>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -354,6 +354,22 @@
             <div class="swiper-button-prev swiper-navBtn"></div>
             <div class="swiper-pagination"></div>
         </div>
+        <div class="popup" id="popup1">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <h1>Vitamin Description</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aperiam libero voluptatibus esse deserunt architecto voluptates aspernatur eveniet? Architecto earum vero, dolores harum laborum atque. Accusantium iusto iure reiciendis. Iure?</p>
+            </div>
+        </div>
+    </section>
+</section>
+<script>
+    // Your JavaScript code goes here
+    function togglePopup() {
+        document.getElementById("popup1").classList.toggle('active');
+    }
+</script>
     </section>
 </section>
 

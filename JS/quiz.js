@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
 const continueBtn = document.querySelector('.continue-btn');
 const textBlocks = document.querySelectorAll(".text-block");
 const questionnaireSection = document.querySelector('.questionnaire');
@@ -10,7 +9,6 @@ const helloSection = document.querySelector('.hello');
 const quizSection = document.querySelector('.quiz');
 const userNameInput = document.querySelector('.question-name #user-name');
 const userGreeting = document.querySelector('.hello #user-greeting');
-
 
 let currentIndex = 0;
 
