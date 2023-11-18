@@ -108,7 +108,11 @@ function initializeQuiz(initialGoal) {
 
 function updateQuizTitle(setName) {
     const quizTitle = document.querySelector('.quiz-box h1');
-    quizTitle.textContent = setName;
+    
+    // Convert the first character to uppercase and concatenate with the rest of the string
+    const formattedSetName = setName.charAt(0).toUpperCase() + setName.slice(1);
+
+    quizTitle.textContent = formattedSetName;
 }
 
 function updateLifestyleTitle(setName) {
@@ -241,7 +245,6 @@ function lifestyleOptionSelected(answer) {
     answer.classList.add('active');
     isOptionSelected = true;
     $(".lifestyle-footer .next-btn1").addClass('active');
-
     });
 }
 

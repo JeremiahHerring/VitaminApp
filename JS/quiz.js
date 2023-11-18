@@ -102,9 +102,9 @@ $(document).ready(function () {
     });
 
     $(".next-question").click(function () {
-        $(".basics").animate({ left: "-100%" }, 500, function () {
+        $(".basics").fadeOut(500, function () {
             $(this).hide();
-            $(".questions").show().animate({ left: "0" }, 500);
+            $(".questions").fadeIn(500);
         });
     });
 })
