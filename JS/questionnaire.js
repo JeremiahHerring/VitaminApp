@@ -18,7 +18,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-let sumTotalQ = 23;
+let sumTotalQ = 0;
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -43,22 +43,22 @@ function giveTotalQuestion(selectedGoals) {
     for (let x = 0; x < selectedGoals.length; ++x)
     {
         switch(selectedGoals[x]){
-            case 'Fitness':
+            case 'fitness':
                 total += 4
                 break
-            case 'Energy':
+            case 'energy':
                 total += 5
                 break
-            case 'Brain':
+            case 'brain':
                 total += 3
                 break
-            case 'Digestion':
+            case 'digestion':
                 total += 3
                 break
-            case 'Cosmetic':
+            case 'cosmetics':
                 total += 5
                 break
-            case 'Immunity':
+            case 'immunity':
                 total += 5
                 break
         }
@@ -193,7 +193,7 @@ prevBtn.onclick = () => {
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillAmount = 300 / (sumTotalQ + 16);
+let fillAmount = 0;
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -206,6 +206,8 @@ function fillCapsule() {
     });
     currentParticleElement.style.display = "block";
     currentParticle = (currentParticle % 5) + 1;
+    
+    fillAmount += 300 / (sumTotalQ + 16); 
 
     //Fill 
     if(isFirstClick){
@@ -216,7 +218,6 @@ function fillCapsule() {
     }
     else if (fillAmount <= 300) {
         console.log(sumTotalQ)
-        fillAmount += 300 / (sumTotalQ + 16);
         console.log(fillAmount)
         innerRect.style.width = `${fillAmount}px`;
     }
