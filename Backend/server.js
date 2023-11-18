@@ -4,15 +4,12 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 
 const app = express() 
-app.use(cors({
-  origin: 'http://127.0.0.1:5500', // Adjust this to the actual origin of your frontend
-  methods: 'POST',
-}))
+app.use(cors())
 app.use(bodyParser.json())
 
 
 const connection = mysql2.createConnection({
-    host: "localhost",
+    host: "localhos",
     database: "vitaminsdb",
     user: "tester",
     password: "test"
