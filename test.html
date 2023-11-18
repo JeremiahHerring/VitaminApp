@@ -2,37 +2,130 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitamin App</title>
+    <title>Document</title>
     <link rel="stylesheet" href="styles/test.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Luckiest+Guy&family=Pixelify+Sans:wght@500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+
 </head>
 <body>
     <section class="questions section">
-    <main class="main">
-        <section class="quiz-section">
-            <div class="quiz-box">
-                <h1> Vitamin Questionnare</h1>
-    
+    <section class="results-section">
+        <div class="made-for-section" style="background: url('assets/made-for.jpg') center/cover no-repeat">
+            <div class="made-for-text">
+                <h1>Made for</h1><br>
+                <h5>`Person name`</h5>
+            </div>
+        </div>
+        <h1>Here are your results</h1>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay" id="overlay-1"></span>
 
-                <h2 class="question-text"></h2>
+                            <div class="card-image">
+                                <img src="assets/pill1.webp" alt="" class="card-img">
+                            </div>
+                        </div>
 
-                <div class="option-list">
+                        <div class="card-content">
+                            <h2 class="name">Vitamin A</h2>
+                            <p class="description">Vitamin Desc</p>
+
+                            <a class="button" id="btn1" onclick="togglePopup()">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay" id="overlay-2"></span>
+
+                            <div class="card-image">
+                                <img src="assets/pill2.webp" alt="" class="card-img">
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Vitamin B</h2>
+                            <p class="description">Vitamin Desc</p>
+
+                            <a class="button" id="btn2" onclick="togglePopup()">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay" id="overlay-3"></span>
+
+                            <div class="card-image">
+                                <img src="assets/pill3.webp" alt="" class="card-img">
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Vitamin C</h2>
+                            <p class="description">Vitamin Desc</p>
+
+                            <a class="button" id="btn3" onclick="togglePopup()">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay" id="overlay-4"></span>
+
+                            <div class="card-image">
+                                <img src="assets/pill4.webp" alt="" class="card-img">
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Vitamin D</h2>
+                            <p class="description">Vitamin Desc</p>
+                            <a class="button" id="btn4" onclick="togglePopup()">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay" id="overlay-5"></span>
+
+                            <div class="card-image">
+                                <img src="assets/pill5.webp" alt="" class="card-img">
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Vitamin E</h2>
+                            <p class="description">Vitamin Desc</p>
+                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="quiz-footer">
-                    <button class="prev-btn">Prev</button>
-                    <button class="next-btn">Next</button>
-                </div>
-        </section>
-    </main>
+            </div>
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="popup" id="popup1">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <h1>Vitamin Description</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aperiam libero voluptatibus esse deserunt architecto voluptates aspernatur eveniet? Architecto earum vero, dolores harum laborum atque. Accusantium iusto iure reiciendis. Iure?</p>
+            </div>
+        </div>
+    </section>
 </section>
+<script>
+    // Your JavaScript code goes here
+    function togglePopup() {
+        document.getElementById("popup1").classList.toggle('active');
+    }
+</script>
+    <script src="JS/swiper-bundle.min.js"></script>
 
-
-    <script type="module" src="newquestions.js"></script>
-    <script type="module" src="JS/recommendationSystem.js"></script> 
-    <script type="module" src="test.js"></script>
+    <script type="module"src="test.js"></script>
 </body>
 </html>
 
