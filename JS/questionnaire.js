@@ -8,7 +8,7 @@ const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
 const prevBtn = document.querySelector('.prev-btn');
 
-
+// Hello World
 prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
@@ -53,28 +53,30 @@ function iterateThroughGoals(goals) {
     displayNextGoal();
 
     // Update the nextBtn click event to progress through goals
+// Update the nextBtn click event to progress through goals
+ // Update the nextBtn click event to progress through goals
     nextBtn.onclick = () => {
-        if (isOptionSelected) {
-            if (currentQuestionSet && questionCount < currentQuestionSet.length - 1) {
-                // Advance to the next question in the current set
-                questionCount++;
-                showQuestions(questionCount, currentQuestionSet);
-                questionNumb++;
-                questionTotal++;
-                nextBtn.classList.remove('active');
-                if (questionNumb >= 2) {
-                    prevBtn.classList.add('active');
+        if (nextBtn.classList.contains('active')) {
+            if (isOptionSelected) {
+                if (currentQuestionSet && questionCount < currentQuestionSet.length - 1) {
+                    // Advance to the next question in the current set
+                    questionCount++;
+                    showQuestions(questionCount, currentQuestionSet);
+                    questionNumb++;
+                    questionTotal++;
+                    nextBtn.classList.remove('active');
+                    if (questionNumb >= 2) {
+                        prevBtn.classList.add('active');
+                    }
+                    quizBox.scrollTop = 0;
+                } else {
+                    // Move to the next goal if available
+                    displayNextGoal();
                 }
-                quizBox.scrollTop = 0;
-            } else {
-                // Move to the next goal if available
-                displayNextGoal();
             }
         }
     };
-}
-        
-
+};
 // Function to initialize the quiz with the selected goal
 function initializeQuiz(initialGoal) {
     let currentQuestion = 0;
@@ -124,7 +126,6 @@ function changeQuestionSet(newSetName) {
     showQuestions(questionCount, currentQuestionSet);
     updateQuizTitle(newSetName);
 }
-
 
 let userAnswers = [];
 
@@ -211,16 +212,23 @@ function showLifestyleQuestions(index, questionSet) {
 // Get what the option the user clicked on
 function optionSelected(answer) {
     const selectedOptionText = answer.textContent; // Get the text content of the selected option
-    // Store the user's choice in the userAnswers array
-    userAnswers[questionTotal - 1] = selectedOptionText;
-    console.log(userAnswers);
-    const allOptions = document.querySelectorAll('.option-list .option');
-    allOptions.forEach(option => {
-        option.classList.remove('active');
-    });
-    answer.classList.add('active');
-    isOptionSelected = true;
-    nextBtn.classList.add('active');
+
+    // Check if the selected option is not empty or undefined
+    if (selectedOptionText.trim() !== "") {
+        // Store the user's choice in the userAnswers array
+        userAnswers[questionTotal - 1] = selectedOptionText;
+        console.log(userAnswers);
+        const allOptions = document.querySelectorAll('.option-list .option');
+        allOptions.forEach(option => {
+            option.classList.remove('active');
+        });
+        answer.classList.add('active');
+        isOptionSelected = true;
+        nextBtn.classList.add('active');
+    } else {
+        // Show an alert or handle it in a way that prompts the user to select an option
+        alert("Please select an option before proceeding.");
+    }
 }
 
 function lifestyleOptionSelected(answer) {
@@ -277,22 +285,24 @@ function initializeLifestyleQuiz() {
 
     // Update the click event for the "Next" button
     $(".lifestyle-footer .next-btn1").on("click", function () {
-        if (isOptionSelected) {
-            if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
-                // If there are more questions, show the next question
-                currentLifestyleQuestionIndex++;
-                showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
-                lifestyleQuestionNumb++;
+        if ($(".lifestyle-footer .next-btn1").hasClass('active')) {
+            if (isOptionSelected) {
+                if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
+                    // If there are more questions, show the next question
+                    currentLifestyleQuestionIndex++;
+                    showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
+                    lifestyleQuestionNumb++;
 
-                // Reset isOptionSelected to false for the next question
-                isOptionSelected = false;
+                    // Reset isOptionSelected to false for the next question
+                    isOptionSelected = false;
 
-                // Enable the "Next" button
-                $(".lifestyle-footer .next-btn1").removeClass('active');
+                    // Enable the "Next" button
+                    $(".lifestyle-footer .next-btn1").removeClass('active');
 
-                if (lifestyleQuestionNumb >= 2) {
-                    $(".lifestyle-footer .prev-btn1").addClass('active');
-                }
+                    if (lifestyleQuestionNumb >= 2) {
+                        $(".lifestyle-footer .prev-btn1").addClass('active');
+                    }
+            }
             } else {
                 // If no more questions, transition to the next section or handle as needed
                 // For example, you can call a function to handle the transition
