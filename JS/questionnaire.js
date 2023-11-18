@@ -105,8 +105,8 @@ function iterateThroughGoals(goals) {
                     // Move to the next goal if available
                     displayNextGoal();
                 }
-                fillCapsule();
             }
+            fillCapsule();
         }
     };
 };
@@ -174,7 +174,6 @@ let questionTotal = 1
 prevBtn.onclick = () => {
     if (questionCount > 0) {
         // Go back to the previous question in the current set
-        unfillCapsule();
         questionCount--;
         showQuestions(questionCount, currentQuestionSet);
         questionNumb--;
@@ -183,13 +182,13 @@ prevBtn.onclick = () => {
         if (questionNumb <= 1) {
             prevBtn.classList.remove('active');
         }
-
+        unfillCapsule();
     }
 };
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillAmount = 300 / (sumTotalQ + 16);
+let fillAmount = 290 / (sumTotalQ + 16);
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -210,9 +209,9 @@ function fillCapsule() {
         innerRect.style.fill = "url(#colorGradient)";
         innerRect.style.width = `${fillAmount}px`;
     }
-    else if (fillAmount <= 300) {
+    else if (fillAmount <= 290) {
         console.log(sumTotalQ)
-        fillAmount += 300 / (sumTotalQ + 16);
+        fillAmount += 290 / (sumTotalQ + 16);
         console.log(fillAmount)
         innerRect.style.width = `${fillAmount}px`;
     }
@@ -230,7 +229,7 @@ function fillCapsule() {
 
 function unfillCapsule(){
     const innerRect = document.getElementById("innerRect");
-    fillAmount -= 300 / (sumTotalQ + 16);
+    fillAmount -= 290 / (sumTotalQ + 16);
     console.log(fillAmount)
     innerRect.style.width = `${fillAmount}px`;
 }
@@ -451,6 +450,8 @@ function showResults() {
 */
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
+    const innerRect2 = document.getElementById("innerRect2");
+    innerRect2.style.width = `${fillAmount}px`;
     $(".lifestyle").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
@@ -458,8 +459,6 @@ $(".next-question-lifestyle").one("click", function () {
         $(".lifestyle-quiz").fadeIn(500);
 
         // Initialize the lifestyle quiz
-        const innerRect2 = document.getElementById("innerRect2");
-        innerRect2.style.width = `${fillAmount}px`;
         initializeLifestyleQuiz();
     }, 500);
 });
@@ -479,8 +478,8 @@ function fillCapsule2() {
     currentShape = (currentShape % 5) + 1;
 
     //Fill 
-    if (fillAmount <= 300) {
-        fillAmount += 300 / (sumTotalQ + 16);
+    if (fillAmount <= 290) {
+        fillAmount += 290 / (sumTotalQ + 16);
         innerRect2.style.width = `${fillAmount}px`;
     }
 
@@ -497,7 +496,7 @@ function fillCapsule2() {
 
 function unfillCapsule2(){
     const innerRect2 = document.getElementById("innerRect2");
-    fillAmount -= 300 / (sumTotalQ + 16);
+    fillAmount -= 290 / (sumTotalQ + 16);
     innerRect2.style.width = `${fillAmount}px`;
     console.log(fillAmount)
 }
