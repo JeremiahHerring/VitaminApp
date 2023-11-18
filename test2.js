@@ -324,6 +324,7 @@ function initializeLifestyleQuiz() {
         if (isOptionSelected) {
             if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
                 // If there are more questions, show the next question
+                fillCapsule();
                 currentLifestyleQuestionIndex++;
                 showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
                 lifestyleQuestionNumb++;

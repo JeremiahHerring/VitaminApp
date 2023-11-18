@@ -55,7 +55,7 @@ function iterateThroughGoals(goals) {
     // Update the nextBtn click event to progress through goals
 // Update the nextBtn click event to progress through goals
  // Update the nextBtn click event to progress through goals
-    nextBtn.onclick = () => {
+nextBtn.onclick = () => {
         if (nextBtn.classList.contains('active')) {
             if (isOptionSelected) {
                 if (currentQuestionSet && questionCount < currentQuestionSet.length - 1) {
@@ -74,6 +74,7 @@ function iterateThroughGoals(goals) {
                     displayNextGoal();
                 }
             }
+            fillCapsule()
         }
     };
 };
@@ -145,8 +146,53 @@ prevBtn.onclick = () => {
         if (questionNumb <= 1) {
             prevBtn.classList.remove('active');
         }
+        unfillCapsule()
     }
 };
+
+let isFirstClick = true;
+let currentParticle = 1;
+let fillPercentage = 5;
+function fillCapsule() {
+    const innerRect = document.getElementById("innerRect");
+    const capsule = document.querySelector(".capsule");
+    const particles = document.querySelectorAll(".particle");
+    const currentParticleElement = document.querySelector(`.particle${currentParticle}`);
+    
+    //Particle
+    particles.forEach(particle => {
+        particle.style.display = "none"; // Hide all particles
+    });
+    currentParticleElement.style.display = "block";
+    currentParticle = (currentParticle % 5) + 1;
+
+    //Fill 
+    if(isFirstClick){
+        isFirstClick = false;
+        innerRect.style.fill = "url(#colorGradient)";
+        innerRect.style.width = `${fillPercentage}%`;
+    }
+    else if (fillPercentage <= 100) {
+        fillPercentage += 5;
+        innerRect.style.width = `${fillPercentage}%`;
+    }
+
+    //Animation
+    currentParticleElement.classList.add("animateDropAndDisappear");
+    setTimeout(() => {         
+        capsule.classList.add("wobble");
+        currentParticleElement.classList.remove("animateDropAndDisappear");
+        setTimeout(() => {
+            capsule.classList.remove("wobble");
+        }, 500);
+    }, 700);
+}
+
+function unfillCapsule(){
+    const innerRect = document.getElementById("innerRect");
+    fillPercentage -= 5;
+    innerRect.style.width = `${fillPercentage}%`;
+}
 
 // Define a function to show questions from a given set
 function showQuestionsFromSet(index) {
@@ -289,6 +335,7 @@ function initializeLifestyleQuiz() {
             if (isOptionSelected) {
                 if (currentLifestyleQuestionIndex < currentQuestionSet.length - 1) {
                     // If there are more questions, show the next question
+                    fillCapsule2()
                     currentLifestyleQuestionIndex++;
                     showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
                     lifestyleQuestionNumb++;
@@ -327,6 +374,44 @@ function prevLifestyleQuestion() {
             $(".lifestyle-footer .prev-btn1").removeClass('active');
         }
     }
+}
+
+let isFirstClick2 = true;
+let currentShape = 1;
+let fillPercentage2 = 5;
+function fillCapsule2() {
+    const innerRect2 = document.getElementById("innerRect2");
+    const capsule2 = document.querySelector(".capsule2");
+    const shapes = document.querySelectorAll(".shape");
+    const currentShapeElement = document.querySelector(`.shape${currentShape}`);
+    
+    //Particle
+    shapes.forEach(shape => {
+        shape.style.display = "none"; // Hide all particles
+    });
+    currentShapeElement.style.display = "block";
+    currentShape = (currentShape % 5) + 1;
+
+    //Fill 
+    if(isFirstClick2){
+        isFirstClick2 = false;
+        innerRect2.style.fill = "url(#colorGradient2)";
+        innerRect2.style.width = `${fillPercentage2}%`;
+    }
+    else if (fillPercentage2 <= 100) {
+        fillPercentage2 += 5;
+        innerRect2.style.width = `${fillPercentage2}%`;
+    }
+
+    //Animation
+    currentShapeElement.classList.add("animateDropAndDisappear");
+    setTimeout(() => {         
+        capsule2.classList.add("wobble");
+        currentShapeElement.classList.remove("animateDropAndDisappear");
+        setTimeout(() => {
+            capsule2.classList.remove("wobble");
+        }, 500);
+    }, 700);
 }
 
 // Example function for transitioning to the next section
