@@ -333,7 +333,24 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+    giveRecommendation(userAnswers, selectedGoals)
+        .then(vitaminsData => {
+            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
+            $(".lifestyle-quiz").fadeOut(500);
+
+            // Show the "lifestyle-quiz" section after a delay
+            setTimeout(function () {
+                $(".results-section").fadeIn(500);
+            }, 500);
+        })
+        .catch(error => {
+            console.error('Error in giveRecommendation:', error);
+        });
+}
+/*
+function showResults() {
     vitaminsData = giveRecommendation(userAnswers,selectedGoals)
+    console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.Benefits_Description)
     $(".lifestyle-quiz").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
@@ -342,7 +359,7 @@ function showResults() {
 
     }, 500);
 }
-
+*/
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
     $(".lifestyle").fadeOut(500);

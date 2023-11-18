@@ -22,6 +22,7 @@ let vitaminKScore = 0;
 // be sent to the backend to be parsed and used to query the database
 export function giveRecommendation(userAnswers, userGoals){
     console.log("we in giv reccomendation n shii");
+    console.log(userGoals)
     // 
     // userAnswers is given to us in an array of literal strings so 
     // userAnswers[0] is == ['0-17'], and not OptionA 
@@ -648,28 +649,26 @@ if (vitaminKScore >= threshold) {
 }
 console.log(vitaminRec);
 */
-if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
-    let vitaminData = {}
-    fetch('http://localhost:3000/Api/calculateVitamins', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(vitaminRec),
+
+if (vitaminRec.length > 0) {
+    // Return the fetch promise
+    return fetch('http://localhost:3000/Api/calculateVitamins', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(vitaminRec),
     })
     .then(response => response.json())
     .then(result => {
-        // Handle the response from the server
         console.log(result);
-        vitaminData = result
-        console.log(`ID: ${vitaminData[0].vitamin.ID}`)
-        console.log(`Sources: ${vitaminData[0].vitamin.Sources}`)
-       
+        return result; // Return the result of the fetch
     })
     .catch(error => {
         console.error('Error:', error);
     });
-    
-     return vitaminData; // Handle case where vitaminRec is empty and we recommend nothing.
+} else {
+    // Handle case where vitaminRec is empty and we recommend nothing.
+    return Promise.resolve([]);
 }
 }
