@@ -393,6 +393,7 @@ function initializeLifestyleQuiz() {
 function prevLifestyleQuestion() {
     if (currentLifestyleQuestionIndex > 0) {
         // Go back to the previous question in the lifestyle set
+        unfillCapsule2();
         currentLifestyleQuestionIndex--;
         showQuestionsFromLifeStyleSet(currentLifestyleQuestionIndex);
         lifestyleQuestionNumb--;
@@ -404,9 +405,8 @@ function prevLifestyleQuestion() {
     }
 }
 
-let isFirstClick2 = true;
+
 let currentShape = 1;
-let fillPercentage2 = 5;
 function fillCapsule2() {
     const innerRect2 = document.getElementById("innerRect2");
     const capsule2 = document.querySelector(".capsule2");
@@ -421,25 +421,26 @@ function fillCapsule2() {
     currentShape = (currentShape % 5) + 1;
 
     //Fill 
-    if(isFirstClick2){
-        isFirstClick2 = false;
-        innerRect2.style.fill = "url(#colorGradient2)";
-        innerRect2.style.width = `${fillPercentage2}%`;
-    }
-    else if (fillPercentage2 <= 100) {
-        fillPercentage2 += 5;
-        innerRect2.style.width = `${fillPercentage2}%`;
+    if (fillPercentage <= 100) {
+        fillPercentage += 5;
+        innerRect2.style.width = `${fillPercentage}%`;
     }
 
     //Animation
-    currentShapeElement.classList.add("animateDropAndDisappear");
+    currentShapeElement.classList.add("animateDropAndDisappear2");
     setTimeout(() => {         
         capsule2.classList.add("wobble");
-        currentShapeElement.classList.remove("animateDropAndDisappear");
+        currentShapeElement.classList.remove("animateDropAndDisappear2");
         setTimeout(() => {
             capsule2.classList.remove("wobble");
         }, 500);
     }, 700);
+}
+
+function unfillCapsule2(){
+    const innerRect2 = document.getElementById("innerRect2");
+    fillPercentage2 -= 5;
+    innerRect2.style.width = `${fillPercentage2}%`;
 }
 
 // Example function for transitioning to the next section
@@ -450,6 +451,9 @@ function showResults() {
 
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
+    const innerRect2 = document.getElementById("innerRect2");
+    innerRect2.style.width = `${fillPercentage}%`;
+
     $(".lifestyle").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
