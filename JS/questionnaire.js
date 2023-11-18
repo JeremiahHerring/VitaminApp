@@ -13,7 +13,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-
+let sumTotalQ = 0
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -24,6 +24,7 @@ $(".cont-btn").on("click", function () {
     // Check if at least one goal is selected
     if (selectedGoals.length > 0) {
         // Display questions based on selected goals
+        sumTotalQ = giveTotalQuestion(selectedGoals);
         iterateThroughGoals(selectedGoals);
     } else {
         // If no checkbox is checked, you can show an alert or handle it as needed
@@ -31,6 +32,33 @@ $(".cont-btn").on("click", function () {
     }
 });
 
+function giveTotalQuestion(selectedGoals) {
+    console.log(selectedGoals)
+    for (let x = 0; x < selectedGoals.length; ++x)
+    {
+        switch(selectedGoals[x]){
+            case 'fitness':
+                sumTotalQ += 4
+                break
+            case 'energy':
+                sumTotalQ += 5
+                break
+            case 'brain':
+                sumTotalQ += 3
+                break
+            case 'digestion':
+                sumTotalQ += 3
+                break
+            case 'cosmetic':
+                sumTotalQ += 5
+                break
+            case 'immunity':
+                sumTotalQ += 5
+                break
+        }
+    }
+    console.log("Total amount of questions: " + sumTotalQ)
+}
 function iterateThroughGoals(goals) {
     let currentGoalIndex = 0;
 
