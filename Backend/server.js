@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 
 const connection = mysql2.createConnection({
-    host: "localhos",
+    host: "localhost",
     database: "vitaminsdb",
     user: "tester",
     password: "test"
