@@ -306,13 +306,10 @@ function initializeLifestyleQuiz() {
             } else {
                 // If no more questions, transition to the next section or handle as needed
                 // For example, you can call a function to handle the transition
-                console.log("show the results")
                 showResults();
             }
             } 
-        } else {
-            console.log("Option not selected")
-        }
+        } 
     });
     $(".lifestyle-footer .prev-btn1").on("click", function () {
         prevLifestyleQuestion();
