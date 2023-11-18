@@ -295,7 +295,8 @@ body, html {
 }
 
 .made-for-text h5 {
-    font-size: 24px;
+    margin-top: -10px;
+    font-size: 32px;
     font-style: italic;
 }
 

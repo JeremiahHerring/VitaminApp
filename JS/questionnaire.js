@@ -8,7 +8,11 @@ const quizBox = document.querySelector('.quiz-box');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
 const prevBtn = document.querySelector('.prev-btn');
-
+const btn1 = document.getElementById('btn1');
+const btn2 = document.getElementById('btn2');
+const btn3 = document.getElementById('btn3');
+const btn4 = document.getElementById('btn4');
+const btn5 = document.getElementById('btn5');
 
 prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
@@ -436,19 +440,53 @@ if (storedUserName) {
     console.log('User name not found in localStorage.');
 }
 
-    giveRecommendation(userAnswers, selectedGoals)
-        .then(vitaminsData => {
-            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
-            $(".lifestyle-quiz").fadeOut(500);
+giveRecommendation(userAnswers, selectedGoals)
+.then(vitaminsData => {
+    // Assuming vitaminsData is an array of objects with vitamin information
+    console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
 
-            // Show the "lifestyle-quiz" section after a delay
-            setTimeout(function () {
-                $(".results-section").fadeIn(500);
-            }, 500);
-        })
-        .catch(error => {
-            console.error('Error in giveRecommendation:', error);
-        });
+    // Update the names of the vitamins based on vitaminsData
+    const vitaminElements = document.querySelectorAll('.name');
+
+    vitaminElements.forEach((element, index) => {
+        // Assuming vitaminsData is an array of objects with vitamin information
+        const vitaminName = vitaminsData[index].vitamin.Vitamin_Name;
+        const prefixedName = "Vitamin " + vitaminName;
+        element.textContent = prefixedName;
+    });
+
+    btn1.addEventListener('click', () => togglePopup(1))
+    btn2.addEventListener('click', () => togglePopup(2))
+    btn3.addEventListener('click', () => togglePopup(3))
+    btn4.addEventListener('click', () => togglePopup(4))
+    btn5.addEventListener('click', () => togglePopup(5))
+
+    function togglePopup(index) {
+        const popup = document.getElementById(`popup${index}`);
+        const vitaminName = vitaminsData[index-1].vitamin.Vitamin_Name;
+        const benefitsDescription = vitaminsData[index-1].vitamin.Benefits_Description;
+
+        if (vitaminName) {
+            const h1Element = popup.querySelector('h1');
+            h1Element.textContent = "Vitamin " + vitaminName;
+
+             // Update the p element with benefits description
+            const pElement = popup.querySelector('p');
+            pElement.textContent = benefitsDescription;
+
+            popup.classList.toggle('active');
+        }
+    }
+
+    // Hide the quiz section and show the results section
+    $(".lifestyle-quiz").fadeOut(500);
+    setTimeout(function () {
+        $(".results-section").fadeIn(500);
+    }, 500);
+})
+.catch(error => {
+    console.error('Error in giveRecommendation:', error);
+});
 }
 /*
 function showResults() {

@@ -646,7 +646,7 @@
                             <h2 class="name">Vitamin A</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                            <a class="button" id="btn1">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -662,7 +662,7 @@
                             <h2 class="name">Vitamin B</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                            <a class="button" id="btn2">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -678,7 +678,7 @@
                             <h2 class="name">Vitamin C</h2>
                             <p class="description">Vitamin Desc</p>
     
-                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                            <a class="button" id="btn3">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -693,7 +693,7 @@
                         <div class="card-content">
                             <h2 class="name">Vitamin D</h2>
                             <p class="description">Vitamin Desc</p>
-                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                            <a class="button" id="btn4">Learn More</a>
                         </div>
                     </div>
                     <div class="card swiper-slide">
@@ -708,7 +708,7 @@
                         <div class="card-content">
                             <h2 class="name">Vitamin E</h2>
                             <p class="description">Vitamin Desc</p>
-                            <a class="button" id="btn5" onclick="togglePopup()">Learn More</a>
+                            <a class="button" id="btn5">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -721,17 +721,49 @@
         <div class="popup" id="popup1">
             <div class="overlay"></div>
             <div class="content">
-                <div class="close-btn" onclick="togglePopup()">&times;</div>
-                <h1>Vitamin Description</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aperiam libero voluptatibus esse deserunt architecto voluptates aspernatur eveniet? Architecto earum vero, dolores harum laborum atque. Accusantium iusto iure reiciendis. Iure?</p>
+                <div class="close-btn" onclick="togglePopup(1)">&times;</div>
+                <h1>1. Vitamin Name</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="popup" id="popup2">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup(2)">&times;</div>
+                <h1>2. Vitamin Name</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="popup" id="popup3">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup(3)">&times;</div>
+                <h1>3. Vitamin Name</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="popup" id="popup4">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup(4)">&times;</div>
+                <h1>4. Vitamin Name</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="popup" id="popup5">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup(5)">&times;</div>
+                <h1>5. Vitamin Name</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </div>
     </section>
 </section>
 <script>
-    // Your JavaScript code goes here
-    function togglePopup() {
-        document.getElementById("popup1").classList.toggle('active');
+    function togglePopup(index) {
+        const popup = document.getElementById(`popup${index}`);
+        popup.classList.toggle('active')
     }
 </script>
     </section>
