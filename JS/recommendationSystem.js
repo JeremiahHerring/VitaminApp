@@ -504,7 +504,12 @@ for (let y = 1; qnum < lifestyle; ++qnum, ++y) // this is the lifestyle question
                     break
 
             }
-    
+            case 5: 
+            switch(userAnswers[qnum + 1]){ //qnum +1 as the first question was useless to the algorithm
+                case 'Rarely':
+                    vitaminDScore += 3
+
+            }
     }
 } 
 

@@ -132,7 +132,7 @@ app.post('/Api/calculateVitamins', async (req, res) => {
       }
       ]
     }
-    if (vitaminpackage.length === 5){
+    if (vitaminpackage.length >= 5){
       vitamins = [
       {
         "vitamin": {
