@@ -330,9 +330,10 @@ function prevLifestyleQuestion() {
         }
     }
 }
-
+let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+    vitaminsData = giveRecommendation(userAnswers, selectedGoals) // This calls for the algorithm in recommendationsystem.js
     // Your transition logic goes here
     console.log("RESULTS!!!!");
 }
