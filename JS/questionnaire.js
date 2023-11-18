@@ -1,5 +1,6 @@
 import { lifestyleQuestions, specializedQuestionSets } from './questions.js';
 import { giveRecommendation } from './recommendationSystem.js';
+
 // DEFINING ALL OUR VARIABLES
 const main = document.querySelector('.main');
 const quizSection = document.querySelector('.quiz-section');
@@ -13,7 +14,7 @@ prevBtn.classList.remove('active');
 let currentQuestionSet = specializedQuestionSets.healthAndFitness;
 
 let selectedGoals = [];
-let sumTotalQ = 23;
+let sumTotalQ = 5;
 $(".cont-btn").on("click", function () {
     selectedGoals = [];
     // Check which goals are selected
@@ -25,7 +26,6 @@ $(".cont-btn").on("click", function () {
     if (selectedGoals.length > 0) {
         // Display questions based on selected goals
         sumTotalQ = giveTotalQuestion(selectedGoals);
-        console.log("This is sumtotalQ: " + sumTotalQ)
         iterateThroughGoals(selectedGoals);
     } else {
         // If no checkbox is checked, you can show an alert or handle it as needed
@@ -39,27 +39,27 @@ function giveTotalQuestion(selectedGoals) {
     for (let x = 0; x < selectedGoals.length; ++x)
     {
         switch(selectedGoals[x]){
-            case 'fitness':
+            case 'Fitness':
                 total += 4
                 break
-            case 'energy':
+            case 'Energy':
                 total += 5
                 break
-            case 'brain':
+            case 'Brain':
                 total += 3
                 break
-            case 'digestion':
+            case 'Digestion':
                 total += 3
                 break
-            case 'cosmetics':
+            case 'Cosmetic':
                 total += 5
                 break
-            case 'immunity':
+            case 'Immunity':
                 total += 5
                 break
         }
     }
-    console.log("Total amount of questions: " + total)
+    console.log("Total amount of questions: " + sumTotalQ)
     return total
 }
 
@@ -105,8 +105,8 @@ function iterateThroughGoals(goals) {
                     // Move to the next goal if available
                     displayNextGoal();
                 }
+                fillCapsule();
             }
-            fillCapsule();
         }
     };
 };
@@ -174,6 +174,7 @@ let questionTotal = 1
 prevBtn.onclick = () => {
     if (questionCount > 0) {
         // Go back to the previous question in the current set
+        unfillCapsule();
         questionCount--;
         showQuestions(questionCount, currentQuestionSet);
         questionNumb--;
@@ -182,13 +183,13 @@ prevBtn.onclick = () => {
         if (questionNumb <= 1) {
             prevBtn.classList.remove('active');
         }
-        unfillCapsule();
+
     }
 };
 
 let isFirstClick = true;
 let currentParticle = 1;
-let fillAmount = 290 / (sumTotalQ + 16);
+let fillAmount = 300 / (sumTotalQ + 16);
 function fillCapsule() {
     const innerRect = document.getElementById("innerRect");
     const capsule = document.querySelector(".capsule");
@@ -209,9 +210,9 @@ function fillCapsule() {
         innerRect.style.fill = "url(#colorGradient)";
         innerRect.style.width = `${fillAmount}px`;
     }
-    else if (fillAmount <= 290) {
+    else if (fillAmount <= 300) {
         console.log(sumTotalQ)
-        fillAmount += 290 / (sumTotalQ + 16);
+        fillAmount += 300 / (sumTotalQ + 16);
         console.log(fillAmount)
         innerRect.style.width = `${fillAmount}px`;
     }
@@ -229,7 +230,7 @@ function fillCapsule() {
 
 function unfillCapsule(){
     const innerRect = document.getElementById("innerRect");
-    fillAmount -= 290 / (sumTotalQ + 16);
+    fillAmount -= 300 / (sumTotalQ + 16);
     console.log(fillAmount)
     innerRect.style.width = `${fillAmount}px`;
 }
@@ -420,10 +421,24 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+
+    const storedUserName = localStorage.getItem('userName');
+
+// Check if userName is available and not null
+if (storedUserName) {
+    // Do something with the userName, e.g., update the DOM
+    const personNameElement = document.getElementById('personName');
+    if (personNameElement) {
+        personNameElement.textContent = storedUserName;
+    }
+} else {
+    // Handle the case where userName is not available
+    console.log('User name not found in localStorage.');
+}
+
     giveRecommendation(userAnswers, selectedGoals)
         .then(vitaminsData => {
-            // We have Benefits_Description, Sources, ID, Vitamin_Name, Deficiency_Symptoms
-            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.Benefits_Description);
+            console.log("This is the vitaminsData: " + vitaminsData[0].vitamin.benefits_description);
             $(".lifestyle-quiz").fadeOut(500);
 
             // Show the "lifestyle-quiz" section after a delay
@@ -450,8 +465,6 @@ function showResults() {
 */
 $(".next-question-lifestyle").one("click", function () {
     // Fade out the lifestyle section
-    const innerRect2 = document.getElementById("innerRect2");
-    innerRect2.style.width = `${fillAmount}px`;
     $(".lifestyle").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay
@@ -459,6 +472,8 @@ $(".next-question-lifestyle").one("click", function () {
         $(".lifestyle-quiz").fadeIn(500);
 
         // Initialize the lifestyle quiz
+        const innerRect2 = document.getElementById("innerRect2");
+        innerRect2.style.width = `${fillAmount}px`;
         initializeLifestyleQuiz();
     }, 500);
 });
@@ -478,8 +493,8 @@ function fillCapsule2() {
     currentShape = (currentShape % 5) + 1;
 
     //Fill 
-    if (fillAmount <= 290) {
-        fillAmount += 290 / (sumTotalQ + 16);
+    if (fillAmount <= 300) {
+        fillAmount += 300 / (sumTotalQ + 16);
         innerRect2.style.width = `${fillAmount}px`;
     }
 
@@ -496,7 +511,7 @@ function fillCapsule2() {
 
 function unfillCapsule2(){
     const innerRect2 = document.getElementById("innerRect2");
-    fillAmount -= 290 / (sumTotalQ + 16);
+    fillAmount -= 300 / (sumTotalQ + 16);
     innerRect2.style.width = `${fillAmount}px`;
     console.log(fillAmount)
 }
@@ -530,3 +545,5 @@ var swiper = new Swiper(".slide-content", {
         },
     },
   });
+
+

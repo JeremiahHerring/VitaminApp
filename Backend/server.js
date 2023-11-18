@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express() 
 app.use(cors({
-  origin: 'http://127.0.0.1:5500', // Adjust this to the actual origin of your frontend
+  origin: 'http://192.168.1.114:54775', // Adjust this to the actual origin of your frontend
   methods: 'POST',
 }))
 app.use(bodyParser.json())
