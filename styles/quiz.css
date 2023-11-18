@@ -1636,7 +1636,10 @@ label h6 {
 
 }
 
-
+#personName {
+    font-size: 24px;
+    margin-top: -10px;
+}
 
 
 
