@@ -46,6 +46,13 @@ form.addEventListener('submit', (event) => {
     // Get the user's input
     const userName = userNameInput.value;
 
+    // Check if the userName is empty or consists only of whitespace
+    if (userName.trim() === "") {
+        // Display an alert or handle the case where the userName is not provided
+        alert("Please enter your name before submitting.");
+        return; // Stop further execution of the submit handler
+    }
+
     // Store the user's name (you can use localStorage, sessionStorage, or a variable)
     localStorage.setItem('userName', userName);
 
@@ -95,9 +102,9 @@ $(document).ready(function () {
     });
 
     $(".next-question").click(function () {
-        $(".basics").animate({ left: "-100%" }, 500, function () {
+        $(".basics").fadeOut(500, function () {
             $(this).hide();
-            $(".questions").show().animate({ left: "0" }, 500);
+            $(".questions").fadeIn(500);
         });
     });
 })

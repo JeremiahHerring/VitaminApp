@@ -140,7 +140,11 @@ function initializeQuiz(initialGoal) {
 
 function updateQuizTitle(setName) {
     const quizTitle = document.querySelector('.quiz-box h1');
-    quizTitle.textContent = setName;
+    
+    // Convert the first character to uppercase and concatenate with the rest of the string
+    const formattedSetName = setName.charAt(0).toUpperCase() + setName.slice(1);
+
+    quizTitle.textContent = formattedSetName;
 }
 
 function updateLifestyleTitle(setName) {
@@ -323,7 +327,6 @@ function lifestyleOptionSelected(answer) {
     answer.classList.add('active');
     isOptionSelected = true;
     $(".lifestyle-footer .next-btn1").addClass('active');
-
     });
 }
 
@@ -389,13 +392,10 @@ function initializeLifestyleQuiz() {
             } else {
                 // If no more questions, transition to the next section or handle as needed
                 // For example, you can call a function to handle the transition
-                console.log("show the results")
                 showResults();
             }
             } 
-        } else {
-            console.log("Option not selected")
-        }
+        } 
     });
     $(".lifestyle-footer .prev-btn1").on("click", function () {
         prevLifestyleQuestion();
@@ -420,6 +420,7 @@ function prevLifestyleQuestion() {
 let vitaminsData = {} // This is gonna hold all of the data from the server.js
 // Example function for transitioning to the next section
 function showResults() {
+    vitaminsData = giveRecommendation(userAnswers,selectedGoals)
     $(".lifestyle-quiz").fadeOut(500);
 
     // Show the "lifestyle-quiz" section after a delay

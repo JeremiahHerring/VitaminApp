@@ -39,7 +39,7 @@ switch(userGoals[x]) {
 /*
 Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
 */
-    case 'fitness': // We are in fitness category
+    case 'Fitness': // We are in fitness category
         fitnessQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
         console.log(fitnessQ)
         for(let y = 0; qnum < fitnessQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
@@ -140,7 +140,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                 }
 
             } // End of Health & Fitness Category
-    case 'energy': // We are in Energy category
+    case 'Energy': // We are in Energy category
         energyQ += qnum // This makes Energy = 5 more than qnum which is how many questions we have
         console.log(energyQ)
         for(let y = 0; qnum < energyQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
@@ -200,7 +200,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                     }
                 }
             }// End of Energy
-    case 'brain': // We are in Brain category
+    case 'Brain': // We are in Brain category
     brainQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < brainQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -240,7 +240,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
         }
     } // End of Brain
 // Skipping digestion for now, need better questions
-    case 'digestion': // We are in digestion category
+    case 'Digestion': // We are in digestion category
     digestionQ += qnum // This makes fitness = 4 more than qnum which is how many questions we have
     for(let y = 0; qnum < digestionQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -292,7 +292,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
                         vitaminB6Score +=3
                         break
                     case 'Indigestion':
-                        vitaminB12+= 2
+                        vitaminB12Score += 2
                         break
                     case 'None':
                         break
@@ -300,7 +300,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
         }
     } // End of Digestion
 
-    case 'cosmetics': // We are in HairSkinNails category
+    case 'Cosmetics': // We are in HairSkinNails category
     hairSkinNailsQ += qnum // This makes brain = 3 more than qnum which is how many questions we have
     for(let y = 0; qnum < hairSkinNailsQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -394,7 +394,7 @@ Cases 1-Fitness 2- Energy 3-Brain 4- Digestion 5- HairSkin&Nails 6-Immunity
             }
         }
     } // End of hairSkinNails
-    case 'immunity': // We are in Immunity category
+    case 'Immunity': // We are in Immunity category
     immunityQ += qnum // This makes Immunity = 5 more than qnum which is how many questions we have
     for(let y = 0; qnum < immunityQ; ++qnum, ++y){ // we need to increase qnum as we are using it for every single case
         switch(y+1) {
@@ -669,6 +669,7 @@ if (vitaminRec.length > 0) { // If there is a value, send a fetch request.
     .catch(error => {
         console.error('Error:', error);
     });
-    }
+    
      return vitaminData; // Handle case where vitaminRec is empty and we recommend nothing.
-    }
+}
+}
