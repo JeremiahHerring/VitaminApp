@@ -6,6 +6,9 @@ Vitamatch is a web application designed to provide personalized vitamin recommen
 
 ## Getting Started
 
+**IMPORTANT NOTE**
+This will not give you recommendations unless you are not connected to the Database. If you want it to function as expected, you can clone the repository, go to CD backend, and then run the application once you are connected. Otherwise, you can check out the full project watching the demo: https://www.youtube.com/watch?v=NNkBk2JUEHA
+
 To access Vitamatch, simply visit the [Vitamatch Web App](https://vitamatch.netlify.app/). There's no need to download anything; just click "Begin Quiz" to start the questionnaire and receive personalized vitamin recommendations.
 
 ## Features
