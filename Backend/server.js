@@ -1,5 +1,5 @@
-const mysql2 = require('mysql2') // This is the way to "import for node.js"
-const express = require('express') // express is a node.js framework
+const mysql2 = require('mysql2') 
+const express = require('express') 
 const bodyParser = require('body-parser')
 const cors = require('cors');
 
@@ -205,7 +205,6 @@ app.post('/Api/calculateVitamins', async (req, res) => {
 
   try {
     const results = await Promise.all(queryPromises);
-    console.log("We sendin sumn");
     res.json(results);
   } catch (error) {
     console.error('Error:', error);
@@ -222,11 +221,9 @@ app.listen(PORT, ()=> {
     console.log(`SERVER    :  http://localhost:${PORT}`);
     connection.connect((err)=> {
         if (err){
-          console.log("No database connected, TESTING MODE")
           testing = true
         }
         else {
-        console.log("DATABASE CONNECTED");
         }
     })
 })

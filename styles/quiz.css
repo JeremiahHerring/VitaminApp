@@ -22,8 +22,8 @@ header {
     background-color: transparent;
     position: relative;
     z-index: 2;
-    position: fixed; /* Fix the header at the top */
-    width: 100%; /* Make the header full-width */
+    position: fixed; 
+    width: 100%; 
 }
 
 .header {
